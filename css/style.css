@@ -13,7 +13,7 @@ nav {
   display: block;
   height: 65px;
   width: 100%;
-  background-color: white;
+  background-color: #fff;
   box-shadow: 0px 0px 10px black;
   position: fixed;
   font-family: 'Quicksand', sans-serif; }
@@ -51,7 +51,9 @@ a:hover {
   width: 100%;
   display: block;
   background-color: #8bd98f;
-  box-shadow: inset 0px 0px 10px black; }
+  box-shadow: inset 0px 0px 10px black;
+  box-sizing: border-box;
+  padding-top: 130px; }
 
 .main {
   display: block;
@@ -59,14 +61,22 @@ a:hover {
   font-size: 1.5rem;
   padding: 20px 0 0px 0; }
 
+.main-txt {
+  color: white;
+  padding-top: 0px;
+  max-width: 320px;
+  margin: 0px auto 0 auto;
+  text-shadow: 1px 1px 2px black;
+  line-height: 60px; }
+
 .txt-holder {
-  padding: 0px 20px 20px 20px;
+  padding: 0px 40px 20px 40px;
   max-width: 960px;
-  margin: 0 auto; }
+  margin: auto; }
 
 .break {
   width: 100%;
-  background-color: #d0b8e3;
+  background-color: #8bd98f;
   height: 15px;
   box-shadow: inset 0px 0px 10px black; }
 
@@ -83,5 +93,5 @@ footer {
   display: block;
   height: 50px;
   width: 100%;
-  background-color: #57d3f2;
+  background-color: #8bd98f;
   box-shadow: inset 0px 0px 10px black; }
