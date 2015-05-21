@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Quicksand:300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Quicksand:300);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700);
 
 html, body{
@@ -7,6 +7,7 @@ html, body{
 	padding: 0;
 	
 	font-family: 'Open Sans', sans-serif;
+
 }
 
 .container{
@@ -42,25 +43,61 @@ ul li{
 	font-size: 18px;
 }
 
-h1, h2{
-	font-family: 'Quicksand', sans-serif;
+h1,h2{
+	font-family: 'Quicksand Light', sans-serif;
 	margin-top: 0;
+	font-weight: 300;
 	
 }
 
-h3, h4{
-font-family: 'Open Sans', sans-serif;
-margin:0;
+h3,h4,h5,h6{
+
+	font-family: 'Quicksand Light', sans-serif;
+	font-weight: 300;
+	
 
 }
+
+h3{
+	margin-top:0;
+	margin-bottom:10px;
+	font-size: 2rem;
+}
 h4{
-	font-size: 1.1rem;
+	margin-top: 20px;
+	margin-bottom: 5px;
+	font-size: 1.6rem;
+
+}
+h5{
+	margin-top: 5px;
+	margin-bottom: 0px;
 }
 
 a{
+	text-decoration: none;
+}
+
+.post-link:visited,.post-link:focus,.post-link:link{
 
 	text-decoration: none;
+	font-size: .8rem;
 
+
+}
+
+.nav-link:link,.nav-link:visited,.nav-link:focus{
+	color: black;
+}
+
+.nav-link:hover{
+	color: #8bd98f;
+	-webkit-transition: 500ms;
+}
+
+a:link,a:visited,a:focus{
+
+	color: #8bd98f;
 }
 
 a:hover{
@@ -73,19 +110,24 @@ a:hover{
 	height: 400px;
 	width: 100%;
 	display: block;
-	background-color: #8bd98f;
+	//background-color: #8bd98f;green
+	background-color: #57d3f2;
 	box-shadow:  inset 0px 0px 10px black;
 	//
 	box-sizing: border-box;
 	padding-top: 130px;
 }
 
+
+
 .main{
 	display: block;
 	// border: 1px solid red;
 	margin: 0 auto;
 	font-size: 1.5rem;
-	padding: 20px 0 0px 0;
+	padding: 40px ;
+	overflow: hidden;
+	max-width: 960px;
 
 }
 
@@ -97,22 +139,24 @@ a:hover{
 	 margin: 0px auto 0 auto;
 	 text-shadow: 1px 1px 2px black; 
 	 line-height: 60px;
-	  -webkit-opacity: 0.25;
-  -moz-opacity: 0.25;
-  opacity: 0.25;
--webkit-transition: all 10s ease;
-  -moz-transition: all 3s ease;
-  -ms-transition: all 3s ease;
-  -o-transition: all 3s ease;
-  transition: all 10s ease;
+	 
 
 }
 
+.sidebar{
+	width: 100%; 
+	box-sizing: border-box;
+	
+}
+
+
 .txt-holder{
 
-	padding: 0px 40px 20px 40px;
-	max-width: 960px;
-	margin: auto;
+	padding: 0px 0px 20px 0px;
+	width: 100%;
+	//margin: auto;
+	box-sizing: border-box;
+	 // border: 1px solid green;
 
 }
 
@@ -120,10 +164,10 @@ a:hover{
 
 	width: 100%;
 	// background-color: #d0b8e3;//lilac
-	background-color: #8bd98f;
-	height: 15px;
+	background-color: #57d3f2;
+	height: 5px;
 	//background-color: #57d3f2;
-	box-shadow:  inset 0px 0px 10px black;
+	box-shadow:  inset 0px 0px 5px black;
 }
 
 .bottom-border{
@@ -157,4 +201,39 @@ footer{
 	background-color: #8bd98f;
 	box-shadow:  inset 0px 0px 10px black;
 
+}
+
+@media (min-width: 600px){
+
+	.sidebar, .txt-holder{
+		float: left;
+		
+	}
+
+	.txt-holder{
+
+		width:75%;
+		padding-right: 20px;
+	}
+
+	.post-link:visited,.post-link:focus,.post-link:link{
+
+		// font-size: 1.3rem;
+	}
+
+	.sidebar{
+		width: 25%;
+		padding: 0px 20px 20px 20px;
+	}
+
+	h3{
+		font-size: 1.4rem;
+	}
+	h4{
+		font-size: 1.1rem;
+	}
+
+	h5{
+		font-size: 1rem;
+	}
 }

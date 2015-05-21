@@ -1,0 +1,19 @@
+{% include header.html %}
+			<div class="txt-holder">
+			{% for post in site.posts limit: 1 %}
+					<h2>{{ post.title }}</h2>
+					<p> {{ post.content }}</p>
+			{% endfor %} 
+			</div>
+			<div class="sidebar">
+				<h3>Recent Posts</h3>
+			{% for post in site.posts limit: 10 %}
+
+			<h4>{{ post.title }}</h4>
+			<h5>{{ post.date | date: "%m-%d-%Y" }}</h5>
+			<a class="post-link" href="{{ post.url }}">Read Post</a>
+				 <div class="break"></div>
+			
+			{% endfor %}
+			</div>
+{% include footer.html %}
