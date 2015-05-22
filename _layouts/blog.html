@@ -4,7 +4,11 @@
 					<h2>{{ post.title }}</h2>
 					<p> {{ post.content }}</p>
 			{% endfor %} 
+			<!-- DISQUS COMMENTS	 -->
+			<div id="disqus_thread"></div>
+			<!-- ////////////////////// -->
 			</div>
+
 			<div class="sidebar">
 				<h3>Recent Posts</h3>
 			{% for post in site.posts limit: 10 %}
