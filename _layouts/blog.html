@@ -4,9 +4,7 @@
 					<h2>{{ post.title }}</h2>
 					<p> {{ post.content }}</p>
 			{% endfor %} 
-			<!-- DISQUS COMMENTS	 -->
-			<div id="disqus_thread"></div>
-			<!-- ////////////////////// -->
+			{% include comments.html %}
 			</div>
 
 			<div class="sidebar">

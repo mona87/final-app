@@ -1,5 +1,6 @@
 ---
 title: Hello World?
+comments: true
 layout: post
 ---
 
@@ -10,4 +11,5 @@ Originally I was looking for way to create my theme from scratch. I didn't want 
 
 ###Life at the Iron Yard
 The first two weeks have been pretty good for me. I came in with an advantage since I was a web designer at my last job and had prior programming experience, so a lot of the material has been review or brushing up on old skills. At the same time, it's still a challenge because when your not a true beginner, you have to unlearn old habits and replace them with new ones. Everyday it feels like I'm rewiring my brain to think differently. And by 8pm, my brain finally says "Enough!" and shuts down. I try to fight it, but after staring at my laptop unproductively, my eyes start to glaze over and I throw in the towel. Sometimes you gotta walk away defeated, but you can always try again tommorow. 
+
 
