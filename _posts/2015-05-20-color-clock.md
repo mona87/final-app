@@ -1,6 +1,7 @@
 ---
 title: Color Clock
 comments: true
+tags: javascript IronYard
 layout: post
 ---
 <p>This is the first homwework assignment where I get to use javascript to maniupulate the DOM. It uses the setInterval function to update the Date object every second and displays the result through a string. My goal was to create the 'rainbow effect' so I originally used the rgb property to changed the background-color. Unfortunately, rgb contains all possible values including whites, grays and blacks. After an hour of failed attempts and convoluted conditional statements, I think, "There's gotta be a better way to do this." 

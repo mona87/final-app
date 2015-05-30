@@ -1,7 +1,7 @@
 ---
-title: Contact Forms and Login Forms
+title: Contact Forms, Login Forms and Tabs
 comments: true
-tags: jquery javascript validator conatct login forms IronYard
+tags: jquery javascript validator conatct login forms tabs IronYard
 layout: post
 ---
 
@@ -19,4 +19,9 @@ Below is the login form. The username and password will redirect you to the <a h
 
 
 <p data-height="266" data-theme-id="15312" data-slug-hash="pJRpmY" data-default-tab="result" data-user="inspire" class='codepen'>See the Pen <a href='http://codepen.io/inspire/pen/pJRpmY/'>Login Form</a> by mona (<a href='http://codepen.io/inspire'>@inspire</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+And last, but not least, jquery tabs done with the hide and show functions:
+
+<p data-height="266" data-theme-id="15312" data-slug-hash="jPyzpm" data-default-tab="result" data-user="inspire" class='codepen'>See the Pen <a href='http://codepen.io/inspire/pen/jPyzpm/'>Tabs</a> by mona (<a href='http://codepen.io/inspire'>@inspire</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
 <script async src="//assets.codepen.io/assets/embed/ei.js"></script>
