@@ -1,7 +1,7 @@
 ---
 title: Contact Forms, Login Forms and Tabs
 comments: true
-tags: jquery javascript validator conatct login forms tabs IronYard
+tags: jquery javascript validator contact login forms tabs IronYard
 layout: post
 ---
 
