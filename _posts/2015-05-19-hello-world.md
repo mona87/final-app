@@ -1,7 +1,7 @@
 ---
 title: Hello World?
 comments: true
-tags: IronYard Javascript
+tags: IronYard javascript
 layout: post
 ---
 
