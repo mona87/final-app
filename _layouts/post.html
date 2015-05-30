@@ -3,7 +3,9 @@
 			<div class="txt-holder">
 
 				<h2>{{ page.title }}</h2>
+				{% include post-tags.html %}
 				<p>{{ content }}</p>
+				
 				<p></p>
 			{% include comments.html %}
 			<!-- ////////////////////// -->

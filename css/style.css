@@ -109,11 +109,16 @@ a:hover {
   width: 100%;
   box-sizing: border-box; }
 
-.break {
+.break, .break2 {
   width: 100%;
   background-color: #57d3f2;
   height: 5px;
   box-shadow: inset 0px 0px 5px black; }
+
+.break2 {
+  height: 3px;
+  margin-top: 3px;
+  box-shadow: inset 0px 0px 3px black; }
 
 .bottom-border {
   width: 100%;
@@ -131,7 +136,7 @@ footer {
   background-color: #8bd98f;
   box-shadow: inset 0px 0px 10px black; }
 
-@media (min-width: 600px) {
+@media (min-width: 700px) {
   .sidebar, .txt-holder {
     float: left; }
   .txt-holder {
@@ -139,10 +144,39 @@ footer {
     padding-right: 20px; }
   .sidebar {
     width: 25%;
-    padding: 0px 20px 20px 20px; }
+    padding: 0px 20px 20px 50px; }
   h3 {
     font-size: 1.4rem; }
   h4 {
     font-size: 1.1rem; }
   h5 {
     font-size: 1rem; } }
+
+.tag-cloud {
+  list-style: none;
+  padding: 0;
+  text-align: justify;
+  font-size: 16px; }
+
+.tag-cloud li {
+  display: inline-block;
+  margin: 0 12px 12px 0; }
+
+#archives {
+  padding: 5px; }
+
+.archive-group {
+  margin: 5px; }
+
+.archive-sect {
+  border-bottom: 1px solid #eee; }
+
+.archive-sect ul.tag-cloud {
+  font-size: .8rem; }
+
+.archive-item {
+  margin-left: 5px; }
+
+.post-tags {
+  text-align: left;
+  font-size: .8rem; }
