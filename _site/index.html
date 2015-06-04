@@ -23,7 +23,7 @@
 		<section class="main">
 			<div class="txt-holder">
 			
-					<h2>jQuery Photo Album</h2>
+					<h2>$(This) Revisited</h2>
 						<div class="post-tags">
   Tags: 
   
@@ -34,30 +34,25 @@
   
   <a href="/tags/#javascript">javascript</a>,
   
-  <a href="/tags/#photo">photo</a>,
-  
-  <a href="/tags/#album">album</a>,
-  
   <a href="/tags/#IronYard">IronYard</a>
   
 </div>
-					<p> <p>I’m proud of this project. It’s like my baby. :) I knew right off the bat I wasn’t going to code in 36 img tags into my javascript. Partly because I’m lazy, but mainly because I wanted to be efficient. Even though I’m all about writing code from scratch, I used the infamous bootstrap for layout and added my own custom css for flavor. Then I posted all my images on the tiny pizza server, used the $.get() to retrieve the data, and then parse the information with arrays. </p>
+					<p> <p>I learned today that e.target and $(this)(or this or $this) are not the same thing. And here’s a small code snippit to prove it. </p>
 
-<p>One of my biggest issues was getting the height and width of the parent div to match the image’s width and height. Did my research and found this nifty trick all done in css:</p>
+<pre><code>	```
+	&lt;div class="parent"&gt;
+		&lt;div class="child"&gt;Child&lt;/div&gt;
+	&lt;/div&gt;
+	```
+	```javascript
+	$('.parent').click(function(e){
+		console.log('this ' + $(this).attr('class'));
+		console.log('e.target ' + $(e.target).attr('class'));
+	});
+	```
+</code></pre>
 
-<p><strong>.some_element {
- 		width: 50%;
-		height: 0;
-		padding-bottom: 50%;
-	}
-</strong> </p>
-
-<p>Not exactly sure why this works, but I’m glad it does.</p>
-
-<p>So now here’s my responsive photo album filled with nothing but cute cuddley animals. Cheers!</p>
-
-<p data-height="400" data-theme-id="15312" data-slug-hash="OVWKNb" data-default-tab="result" data-user="inspire" class="codepen">See the Pen <a href="http://codepen.io/inspire/pen/OVWKNb/">jQuery Photo Album</a> by mona (<a href="http://codepen.io/inspire">@inspire</a>) on <a href="http://codepen.io">CodePen</a>.</p>
-<script async="" src="//assets.codepen.io/assets/embed/ei.js"></script>
+<p>Originally, I assumed if you have a function with a click event, you can use e.target and $(this) interchangebly. But $(this) fails in the above example because $(this) will always return the object containing the function. In this case it’s the parent element. However, e.target gives you the element that was clicked. So if I clicked the child element: e.target = ‘div.child’. If I clicked the parent element: e.target = ‘div.parent’. Mind blown.</p>
 
 </p>
 
@@ -91,16 +86,16 @@
                 <h3>Recent Posts</h3>
             
 
-            <h4>jQuery Photo Album</h4>
-            <h5>May-31</h5>
-            <a class="post-link" href="/2015/05/31/photo-album.html">Read Post</a>
+            <h4>$(This) Revisited</h4>
+            <h5>Jun-01</h5>
+            <a class="post-link" href="/2015/06/01/this-revisted.html">Read Post</a>
                  <div class="break"></div>
             
             
 
-            <h4>Contact Forms, Login Forms and Tabs</h4>
-            <h5>May-30</h5>
-            <a class="post-link" href="/2015/05/30/jquery-photo-album.html">Read Post</a>
+            <h4>jQuery Photo Album</h4>
+            <h5>May-31</h5>
+            <a class="post-link" href="/2015/05/31/photo-album.html">Read Post</a>
                  <div class="break"></div>
             
             
