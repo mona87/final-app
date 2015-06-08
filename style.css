@@ -135,9 +135,6 @@ h1{
 	font-size: 18px;
 }
 
- #user, .gen{
- 	color: pink;
- }
 
 .chatnum, .leadnum{
 	float: right;
@@ -150,6 +147,9 @@ h1{
 	clear: both;
 }
 
+ #user, .gen{
+ 	color: pink;
+ }
 
 
 button{
