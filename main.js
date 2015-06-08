@@ -65,7 +65,7 @@ $(document).ready(function() {
 				var string = '';
 				$('#leaderbox').html('');
 				for(var prop in scores){
-					string = '<div id="'+prop+'">'+prop +' '+scores[prop]+'</div>';
+					string = '<div class="leadname" id="'+prop+'">'+prop +'</div><div class="leadnum"> '+scores[prop]+'</div>';
 					$('#leaderbox').append(string);
 				}				
 			},
@@ -89,10 +89,15 @@ $(document).ready(function() {
 			$.get('http://fathomless-caverns-2838.herokuapp.com/messages/active_chatroom', function(activeChat){
 				var string = '';
 				 $('#activeChat').html('');
+				 var array = [];
 				for(var prop in activeChat){
-					string = '<div id="'+prop+'">'+prop +' '+activeChat[prop]+'</div>';
-					$('#activeChat').append(string);
-				}				
+					string = '<div class="chatname" id="'+prop+'">'+prop +' </div>'+'<div class="chatnum">'+activeChat[prop]+'</div>';
+					array.unshift(string);
+					
+				}			
+				for(var i = 0; i < array.length; i++){
+					$('#activeChat').append(array[i]);
+				}	
 			},
 			'JSON');
 	}
