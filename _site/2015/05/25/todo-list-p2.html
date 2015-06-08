@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>My Blog</title>
+	<link rel="stylesheet" type="text/css" href="http://mona87.github.io/css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="../../../css/style.css">
+	 <meta charset="utf-8" name="description" content="A blog about Javascript and Front End Development">
+	   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="container">
+		<nav>
+			<ul>
+				<!-- <li><a class="nav-link" href="../../../index.html">Home</a></li> -->
+				<li><a class="nav-link" href="../../../blog.html">Blog</a></li>
+				<li><a class="nav-link" href="../../../archives.html">Archives</a></li>
+				<!-- <li><a class="nav-link" href="../../../contact.html">Contact</a></li> -->
+			</ul>
+		</nav>
+		<section class="hero">
+			<div class="main-txt"><h1>while( fail() <span class="eql">= </span>true){<br/>tryAgain();<br/>}return 'success'</h1></div>
+		</section>
+		<section class="main">
+			
+			<div class="txt-holder">
+
+				<h2 class="blog-title">Todo List Part 2</h2>
+				<h3>May 25, 2015</h3>
+				<div class="post-tags">
+  Tags: 
+  
+    
+  
+  
+  <a href="/tags/#jquery">jquery</a>,
+  
+  <a href="/tags/#IronYard">IronYard</a>
+  
+</div>
+				<p><h3 id="this-this-and-this">This, $This, and $(This)</h3>
+
+<p>I rebuilt the todo list using objects and jQuery. It took a lot longer than I expected. I think it’s because I’m not very familiar with jQuery’s syntax. It’s like I know what I want to do, but I don’t know how to say it. (And isn’t that the universal problem for all languages?) On a side note, I had an ‘aha!’ moment when I discovered the difference between this, $this and $(this). In short, ‘this’ references the DOM, $(this) also references the DOM, but allows you to use jQuery functions, and $this is a varaiable that references $(this) for later use. Just think about it. It totally makes sense.</p>
+
+<div data-height="302" data-theme-id="15312" data-slug-hash="oXYwEr" data-default-tab="js" data-user="inspire" class="codepen"><pre><code>$(document).on(&#39;ready&#39;, start);
+
+function start(event){
+
+	var $inputBox = $(&#39;#inputBox&#39;);
+	var $btn = $(&#39;#btn&#39;);
+	var $sect = $(&#39;#sect&#39;);
+	var $form = $(&#39;#myForm&#39;);
+	var arraylist = [];
+	var list = []
+	var obj = {};
+	var count = 0;
+
+	$form.on(&#39;submit&#39;, render);
+
+
+	function render(e){
+		count++;
+		e.preventDefault();
+		obj = {};
+		obj.id = count;
+		obj.todo = obj.id+&#39;) &#39;+$inputBox.val();
+		obj.completed = false;
+		obj.deleted = false;	
+		arraylist.push(obj);
+		$inputBox.val(&#39;&#39;);
+
+		
+		
+		for(var i = 0; i&lt; arraylist.length; i++){
+
+			list.push(&#39;&lt;div id=&#39;+ arraylist[i].id+&#39;&gt;&#39;+arraylist[i].todo+&#39;&lt;/div&gt;&#39;);			
+		}
+		
+		$sect.html(&#39;&#39;);		
+		$sect.html(list);
+		check();
+		$sect.on(&#39;click&#39;,&#39;div&#39;, strikeThru);
+		list = [];
+	}
+	//checks the arraylist for completed values that render a strikethrough
+	function check(){
+
+		for(var i = 0; i&lt; arraylist.length; i++){
+
+			if(arraylist[i].completed === true){
+					//console.log(list[i]);
+					console.log($sect.find(&#39;#&#39;+arraylist[i].id))
+					var $div = $($sect.find(&#39;#&#39;+arraylist[i].id));
+						$div.css(&#39;text-decoration&#39;, &#39;line-through&#39;);
+			}
+		}
+	}
+
+	function strikeThru(e){
+
+		var $this = $(this);
+		e.preventDefault();
+
+		for(var i = 0; i &lt; arraylist.length; i++){
+
+			if($this.html() === arraylist[i].todo ){
+				//console.log($this.html());
+
+				if(arraylist[i].completed === false){
+					//set completed to true and scrathes it off
+					arraylist[i].completed = true;
+					arraylist[i].deleted = true;
+					$this.css(&#39;text-decoration&#39;, &#39;line-through&#39;);
+					console.log(arraylist[i]);
+				}
+			}
+		}
+	}
+}
+</code></pre>
+<p>See the Pen <a href="http://codepen.io/inspire/pen/oXYwEr/">Todo List #2</a> by mona (<a href="http://codepen.io/inspire">@inspire</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+</div>
+<script async="" src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+</p>
+				
+				<p></p>
+			
+
+			 <!-- Discus comments -->
+<!-- ///////////////////////////////////////////////////////////		 -->
+				<div id="disqus_thread"></div>
+				<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'jsblogger';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+				<noscript>
+					Please enable JavaScript to view the
+					<a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a>
+				</noscript>
+<!-- //////////////////////////////////////////////////////////////////// -->
+
+			<!-- ////////////////////// -->
+			</div>
+		
+
+    <div class="sidebar">
+                <h3>Recent Posts</h3>
+            
+
+            <h4>IMDB API</h4>
+            <h5>Jun-03</h5>
+            <a class="post-link" href="/2015/06/03/imdb-api.html">Read Post</a>
+                 <div class="break"></div>
+            
+            
+
+            <h4>Backbone Router</h4>
+            <h5>Jun-02</h5>
+            <a class="post-link" href="/2015/06/02/backbone-router.html">Read Post</a>
+                 <div class="break"></div>
+            
+            
+
+            <h4>$(This) Revisited</h4>
+            <h5>Jun-01</h5>
+            <a class="post-link" href="/2015/06/01/this-revisted.html">Read Post</a>
+                 <div class="break"></div>
+            
+            
+
+            <h4>jQuery Photo Album</h4>
+            <h5>May-31</h5>
+            <a class="post-link" href="/2015/05/31/photo-album.html">Read Post</a>
+                 <div class="break"></div>
+            
+            
+
+            <h4>Contact Forms, Login Forms and Tabs</h4>
+            <h5>May-30</h5>
+            <a class="post-link" href="/2015/05/30/contact-login-testing.html">Read Post</a>
+                 <div class="break"></div>
+            
+            
+            </div>
+		
+
+		
+			
+		</section>
+		<footer >
+			
+		</footer>
+	</div>
+	
+
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+---
+title: Color Clock
+comments: true
+tags: javascript IronYard
+layout: post
+---
+<p>This is the first homwework assignment where I get to use javascript to maniupulate the DOM. It uses the setInterval function to update the Date object every second and displays the result through a string. My goal was to create the 'rainbow effect' so I originally used the rgb property to changed the background-color. Unfortunately, rgb contains all possible values including whites, grays and blacks. After an hour of failed attempts and convoluted conditional statements, I think, "There's gotta be a better way to do this." 
+<p>Thankfully google is my friend and I discovered this awesomely new css property called <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color_value#hsl()">hsl()</a> which takes a hue, saturation, and opacity. (Why haven't I been using this?!) The hue represents the rainbow in a circle with the values ranging from 0 to 360: red=0=360, green=120, and blue=240. Basically, my code got a whole lot easier. The final solution has the counter tranversing through the values and resets after 360. Winnning.
+</p>
+
+<p data-height="362" data-theme-id="15312" data-slug-hash="RPGGey" data-default-tab="result" data-user="inspire" class='codepen'>See the Pen <a href='http://codepen.io/inspire/pen/RPGGey/'>Color Clock</a> by mona (<a href='http://codepen.io/inspire'>@inspire</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+<script async src="//assets.codepen.io/assets/embed/ei.js"></script>
+
+
+
+

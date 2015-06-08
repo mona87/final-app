@@ -1,0 +1,13 @@
+{% include header.html %}
+			<div class="txt-holder">
+			{% for post in site.posts limit: 1 %}
+					<h2>{{ post.title }}</h2>
+						{% include post-tags.html %}
+					<p> {{ post.content }}</p>
+
+			{% endfor %} 
+			{% include comments.html %}
+			</div>
+
+{% include sidebar.html %}
+{% include footer.html %}
