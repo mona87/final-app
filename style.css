@@ -39,7 +39,8 @@ img{
 	padding-left: 10px;
 	background-color: black;
 	color: white;
-
+	 outline: none;
+	 font-size: 18px;
 }
 
 #usernamebox{
@@ -59,6 +60,8 @@ img{
 	border-bottom-right-radius: 0;
 	background-color: black;
 	color: white;
+ 	outline: none;
+ 	font-size: 18px;
 }
 
 .usrTemp{
@@ -66,6 +69,7 @@ img{
 	float: left;
 	margin-right: 5px;
 	color: #00B5B5;
+	font-size: 15px;
 	
 
 }
@@ -76,6 +80,8 @@ img{
 	background-color: #000;
 	color: white;
 	border-bottom: 0;
+	outline: none;
+	font-size: 18px;
 
 }
 
@@ -93,6 +99,7 @@ img{
 .msgTemp{
 	clear:both;
 	color: #B500B5;
+	font-size: 18px;
 }
 
 .chat-msg{
@@ -112,6 +119,7 @@ img{
 	border-bottom-left-radius: 5;
 	border-bottom-right-radius: 5;
 	border:solid 2px #00B5B5;
+	font-size: 18px;
 }
 
 .side-links{
@@ -121,7 +129,21 @@ img{
 	background-color: black;
 	color: white;
 	border-bottom: 0;
+	outline: none;
+	font-size: 18px;
 }
+
+.chatnum, .leadnum{
+	float: right;
+	padding-right: 10px;
+
+}
+.chatname, .leadname{
+	float: left;
+	clear: both;
+}
+
+
 
 button{
 	border-left: 1px solid black;
@@ -151,3 +173,9 @@ button{
 	border-bottom-right-radius: 5;
 	font-size: 18px;
 }
+
+@media (max-width: 992px){
+	.container{
+		width: 100%;
+	}
+} 
