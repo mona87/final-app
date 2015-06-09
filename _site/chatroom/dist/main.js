@@ -17,6 +17,8 @@ $(document).ready(function() {
 	$('.chatrooms').click(function(e){
 
 		$('.screen').hide();
+		$('.chatrooms').css('color', 'white');
+		$(e.target).css('color','pink')
 		var className = $(e.target).attr('id');
 
 		if(className === 'general'){
@@ -33,6 +35,7 @@ $(document).ready(function() {
 		className = '.'+$(e.target).attr('id');
 		$(className).show();
 		getMsg();
+
 		
 
 	})
@@ -50,10 +53,12 @@ $(document).ready(function() {
 	$('.side-links').click(function(e){
 
 		$('.infobox').hide();
+		$('.side-links').css('color', 'white');
+		$(e.target).css('color','pink')
 		$(e.target).show();
 		var className = '.'+$(e.target).attr('id');
 		$(className).show();
-		console.log(className);
+		
 	
 
 
@@ -65,7 +70,7 @@ $(document).ready(function() {
 				var string = '';
 				$('#leaderbox').html('');
 				for(var prop in scores){
-					string = '<div id="'+prop+'">'+prop +' '+scores[prop]+'</div>';
+					string = '<div class="leadname" id="'+prop+'">'+prop +'</div><div class="leadnum"> '+scores[prop]+'</div>';
 					$('#leaderbox').append(string);
 				}				
 			},
@@ -73,7 +78,7 @@ $(document).ready(function() {
 	}
 	//active user
 	function getActiveUsers(){
-		console.log('active');
+	
 		 $.get('http://fathomless-caverns-2838.herokuapp.com/messages/active_users', function(activeUsers){
 		 		var string ='';
 		 		$('#activeUsr').html('');
@@ -89,10 +94,15 @@ $(document).ready(function() {
 			$.get('http://fathomless-caverns-2838.herokuapp.com/messages/active_chatroom', function(activeChat){
 				var string = '';
 				 $('#activeChat').html('');
+				 var array = [];
 				for(var prop in activeChat){
-					string = '<div id="'+prop+'">'+prop +' '+activeChat[prop]+'</div>';
-					$('#activeChat').append(string);
-				}				
+					string = '<div class="chatname" id="'+prop+'">'+prop +' </div>'+'<div class="chatnum">'+activeChat[prop]+'</div>';
+					array.unshift(string);
+					
+				}			
+				for(var i = 0; i < array.length; i++){
+					$('#activeChat').append(array[i]);
+				}	
 			},
 			'JSON');
 	}
@@ -115,7 +125,7 @@ $(document).ready(function() {
 		// console.log('getmsg url: '+url);
 		function chatMessages(data){
 		var addMsgs =  '';
-
+			console.log('got data')
 			data.reverse();
 			for(var i=0; i<data.length; i++){
 				var msg = data[i];
@@ -123,13 +133,14 @@ $(document).ready(function() {
 				addMsgs += buildTemp(msg);
 
 			}
+			
 				if (data.length>messagenumber && messagenumber>0){
 					beep();
 				}
 				if (data.length>messagenumber){
 					messagenumber=data.length;
 					$(chatscreen).html(addMsgs);
-
+					console.log('add to screen')
 					function getHeight(){
 						$(chatscreen).scrollTop($(chatscreen).prop('scrollHeight'))
 					}
@@ -173,7 +184,7 @@ $(document).ready(function() {
 
 
 	var messagenumber = 0;
-	 // setInterval(getMsg, 1000);
+	 setInterval(getMsg, 5000);
 	 // setInterval(getScores, 1000);
 	 // setInterval(getActiveUsers, 1000);
 	 	getActiveUsers();

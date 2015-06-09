@@ -24,37 +24,37 @@
 			
 			<div class="txt-holder">
 
-				<h2 class="blog-title">$(This) Revisited</h2>
-				<h3 class="date">June 01, 2015</h3>
+				<h2 class="blog-title">Group Projects - 5 Things I Learned</h2>
+				<h3 class="date">June 08, 2015</h3>
 				<div class="post-tags">
   Tags: 
   
     
   
   
-  <a href="/tags/#jquery">jquery</a>,
+  <a href="/tags/#IronYard">IronYard</a>,
   
-  <a href="/tags/#javascript">javascript</a>,
+  <a href="/tags/#chatroom">chatroom</a>,
   
-  <a href="/tags/#IronYard">IronYard</a>
+  <a href="/tags/#group-project">group-project</a>
   
 </div>
-				<p><p>I learned today that e.target and $(this)(or this or $this) are not the same thing. And here’s a small code snippit to prove it. </p>
+				<p><p>Here’s what I learned from this weekend’s group project:</p>
 
-<p><code>	
-		&lt;div class="parent"&gt;<br />
-			&lt;div class="child"&gt;Child&lt;/div&gt;<br />
-		&lt;/div&gt;
-</code></p>
+<h5 id="strongwaiting-is-part-of-the-processstrong"><strong>Waiting is Part of the Process</strong></h5>
+<p>There’s only so much I can do before my progress comes to a stall. I felt like I was always waiting on someone to finish their part of the project in order for me to move on with mine. As long everyone kept each other updated with status checks, we we’re good. Keeping people in the loop keeps the peace. </p>
 
-<p><code>
-		$('.parent').click(function(e){<br />
-			console.log('this ' + $(this).attr('class'));<br />
-			console.log('e.target ' + $(e.target).attr('class'));<br />
-		});
-</code>	</p>
+<h5 id="strongwhat-can-you-dostrong"><strong>What Can You Do?</strong></h5>
+<p>I know what I can do, but trying to figure out what the rails kids do behind their laptops is a whole different story. I know they use terminal to create servers and tables with data (which boggles my mind). But then again, I don’t need to know the details. We just need a way to communicate. Which leads me to JSON.</p>
 
-<p>Originally, I assumed if you have a function with a click event, you can use e.target and $(this) interchangebly. But $(this) fails in the above example because $(this) will always return the object containing the function. In this case it’s the parent element. However, e.target gives you the element that was clicked. So if I clicked the child element: e.target = ‘div.child’. If I clicked the parent element: e.target = ‘div.parent’. Mind blown.</p>
+<h5 id="strongdo-you-speak-jsonstrong"><strong>Do You Speak JSON?</strong></h5>
+<p>I hope so because that’s the only way this is going work. I learned the rails kids can parse information into different formats. Go rails kids because I’m pretty sure we cant convert our javascritpt to ruby/rail format.</p>
+
+<h5 id="strongundo-in-gitstrong"><strong>Undo in Git</strong></h5>
+<p>I learned if you make changes locally with no commits, GIT gets angry when you try to do a pull. ‘git checkout’ is like the undo button.</p>
+
+<h5 id="strongthings-will-work-and-then-not-workstrong"><strong>Things will Work, and then not Work</strong></h5>
+<p>Sometimes adding new code breaks things. Shit happens. It’s part of the process.<br /> #Murphy’s Law.</p>
 
 </p>
 				

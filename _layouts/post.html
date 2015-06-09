@@ -3,7 +3,7 @@
 			<div class="txt-holder">
 
 				<h2 class="blog-title">{{ page.title }}</h2>
-				<h3>{{ page.date | date: '%B %d, %Y' }}</h3>
+				<h3 class="date">{{ page.date | date: '%B %d, %Y' }}</h3>
 				{% include post-tags.html %}
 				<p>{{ content }}</p>
 				

@@ -127,11 +127,7 @@ a:hover {
 
 p {
   font-size: 1rem;
-  line-height: 28px;
-  margin-top: 10px; }
-
-.date {
-  font-size: 1.2rem; }
+  line-height: 28px; }
 
 footer {
   display: block;
@@ -183,8 +179,7 @@ footer {
 
 .post-tags {
   text-align: left;
-  font-size: .8rem;
-  margin-bottom: 30px; }
+  font-size: .8rem; }
 
 .blog-title {
   margin-bottom: 5px; }
