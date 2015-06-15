@@ -23,6 +23,8 @@ $(document).ready(function(e){
 	new Date();
 	var url = window.location.href
 	var	profileName = url.split("/").pop();
+	var profile2 = url.split('-').pop();
+	// console.log(profile2)
 
 
 	var buildImgTemplate = _.template($('.img-template').html());
@@ -104,6 +106,27 @@ $(document).ready(function(e){
 
 
 				});
+			  showUserImages2();
+			  function showUserImages2(){
+			  		
+			  		var num = 0;
+					$('.img-rows').html('');
+					imageList.forEach(function(model){
+							var	profileName = url.split("/").pop();
+							profileName = profileName.split('-').shift();
+							console.log(profileName)
+							$('.imagefeed-username').html(profileName);
+							$('.username-big').html(profile2);
+							if(model.get('userID') === $('.username-big').text()){
+								num++;
+								console.log(model);
+								$('.num-post').html(num+ ' posts');
+								$('.img-rows').append(buildImgTemplate2({model: model}))
+							}		
+						});
+					num = 0;
+					console.log('true');
+			  }
 			 	addComments();
 			 	function addComments(){
 				 	$('[data-form]').each(function(id){
@@ -133,8 +156,11 @@ $(document).ready(function(e){
 			 	})			 
 			 	$('.img-header-username').on('click', function(e){
 					e.preventDefault();				
+						
 					var string = $(e.target).text();
 					$('.username-big').html(string);
+					profileName = string;
+					console.log('name '+profileName)
 					showUserImages(string)
 				})
 				$('.imagefeed-username').on('click', function(e){
@@ -159,7 +185,11 @@ $(document).ready(function(e){
 							}		
 						});
 					num = 0;
-					myRouter.navigate('profile/'+arg, {trigger:true});
+					var url = window.location.href;
+					var	profileName = url.split("/").pop();
+					profileName = profileName.split('-').shift();
+
+					myRouter.navigate('profile/'+profileName+'-' +$('.username-big').html(), {trigger:true});
 				}
 	}
 	$('#image-input-form').on('submit', function(e){
