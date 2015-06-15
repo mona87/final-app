@@ -4,7 +4,7 @@ body{
 
 .home-header{
 	background-color: #125688;
-	height: 250px;
+	min-height: 250px;
 	width: 100%;
 	padding-top: 150px;
 
