@@ -135,6 +135,7 @@ p{
 	cursor: pointer;
 	
 }
+
 #signup-form{
 	
 }
@@ -186,19 +187,22 @@ p{
 
 #image-input-form >input{
 	width: 100%;
-	max-width: 200px;
 	padding: 0 0 0 10px;
 	height: 35px;
 	border-radius: 3px;
 	border: 1px solid #EDEEEE;
 	margin-left: 10px;
 	display: inline-block;
+	margin-bottom: 10px;
 
 
 }
+#caption{
 
+}
 .image-input{
-	margin-right: 30px;
+	/*margin-right: 30px;*/
+
 }
 
 .image-caption{
@@ -214,6 +218,7 @@ p{
 #image-input-form >label{
 
 	color: #337AB9;
+  display: block;
 
 }
 
@@ -227,12 +232,12 @@ p{
 .image-submit-btn{
 	background-color: #66BD2B;
 	width: 100%;
-	max-width: 100px;
 	border: 0;
 	color: white;
 	margin-top: 10px;
 	height: 35px;
 	border-radius: 3px;
+	display: inline-block;
 }
 
 .image-holder{
@@ -346,6 +351,47 @@ p{
 	color: black;
 }
 
+@media (min-width: 700px) {
+/*
+.image-input{
+	margin-right: 30px;
+	
+}
+
+#image-input-form >label{
+
+	  display: inline-block;
+
+}*/
+
+
+}
+
+@media (min-width: 700px) {
+	
+.image-submit-btn{
+	max-width: 100px;
+	display: inline-block;
+	margin: 0 auto;
+}
+
+.image-input{
+	margin-right: 30px;
+}
+#image-input-form >label{
+
+	max-width: 100%;
+	 display: inline-block;
+
+}
+
+#image-input-form >input{
+	max-width: 200px;
+	display: inline-block;
+
+}
+
+}
 
 
 
