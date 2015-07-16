@@ -21,7 +21,7 @@ module.exports = React.createClass({
 	render: function(){
 		this.update();
 		var style={
-			display: none
+			display: 'none'
 		}
 		return(
 			<div>

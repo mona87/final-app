@@ -35036,7 +35036,7 @@ module.exports = React.createClass({
 	render: function render() {
 		this.update();
 		var style = {
-			display: none
+			display: 'none'
 		};
 		return React.createElement(
 			'div',
