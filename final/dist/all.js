@@ -34380,6 +34380,14 @@ module.exports = React.createClass({
 	displayName: 'exports',
 
 	render: function render() {
+		var style = {
+			width: '300px',
+			margin: '150px auto auto auto',
+			display: 'block'
+		};
+		var red = {
+			color: 'red'
+		};
 		return React.createElement(
 			'div',
 			{ className: 'row' },
@@ -34387,13 +34395,14 @@ module.exports = React.createClass({
 				'div',
 				{ className: 'col-sm-12' },
 				React.createElement(
-					'h1',
-					null,
-					'Login'
-				),
-				React.createElement(
 					'form',
-					{ onSubmit: this.login },
+					{ style: style, onSubmit: this.login },
+					React.createElement(
+						'h1',
+						null,
+						'Login'
+					),
+					React.createElement('div', { style: red, ref: 'error' }),
 					React.createElement(
 						'label',
 						null,
@@ -34409,6 +34418,7 @@ module.exports = React.createClass({
 					),
 					React.createElement('br', null),
 					React.createElement('input', { ref: 'pass', type: 'password' }),
+					React.createElement('br', null),
 					React.createElement('br', null),
 					React.createElement(
 						'button',
@@ -34435,10 +34445,12 @@ module.exports = React.createClass({
 				localStorage.setItem('username', result.username);
 				localStorage.setItem('id', result.id);
 				console.log(result.username);
+				self.refs.error.getDOMNode().innerHTML = '';
 				self.props.router.navigate('/user/' + result.username, { trigger: true });
 			},
 			error: function error(err) {
 				console.log(err);
+				self.refs.error.getDOMNode().innerHTML = err.responseText;
 			}
 		});
 	}
