@@ -25,12 +25,13 @@
     "bootstrap": "^3.3.5",
     "jquery": "^2.1.4",
     "react": "^0.13.3",
+    "react-bootstrap": "^0.23.7",
     "react-responsive-carousel": "^0.1.4"
   },
-    "engines": {
+  "engines": {
     "node": "0.12.2"
   },
-    "keywords": [
+  "keywords": [
     "node",
     "heroku",
     "express"
