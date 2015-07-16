@@ -16,6 +16,7 @@ module.exports = React.createClass({
 			  username: null,
 			  restaurantId: null,
 			  currentIcon: null,
+			  currentIcon2: null,
 			  favArray: [],
 			  iconArray: [],
 			  lat: null,
@@ -26,8 +27,8 @@ module.exports = React.createClass({
 		  },
 		  handleSelect: function(selectedIndex, selectedDirection) {
 		  	
-		  	  	console.log(this.state.lat);
-				console.log(this.state.lng);
+		  	  this.initialize();
+				
 			  if(this.state.counter === 0 && selectedDirection === 'prev'){      
 				 this.state.counter = this.props.nearby.length-1;
 			  }		
@@ -72,12 +73,13 @@ module.exports = React.createClass({
 		  },
 		  componentDidUpdate: function(){
 		  	 this.initialize();
-		  	// google.maps.event.addDomListener(window, 'load', this.initialize);	
+		  	google.maps.event.addDomListener(window, 'load', this.initialize);	
 		  	this.state.username = localStorage.getItem('username');
 			this.state.userId = localStorage.getItem('id');
 			this.state.mapId = this.state.mapId; 
 			// console.log(this.state.favArray)
 			var heart = this.state.currentIcon;
+			var heart2 = this.state.currentIcon2;
 				// console.log('heart ', heart)
 			$.ajax({
 					url: 'http://localhost:3000/users/' + this.state.userId,
@@ -87,7 +89,10 @@ module.exports = React.createClass({
 
 						for(var i = 0; i < result.favorite.length; i++){		  	
 				  			if((result.favorite[i]+ 'heart') === heart){
-				  			 document.getElementById(heart).style.display='block';
+				  			 // document.getElementById(heart).style.display='block';
+			  				}
+			  				if((result.favorite[i]+ 'heart2') === heart2){
+			  						 // document.getElementById(heart2).style.display='block';
 			  				}
 		  				}	
 					},
@@ -174,6 +179,8 @@ module.exports = React.createClass({
 		  		e.preventDefault();	  		 
 		  		  $('.img1').hide();
 		  		   $('.mapStyle').show();
+		  		   console.log('lat ', this.state.lat);
+		  		    console.log('lng ', this.state.lng);
 		  		    this.initialize();
 		  		    
 		  },
@@ -226,23 +233,23 @@ module.exports = React.createClass({
 				  <Carousel activeIndex={this.state.index} direction={this.state.direction} onSelect={this.handleSelect}>
 				   <CarouselItem className="carouselItem ">				  
 				    <div className="imgHolder img1"></div>
-					 <div id="mapHolder" className={this.state.mapStyle}><div style = {style} className="map-canvas"></div></div>
+					 <div id="mapHolder" className={this.state.mapStyle}><div style = {style}  className="map-canvas"></div></div>
 						<div className="textWrapper" >
 							<div className="textHolder" >
 								
 							{this.props.nearby.map(function(place, i){
 								
-									self.state.lat = place.latitude;
-									self.state.lng = place.longitude;
+									
 								if(i === self.state.counter){
 									self.state.currentIcon = place._id + 'heart';
 									self.state.restaurantId = place._id;
 								
-									 
+									 self.state.lat = place.latitude;
+									self.state.lng = place.longitude;
 									
 								  return(
 							  
-									  	<div key={place._id}>	
+									  	<div key={place._id}>						
 									  		<i id={place._id+ 'heart'} className="fa fa-heart fa-2x "></i>					  		
 										  	<h1 className="rest-name">{place.restaurant}</h1>				  
 											<div>{place.details}</div>
@@ -268,26 +275,28 @@ module.exports = React.createClass({
 					  <div id="mapHolder2" className={this.state.mapStyle}><div style = {style}  className="map-canvas2"></div></div>
 				
 					  <div className="textWrapper">
+					  	<div className="textHolder" >
 							  {this.props.nearby.map(function(place, i){
 							  	
 								if(i === self.state.counter){
-									// self.state.currentIcon = place._id + 'heart2';
+									self.state.currentIcon2 = place._id + 'heart2';
 									self.state.restaurantId = place._id;
 								  return(
-								  	<div className="textHolder" key={place._id}>
-								  	<i id={place._id+ 'heart'} className="fa fa-heart fa-2x "></i>	
-								  	<div ><h1 className="rest-name">{place.restaurant}</h1>
-									<div>{place.details}</div>
-									<div>{place.numbers}</div>
-									<div>{place.address}</div>
-									<div>{place.phone}</div>
-									<div><a href={'"'+place.website+'"'}>{place.website}</a></div>
+								  	<div key={place._id}>
+									  	<i id={place._id+ 'heart2'} className="fa fa-heart fa-2x "></i>	
+									  	<div ><h1 className="rest-name">{place.restaurant}</h1>
+										<div>{place.details}</div>
+										<div>{place.numbers}</div>
+										<div>{place.address}</div>
+										<div>{place.phone}</div>
+										<div><a href={'"'+place.website+'"'}>{place.website}</a></div>
+										</div>
 									</div>
-									</div>
+									
 								  );
 								}
 							})}
-					 
+					 	</div>
 				 	 </div>
 				  	</CarouselItem>
 				  </Carousel>
