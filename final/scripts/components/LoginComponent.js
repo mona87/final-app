@@ -26,7 +26,7 @@ module.exports = React.createClass({
 		var password = this.refs.pass.getDOMNode().value;
 		console.log('click')
 		$.ajax({
-		    url: 'http://localhost:3000/login',
+		    url: 'https://calm-forest-6617.herokuapp.com/login',
 		    data: {username: username, password: password},
 		    type: 'POST',
 		    success: function(result) {
