@@ -4,15 +4,21 @@ var Backbone = require('backbone');
 
 module.exports = React.createClass({
 	render: function(){
+		var style ={
+			width: '300px',
+			margin: '150px auto auto auto',
+			display: 'block'
+		}
 		return(
 			<div className="row">
 				<div className="col-sm-12">
-					<h1>Login</h1>
-						<form onSubmit={this.login}>
+					<form style={style} onSubmit={this.login}>
+							<h1>Login</h1>
 							<label>Username</label><br/>
 							<input ref="username" type="text"/><br/>
 							<label>Password</label><br/>
 							<input ref="pass" type="password"/><br/>
+							<br/>
 							<button>Login</button>
 						</form>
 				</div>
@@ -26,7 +32,7 @@ module.exports = React.createClass({
 		var password = this.refs.pass.getDOMNode().value;
 		console.log('click')
 		$.ajax({
-		    url: 'https://calm-forest-6617.herokuapp.com/login',
+		    url: 'http://localhost:3000/login',
 		    data: {username: username, password: password},
 		    type: 'POST',
 		    success: function(result) {
@@ -39,6 +45,7 @@ module.exports = React.createClass({
 		    },
 		    error: function(err){
 		    	console.log(err);
+		    	self.props.router.navigate('/user/'+result.username, {trigger: true});
 		    }
 		});
 	}
