@@ -35035,6 +35035,9 @@ module.exports = React.createClass({
 	},
 	render: function render() {
 		this.update();
+		var style = {
+			display: none
+		};
 		return React.createElement(
 			'div',
 			null,
@@ -35051,7 +35054,7 @@ module.exports = React.createClass({
 					),
 					React.createElement(
 						'span',
-						{ className: 'user', onClick: this.slide, className: 'user' },
+						{ className: 'user', onClick: this.slide, style: style, className: 'user' },
 						'Welcome ',
 						this.state.username,
 						'!'
