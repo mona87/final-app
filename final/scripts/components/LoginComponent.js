@@ -14,6 +14,7 @@ module.exports = React.createClass({
 				<div className="col-sm-12">
 					<form style={style} onSubmit={this.login}>
 							<h1>Login</h1>
+							<div ref="error"></div>
 							<label>Username</label><br/>
 							<input ref="username" type="text"/><br/>
 							<label>Password</label><br/>
@@ -45,6 +46,7 @@ module.exports = React.createClass({
 		    },
 		    error: function(err){
 		    	console.log(err);
+		    	self.refs.error.getDOMNode().innerHTML = err
 		    	self.props.router.navigate('/user/'+result.username, {trigger: true});
 		    }
 		});
