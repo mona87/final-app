@@ -1,0 +1,337 @@
+body{
+	font-family: 'Quicksand', sans-serif;
+	background-color: #F7F7F7;
+			background: url('https://raw.githubusercontent.com/TIY-Austin-Front-End-Engineering/jquery-login/master/bg-login-top.png') repeat ;
+
+}
+.carousel-control.left, .carousel-control.right{
+	background-image: none;
+	height: 100px;
+	top:400px;
+	width: 10%;
+	
+}
+
+
+.right.carousel-control, .left.carousel-control{
+	display: none
+}
+
+
+.icon-row{
+	/*border: 1px solid white;*/
+	background-color: #21161F;
+	background:
+radial-gradient(black 15%, transparent 16%) 0 0,
+radial-gradient(black 15%, transparent 16%) 8px 8px,
+radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+background-color:#21161F;
+background-size:16px 16px;
+
+
+
+	/*height: 75px;*/
+}
+
+.imgHolder, #imgHolder{
+	width: 100%;
+	background-image: url('https://img.grouponcdn.com/deal/hHwi69ShuzVgx2F9aEzs/Zd-2048x1229/v1/c700x420.jpg');
+	background-size: cover;
+	height: 150px;
+	/*max-width: 33%;*/
+	border-radius: 5px;
+	margin-bottom: 20px;
+	float: left;
+	/*border: 1px solid green;*/
+
+}
+
+#mapHolder, #mapHolder2{
+	height: 150px;
+	/*max-width: 33%;*/
+	border-radius: 5px;
+	margin-bottom: 20px;
+	background-size: cover;
+	float: left;
+	width: 100%;
+}
+
+
+.imgHolder2, #imgHolder2{
+	width: 100%;
+	background-image: url('http://wallpaperswa.com/thumbnails/detail/20120914/beers%20alcohol%20drinks%201620x1080%20wallpaper_wallpaperswa.com_20.jpg');
+	background-size: cover;
+	height: 150px;
+	/*max-width: 33%;*/
+	border-radius: 5px;
+	margin-bottom: 20px;
+	float: left;
+	/*border: 1px solid green;*/
+
+}
+
+.imgHolder img{
+	height: 200px;
+	width: 100%;
+}
+
+.mapStyle{
+	display: none;
+}
+
+.rest-name{
+	color: #CB2A18;
+	/*float: left;*/
+	margin-top: 20px;
+	/*display: block;*/
+
+}
+.name-holder{
+	overflow: hidden;
+}
+
+
+.place{
+	clear: both;
+
+}
+
+.textHolder{
+	width: 100%;
+	
+	/*margin: 20px auto 20px auto;*/
+	font-size: 1.9rem;
+	padding: 0px 40px 0px 40px;
+	float: left;
+	min-height: 300px;
+	background-color: #F0EDCA;
+	color: #21161F;
+
+	border-radius: 5px;
+	box-sizing: border-box;
+	/*border: 1px solid red;*/
+
+}
+
+
+.carouselItem {
+	overflow: hidden;
+	margin: 0 auto;
+	border: 1px solid #eeeeee;
+	margin:50px auto 50px auto;
+	padding: 20px;
+	border-radius: 5px;
+	background-color: #ffffff;
+	box-shadow: 0px 0px 30px gray;
+	min-height: 1px;
+	/*max-width: 1100px;*/
+	box-sizing: border-box;
+	/*width: 100%;*/
+}
+
+.row-color{
+	/*background-color: #F7F7F7;*/
+	/*background: url('https://raw.githubusercontent.com/TIY-Austin-Front-End-Engineering/jquery-login/master/bg-login-top.png') repeat ;*/
+	}
+}
+
+.carousel-indicators{
+	display: none;
+}
+.carousel-indicators, .carousel-caption  {
+ display: none;
+}
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img{
+	height: 250px;
+
+}
+
+#container{
+	/*padding-left: 20px;*/
+}
+
+.header{
+	background-color: #940A0A;
+	color: white;
+	/*background-image: url('http://wallpaperswa.com/thumbnails/detail/20120914/beers%20alcohol%20drinks%201620x1080%20wallpaper_wallpaperswa.com_20.jpg');
+	background-size: cover;*/
+	height: 100px;
+background:
+
+radial-gradient(hsl(0, 100%, 27%) 4%, hsl(0, 100%, 18%) 9%, hsla(0, 100%, 20%, 0) 9%) 0 0,
+radial-gradient(hsl(0, 100%, 27%) 4%, hsl(0, 100%, 18%) 8%, hsla(0, 100%, 20%, 0) 10%) 50px 50px,
+radial-gradient(hsla(0, 100%, 30%, 0.8) 20%, hsla(0, 100%, 20%, 0)) 50px 0,
+radial-gradient(hsla(0, 100%, 30%, 0.8) 20%, hsla(0, 100%, 20%, 0)) 0 50px,
+radial-gradient(hsla(0, 100%, 20%, 1) 35%, hsla(0, 100%, 20%, 0) 60%) 50px 0,
+radial-gradient(hsla(0, 100%, 20%, 1) 35%, hsla(0, 100%, 20%, 0) 60%) 100px 50px,
+radial-gradient(hsla(0, 100%, 15%, 0.7), hsla(0, 100%, 20%, 0)) 0 0,
+radial-gradient(hsla(0, 100%, 15%, 0.7), hsla(0, 100%, 20%, 0)) 50px 50px,
+linear-gradient(45deg, hsla(0, 100%, 20%, 0) 49%, hsla(0, 100%, 0%, 1) 50%, hsla(0, 100%, 20%, 0) 70%) 0 0,
+linear-gradient(-45deg, hsla(0, 100%, 20%, 0) 49%, hsla(0, 100%, 0%, 1) 50%, hsla(0, 100%, 20%, 0) 70%) 0 0;
+background-color: #940A0A; 
+background-size: 100px 100px;
+
+/*background-color: rgba(128,0,0,1);
+  background-image:
+    linear-gradient(45deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 49%, rgba(255,0,0,0.5) 49%, rgba(255,0,0,0.5) 51%, rgba(0,0,0,0) 51%, rgba(0,0,0,0) 100%),
+    linear-gradient(-45deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 49%, rgba(255,0,0,0.5) 49%, rgba(255,0,0,0.5) 51%, rgba(0,0,0,0) 51%, rgba(0,0,0,0) 100%),
+    linear-gradient(45deg, rgba(64,0,0,1) 0%, rgba(64,0,0,1) 25%, rgba(128,0,0,0) 25%, rgba(128,0,0,0) 75%, rgba(64,0,0,1) 75%, rgba(64,0,0,1) 100%),
+    linear-gradient(-45deg, rgba(64,0,0,1) 0%, rgba(64,0,0,1) 25%, rgba(128,0,0,0) 25%, rgba(128,0,0,0) 75%, rgba(64,0,0,1) 75%, rgba(64,0,0,1) 100%);
+  background-size: 100px 100px;*/
+
+
+/*background: -moz-linear-gradient(top,  #a90329 0%, #8f0222 44%, #6d0019 100%);
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a90329), color-stop(44%,#8f0222), color-stop(100%,#6d0019));
+background: -webkit-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%);
+background: -o-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%);
+background: -ms-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%);
+background: linear-gradient(to bottom,  #a90329 0%,#8f0222 44%,#6d0019 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 );*/
+
+
+	/*height: 100px;*/
+}
+
+.header >h1{
+	font-family: 'Leckerli One', cursive;
+	font-size: 50px;
+	margin-left: 50px;
+	margin-top: 0;
+	padding-top: 20px;
+	display: block;
+	float:left;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+
+}
+
+.user{
+	font-size: 20px;
+	display: block;
+	float: right;
+	padding-top: 40px;
+	padding-right: 20px;
+}
+
+.logo{
+	height:60px;
+}
+
+.favorite{
+	cursor: pointer;
+	color: white;
+}
+
+.circle{
+
+}
+
+.fa-hand-o-left, .fa-circle-thin, .fa-street-view, .fa-glass, .fa-hand-o-right, .fa-heart-o, .fa-trash-o, .fa-list-alt, .fa-thumbs-o-up  {
+	color: white;
+	/*margin-left: 35%;*/
+	width: 42px;
+	display: block;
+	/*margin: 10px auto 10px auto;*/
+
+	
+}
+
+.fa-stack {
+	width: 42px;
+	display: block;
+	margin: 0 auto;
+	
+
+}
+
+.fa-hand-o-right, .fa-list-alt, .fa-street-view, .fa-glass, .fa-hand-o-left{
+	margin-left: 4px;
+
+
+}
+
+.fa-heart{
+	color: #CB2A18;
+	/*margin-top: 15px;*/
+	float: right;
+	display: none;
+	/*display: none;*/
+/*	position: relative;
+	z-index: 1;
+	top:50px;*/
+	/*width: 20px;*/
+}
+.mob-btn{
+	/*border-right: 1px solid white; 
+	border-left: 1px solid white; */
+	width: 20%;
+	/*margin: 0 auto;*/
+	padding-top: 10px;
+	height: 75px;
+	cursor: pointer;
+	float: left;
+} 
+
+.mob-btn:hover{
+	background-color: #67C8C8;
+}
+
+.slider{
+	height: 100px;
+	width: 100%;
+	background-color: #F5C983;
+	display: none;
+
+
+}
+
+.info-wrapper{
+	width: 100%;
+	max-width: 900px;
+	margin: 20px auto 20px auto;
+	border-radius: 5px;
+	height: 150px;
+}
+
+.mini-holder{
+	
+	width: 100%;
+	background-color: white;
+	padding: 10px;
+	border-radius: 5px;
+	box-sizing:border-box;
+}
+
+.mini-image{
+	width:100%;
+	max-width: 300px;
+	background-image: url('https://img.grouponcdn.com/deal/hHwi69ShuzVgx2F9aEzs/Zd-2048x1229/v1/c700x420.jpg');
+	background-size: cover;
+	height: 150px;
+	border-radius: 5px;
+}
+.mini-text{
+
+}
+
+@media (min-width: 700px) {
+	.imgHolder, .imgHolder2, #mapHolder, #mapHolder2{
+		max-width: 35%;
+		margin-right: 3%;
+		margin-bottom: 0;
+		height: 300px;
+	}
+	.textHolder{
+		max-width: 62%;
+	}
+	.mob-btn{
+		/*float:left;*/
+		width: 20%;
+	}
+	.fa-heart-o{
+		/*float:right;*/
+	}
+	.rest-name{
+		/*float:left;*/
+	}
+}
