@@ -33616,6 +33616,7 @@ module.exports = React.createClass({
 			username: null,
 			restaurantId: null,
 			currentIcon: null,
+			currentIcon2: null,
 			favArray: [],
 			iconArray: [],
 			lat: null,
@@ -33626,8 +33627,8 @@ module.exports = React.createClass({
 	},
 	handleSelect: function handleSelect(selectedIndex, selectedDirection) {
 
-		console.log(this.state.lat);
-		console.log(this.state.lng);
+		this.initialize();
+
 		if (this.state.counter === 0 && selectedDirection === 'prev') {
 			this.state.counter = this.props.nearby.length - 1;
 		} else if (this.state.counter === this.props.nearby.length - 1 && selectedDirection === 'next') {
@@ -33665,12 +33666,13 @@ module.exports = React.createClass({
 	},
 	componentDidUpdate: function componentDidUpdate() {
 		this.initialize();
-		// google.maps.event.addDomListener(window, 'load', this.initialize);	
+		google.maps.event.addDomListener(window, 'load', this.initialize);
 		this.state.username = localStorage.getItem('username');
 		this.state.userId = localStorage.getItem('id');
 		this.state.mapId = this.state.mapId;
 		// console.log(this.state.favArray)
 		var heart = this.state.currentIcon;
+		var heart2 = this.state.currentIcon2;
 		// console.log('heart ', heart)
 		$.ajax({
 			url: 'http://localhost:3000/users/' + this.state.userId,
@@ -33679,9 +33681,8 @@ module.exports = React.createClass({
 				console.log(result.favorite);
 
 				for (var i = 0; i < result.favorite.length; i++) {
-					if (result.favorite[i] + 'heart' === heart) {
-						document.getElementById(heart).style.display = 'block';
-					}
+					if (result.favorite[i] + 'heart' === heart) {}
+					if (result.favorite[i] + 'heart2' === heart2) {}
 				}
 			},
 			error: function error(err) {
@@ -33753,6 +33754,8 @@ module.exports = React.createClass({
 		e.preventDefault();
 		$('.img1').hide();
 		$('.mapStyle').show();
+		console.log('lat ', this.state.lat);
+		console.log('lng ', this.state.lng);
 		this.initialize();
 	},
 	list: function list() {
@@ -33824,11 +33827,12 @@ module.exports = React.createClass({
 									{ className: 'textHolder' },
 									this.props.nearby.map(function (place, i) {
 
-										self.state.lat = place.latitude;
-										self.state.lng = place.longitude;
 										if (i === self.state.counter) {
 											self.state.currentIcon = place._id + 'heart';
 											self.state.restaurantId = place._id;
+
+											self.state.lat = place.latitude;
+											self.state.lng = place.longitude;
 
 											return React.createElement(
 												'div',
@@ -33886,55 +33890,60 @@ module.exports = React.createClass({
 							React.createElement(
 								'div',
 								{ className: 'textWrapper' },
-								this.props.nearby.map(function (place, i) {
+								React.createElement(
+									'div',
+									{ className: 'textHolder' },
+									this.props.nearby.map(function (place, i) {
 
-									if (i === self.state.counter) {
-										self.state.restaurantId = place._id;
-										return React.createElement(
-											'div',
-											{ className: 'textHolder', key: place._id },
-											React.createElement('i', { id: place._id + 'heart', className: 'fa fa-heart fa-2x ' }),
-											React.createElement(
+										if (i === self.state.counter) {
+											self.state.currentIcon2 = place._id + 'heart2';
+											self.state.restaurantId = place._id;
+											return React.createElement(
 												'div',
-												null,
-												React.createElement(
-													'h1',
-													{ className: 'rest-name' },
-													place.restaurant
-												),
-												React.createElement(
-													'div',
-													null,
-													place.details
-												),
-												React.createElement(
-													'div',
-													null,
-													place.numbers
-												),
-												React.createElement(
-													'div',
-													null,
-													place.address
-												),
-												React.createElement(
-													'div',
-													null,
-													place.phone
-												),
+												{ key: place._id },
+												React.createElement('i', { id: place._id + 'heart2', className: 'fa fa-heart fa-2x ' }),
 												React.createElement(
 													'div',
 													null,
 													React.createElement(
-														'a',
-														{ href: '"' + place.website + '"' },
-														place.website
+														'h1',
+														{ className: 'rest-name' },
+														place.restaurant
+													),
+													React.createElement(
+														'div',
+														null,
+														place.details
+													),
+													React.createElement(
+														'div',
+														null,
+														place.numbers
+													),
+													React.createElement(
+														'div',
+														null,
+														place.address
+													),
+													React.createElement(
+														'div',
+														null,
+														place.phone
+													),
+													React.createElement(
+														'div',
+														null,
+														React.createElement(
+															'a',
+															{ href: '"' + place.website + '"' },
+															place.website
+														)
 													)
 												)
-											)
-										);
-									}
-								})
+											);
+										}
+									})
+								)
 							)
 						)
 					)
@@ -33997,9 +34006,11 @@ module.exports = React.createClass({
 		);
 	}
 });
-// self.fetchData();
 
-// self.state.currentIcon = place._id + 'heart2';
+// document.getElementById(heart).style.display='block';
+
+// document.getElementById(heart2).style.display='block';
+// self.fetchData();
 
 },{"./MapComponent":176,"jquery":4,"react":168,"react-bootstrap/lib/Carousel":6,"react-bootstrap/lib/CarouselItem":7}],172:[function(require,module,exports){
 'use strict';
