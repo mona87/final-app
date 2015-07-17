@@ -1,7 +1,16 @@
+html{
+	height:100%;
+	width:100%;
+
+}
+
 body{
 	font-family: 'Quicksand', sans-serif;
 	background-color: #F7F7F7;
-			background: url('https://raw.githubusercontent.com/TIY-Austin-Front-End-Engineering/jquery-login/master/bg-login-top.png') repeat ;
+	height:100%;
+	width:100%;
+	
+	background: url('https://raw.githubusercontent.com/TIY-Austin-Front-End-Engineering/jquery-login/master/bg-login-top.png') repeat ;
 
 }
 .carousel-control.left, .carousel-control.right{
@@ -28,7 +37,9 @@ radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
 radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
 background-color:#21161F;
 background-size:16px 16px;
-
+position: fixed;
+bottom:0;
+width: 100%;
 
 
 
@@ -134,7 +145,11 @@ background-size:16px 16px;
 .row-color{
 	/*background-color: #F7F7F7;*/
 	/*background: url('https://raw.githubusercontent.com/TIY-Austin-Front-End-Engineering/jquery-login/master/bg-login-top.png') repeat ;*/
-	}
+	position: absolute:
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 
 .carousel-indicators{
@@ -146,6 +161,10 @@ background-size:16px 16px;
 .carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img{
 	height: 250px;
 
+}
+
+.carousel-inner{
+	margin-bottom: 75px;
 }
 
 #container{

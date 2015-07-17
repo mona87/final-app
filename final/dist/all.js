@@ -33622,31 +33622,35 @@ module.exports = React.createClass({
 			lat: null,
 			lng: null,
 			mapStyle: 'mapStyle',
-			visible: null
+			visible: null,
+			map: null,
+			markers: null
 		};
 	},
 	handleSelect: function handleSelect(selectedIndex, selectedDirection) {
-
-		this.initialize();
 
 		if (this.state.counter === 0 && selectedDirection === 'prev') {
 			this.state.counter = this.props.nearby.length - 1;
 		} else if (this.state.counter === this.props.nearby.length - 1 && selectedDirection === 'next') {
 			this.state.counter = 0;
 		} else if (selectedDirection === 'next') {
-
+			this.slideEnd(selectedIndex, selectedDirection);
 			this.state.counter++;
 		} else if (selectedDirection === 'prev') {
 			this.state.counter--;
 		}
-		console.log('counter ', this.state.counter);
-		console.log('index', this.state.index);
+		//
+		// console.log('counter ',this.state.counter )
+		// console.log('index',this.state.index )	  
 		this.setState({
 			index: selectedIndex,
 			direction: selectedDirection
 		});
+
+		// this.slideEnd(selectedIndex, selectedDirection)
 	},
 	prev: function prev() {
+
 		if (this.state.index === 0) {
 			this.state.index = 1;
 			this.handleSelect(this.state.index, 'prev');
@@ -33656,7 +33660,9 @@ module.exports = React.createClass({
 		}
 	},
 	next: function next() {
+
 		if (this.state.index === 0) {
+			this.slideEnd();
 			this.state.index = 1;
 			this.handleSelect(this.state.index, 'next');
 		} else if (this.state.index === 1) {
@@ -33665,31 +33671,42 @@ module.exports = React.createClass({
 		}
 	},
 	componentDidUpdate: function componentDidUpdate() {
-		this.initialize();
-		google.maps.event.addDomListener(window, 'load', this.initialize);
+		// this.initialize(); 
+		google.maps.event.addDomListener(window, 'load', this.initialize());
 		this.state.username = localStorage.getItem('username');
 		this.state.userId = localStorage.getItem('id');
 		this.state.mapId = this.state.mapId;
 		// console.log(this.state.favArray)
-		var heart = this.state.currentIcon;
-		var heart2 = this.state.currentIcon2;
-		// console.log('heart ', heart)
-		$.ajax({
-			url: 'http://localhost:3000/users/' + this.state.userId,
-			type: 'GET',
-			success: function success(result) {
-				console.log(result.favorite);
+		// var heart = this.state.currentIcon;
+		// var heart2 = this.state.currentIcon2;
+		// 	// console.log('heart ', heart)
+		// $.ajax({
+		// 		url: 'http://localhost:3000/users/' + this.state.userId,
+		// 		type: 'GET',
+		// 		success: function(result){
+		// 			console.log(result.favorite)
 
-				for (var i = 0; i < result.favorite.length; i++) {
-					if (result.favorite[i] + 'heart' === heart) {}
-					if (result.favorite[i] + 'heart2' === heart2) {}
-				}
-			},
-			error: function error(err) {
-				console.log(err);
-			}
-		});
+		// 			for(var i = 0; i < result.favorite.length; i++){		  	
+		// 	  			if((result.favorite[i]+ 'heart') === heart){
+		// 	  			 // document.getElementById(heart).style.display='block';
+		//   				}
+		//   				if((result.favorite[i]+ 'heart2') === heart2){
+		//   						 // document.getElementById(heart2).style.display='block';
+		//   				}
+		//  				}	
+		// 		},
+		// 		error: function(err){
+		// 			console.log(err);
+		// 		}
+		// })
 	},
+	slideEnd: function slideEnd(selectedIndex, selectedDirection) {
+		console.log('animation done');
+		// this.initialize();
+
+		this.marker();
+	},
+	updateInfo: function updateInfo() {},
 	componentDidMount: function componentDidMount() {},
 	initialize: function initialize() {
 
@@ -33711,15 +33728,8 @@ module.exports = React.createClass({
 
 		var styledMap = new google.maps.StyledMapType(styles, { name: 'Styled Map' });
 		var myLatlng = new google.maps.LatLng(this.state.lat, this.state.lng);
-		var mapOptions = {
-			zoom: 13,
-			center: myLatlng,
-			mapTypeControlOptions: {
-				mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
-			}
 
-		};
-		var mapOptions2 = {
+		var mapOptions = {
 			zoom: 13,
 			center: myLatlng,
 			mapTypeControlOptions: {
@@ -33729,26 +33739,51 @@ module.exports = React.createClass({
 		};
 
 		var map = new google.maps.Map(document.querySelector('.map-canvas'), mapOptions);
+
 		var map2 = new google.maps.Map(document.querySelector('.map-canvas2'), mapOptions);
 
+		if (this.state.index === 0) {
+			this.state.map = map;
+		} else {
+			this.state.map = map2;
+		}
+
 		var image = 'http://tbs-va.com/wp-content/uploads/2013/05/Manhattan-Perfect-cocktail.png';
-		var marker = new google.maps.Marker({
-			position: myLatlng,
-			map: map,
-			title: 'Hello World!'
+		// var marker = new google.maps.Marker({
+		//     position: myLatlng,
+		//     map: map
 
-		});
-		var marker2 = new google.maps.Marker({
-			position: myLatlng,
-			map: map2,
-			title: 'Hello World!'
+		// });
+		this.marker();
+		// var marker2 = new google.maps.Marker({
+		//     position: myLatlng,
+		//     map: map2
 
-		});
+		// });
 
 		map.mapTypes.set('map_style', styledMap);
 		map.setMapTypeId('map_style');
 		map2.mapTypes.set('map_style', styledMap);
 		map2.setMapTypeId('map_style');
+	},
+	createMap: function createMap() {},
+	marker: function marker() {
+
+		if (this.state.markers !== null) {
+			this.state.markers.setMap(null);
+		}
+
+		var myLatlng = new google.maps.LatLng(this.state.lat, this.state.lng);
+
+		var marker = new google.maps.Marker({
+			position: myLatlng,
+			map: this.state.map
+
+		});
+
+		this.state.map.setCenter(myLatlng);
+		this.state.markers = marker;
+		console.log('lat ', this.state.lat, 'lng ', this.state.lng);
 	},
 	map: function map(e) {
 		e.preventDefault();
@@ -33756,32 +33791,34 @@ module.exports = React.createClass({
 		$('.mapStyle').show();
 		console.log('lat ', this.state.lat);
 		console.log('lng ', this.state.lng);
+
 		this.initialize();
 	},
 	list: function list() {
 		$('.img1').show();
 		$('.mapStyle').hide();
 	},
-	add: function add(e) {
-		e.preventDefault();
-		// e.currentTarget.style.display = 'none';
-		console.log('user ', this.state.username);
-		console.log('fav ', this.state.restaurantId);
-		console.log('currentIcon ', this.state.currentIcon);
-		var heart = this.state.currentIcon;
-		document.getElementById(heart).style.display = 'block';
-		$.ajax({
-			url: 'http://localhost:3000/users',
-			data: { username: this.state.username, id: this.state.userId, favorite: this.state.restaurantId },
-			type: 'PUT',
-			success: function success(result) {
-				console.log(result);
-			},
-			error: function error(err) {
-				console.log(err);
-			}
-		});
-	},
+	// add: function(e){
+	// 		e.preventDefault();
+	// 		// e.currentTarget.style.display = 'none';
+	// 		 console.log('user ', this.state.username);
+	// 		  console.log('fav ', this.state.restaurantId);
+	// 		    console.log('currentIcon ', this.state.currentIcon);
+	// 		    var heart = this.state.currentIcon;
+	// 		     document.getElementById(heart).style.display='block';
+	// 		 $.ajax({
+	// 	url: 'http://localhost:3000/users',
+	// 	data: {username: this.state.username, id:this.state.userId , favorite: this.state.restaurantId},
+	// 	type: 'PUT',
+	// 	success: function(result){
+	// 		console.log(result)
+	// 		// self.fetchData();
+	// 	},
+	// 	error: function(err){
+	// 		console.log(err);
+	// 	}
+	// })
+	// },
 	render: function render() {
 
 		var self = this;
@@ -33809,7 +33846,7 @@ module.exports = React.createClass({
 					{ className: 'col-sm-12 ' },
 					React.createElement(
 						Carousel,
-						{ activeIndex: this.state.index, direction: this.state.direction, onSelect: this.handleSelect },
+						{ onSlideEnd: this.slideEnd, activeIndex: this.state.index, direction: this.state.direction },
 						React.createElement(
 							CarouselItem,
 							{ className: 'carouselItem ' },
@@ -33828,8 +33865,6 @@ module.exports = React.createClass({
 									this.props.nearby.map(function (place, i) {
 
 										if (i === self.state.counter) {
-											self.state.currentIcon = place._id + 'heart';
-											self.state.restaurantId = place._id;
 
 											self.state.lat = place.latitude;
 											self.state.lng = place.longitude;
@@ -33896,8 +33931,6 @@ module.exports = React.createClass({
 									this.props.nearby.map(function (place, i) {
 
 										if (i === self.state.counter) {
-											self.state.currentIcon2 = place._id + 'heart2';
-											self.state.restaurantId = place._id;
 											return React.createElement(
 												'div',
 												{ key: place._id },
@@ -34007,10 +34040,11 @@ module.exports = React.createClass({
 	}
 });
 
-// document.getElementById(heart).style.display='block';
+// self.state.currentIcon = place._id + 'heart';
+// self.state.restaurantId = place._id;
 
-// document.getElementById(heart2).style.display='block';
-// self.fetchData();
+// self.state.currentIcon2 = place._id + 'heart2';
+// self.state.restaurantId = place._id;
 
 },{"./MapComponent":176,"jquery":4,"react":168,"react-bootstrap/lib/Carousel":6,"react-bootstrap/lib/CarouselItem":7}],172:[function(require,module,exports){
 'use strict';
