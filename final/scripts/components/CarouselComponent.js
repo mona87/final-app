@@ -192,8 +192,8 @@ module.exports = React.createClass({
 		  			map2.setMapTypeId('map_style');
 
 		  },
-		  createMap: function(){
-
+		  showFav: function(){
+		  		$(this.refs.slide.getDOMNode()).slideToggle('slow');
 		  },
 		  marker: function(){
 
@@ -202,6 +202,8 @@ module.exports = React.createClass({
 		  			}
 		  		
 		  		  var myLatlng = new google.maps.LatLng(this.state.lat,this.state.lng);
+		  		  console.log(myLatlng);
+		  		  console.log(this.state.lat, this.state.lng);
 
 		  		  var marker = new google.maps.Marker({
 				      position: myLatlng,
@@ -209,7 +211,7 @@ module.exports = React.createClass({
 				     	     
 				  });
 				  
-				   this.state.map.setCenter(myLatlng);
+				  this.state.map.setCenter(myLatlng);
 				  this.state.markers = marker;
 				  console.log('lat ',this.state.lat, 'lng ', this.state.lng)
 
@@ -292,11 +294,10 @@ module.exports = React.createClass({
 									  	<div key={place._id}>						
 									  		<i id={place._id+ 'heart'} className="fa fa-heart fa-2x "></i>					  		
 										  	<h1 className="rest-name">{place.restaurant}</h1>				  
-											<div>{place.details}</div>
-											<div>{place.numbers}</div>
-											<div>{place.address}</div>
-											<div>{place.phone}</div>
-											<div><a href={'"'+place.website+'"'}>{place.website}</a></div>
+											<div className="details">{place.details}</div>
+											<div className="address"><a href={'"http://maps.google.com/?q='+ place.address+'"'} target="_blank">{place.address}</a></div>
+											<div className="phone">{place.phone}</div>
+											<div className="url"><a href={'"'+place.website+'"'}>{place.website}</a></div>
 										</div>
 										
 								  );								
@@ -325,11 +326,10 @@ module.exports = React.createClass({
 								  	<div key={place._id}>
 									  	<i id={place._id+ 'heart2'} className="fa fa-heart fa-2x "></i>	
 									  	<div ><h1 className="rest-name">{place.restaurant}</h1>
-										<div>{place.details}</div>
-										<div>{place.numbers}</div>
-										<div>{place.address}</div>
-										<div>{place.phone}</div>
-										<div><a href={'"'+place.website+'"'}>{place.website}</a></div>
+										<div className="details">{place.details}</div>
+										<div className="address"><a href={'"http://maps.google.com/?q='+ place.address+'"'} target="_blank">{place.address}</a></div>
+										<div className="phone">{place.phone}</div>
+										<div className="url"><a href={'"'+place.website+'"'}>{place.website}</a></div>
 										</div>
 									</div>
 									
@@ -342,6 +342,7 @@ module.exports = React.createClass({
 				  </Carousel>
 				  </div>
 			  </div>
+			  <div ref="slide" className="slide">Test</div>
 			  <div className="row icon-row">
 			  	<div onClick={this.prev} className="col-sm-2 mob-btn ">	
 			  	  	<span className="fa-stack fa-2x">	
@@ -349,13 +350,13 @@ module.exports = React.createClass({
 			  			<i className="fa fa-hand-o-left fa-stack-1x"></i>			
 			  		</span>  				  		
 			  	</div>
-			  	<div onClick={this.add} className="col-sm-2 mob-btn ">
+			  	<div onClick={this.showFav} className="col-sm-2 mob-btn ">
 			  		 <span className="fa-stack fa-2x">	
 			  	 		<i className="fa fa-circle-thin fa-stack-2x"></i>					  				  		
 			  			<i className="fa fa-glass fa-stack-1x"></i>
 			  		</span>
 			  	</div>
-			  	<div onClick={this.map}className="col-sm-2 mob-btn ">		
+			  	<div onClick={this.map}className="col-sm-2 mob-btn street">		
 			  	  	 <span className="fa-stack fa-2x">	
 			  	 		<i className="fa fa-circle-thin fa-stack-2x"></i>		  		
 			  			<i className="fa fa-street-view fa-stack-1x"></i>

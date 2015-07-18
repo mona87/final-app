@@ -33766,7 +33766,9 @@ module.exports = React.createClass({
 		map2.mapTypes.set('map_style', styledMap);
 		map2.setMapTypeId('map_style');
 	},
-	createMap: function createMap() {},
+	showFav: function showFav() {
+		$(this.refs.slide.getDOMNode()).slideToggle('slow');
+	},
 	marker: function marker() {
 
 		if (this.state.markers !== null) {
@@ -33774,6 +33776,8 @@ module.exports = React.createClass({
 		}
 
 		var myLatlng = new google.maps.LatLng(this.state.lat, this.state.lng);
+		console.log(myLatlng);
+		console.log(this.state.lat, this.state.lng);
 
 		var marker = new google.maps.Marker({
 			position: myLatlng,
@@ -33880,27 +33884,26 @@ module.exports = React.createClass({
 												),
 												React.createElement(
 													'div',
-													null,
+													{ className: 'details' },
 													place.details
 												),
 												React.createElement(
 													'div',
-													null,
-													place.numbers
+													{ className: 'address' },
+													React.createElement(
+														'a',
+														{ href: '"http://maps.google.com/?q=' + place.address + '"', target: '_blank' },
+														place.address
+													)
 												),
 												React.createElement(
 													'div',
-													null,
-													place.address
-												),
-												React.createElement(
-													'div',
-													null,
+													{ className: 'phone' },
 													place.phone
 												),
 												React.createElement(
 													'div',
-													null,
+													{ className: 'url' },
 													React.createElement(
 														'a',
 														{ href: '"' + place.website + '"' },
@@ -33945,27 +33948,26 @@ module.exports = React.createClass({
 													),
 													React.createElement(
 														'div',
-														null,
+														{ className: 'details' },
 														place.details
 													),
 													React.createElement(
 														'div',
-														null,
-														place.numbers
+														{ className: 'address' },
+														React.createElement(
+															'a',
+															{ href: '"http://maps.google.com/?q=' + place.address + '"', target: '_blank' },
+															place.address
+														)
 													),
 													React.createElement(
 														'div',
-														null,
-														place.address
-													),
-													React.createElement(
-														'div',
-														null,
+														{ className: 'phone' },
 														place.phone
 													),
 													React.createElement(
 														'div',
-														null,
+														{ className: 'url' },
 														React.createElement(
 															'a',
 															{ href: '"' + place.website + '"' },
@@ -33984,6 +33986,11 @@ module.exports = React.createClass({
 			),
 			React.createElement(
 				'div',
+				{ ref: 'slide', className: 'slide' },
+				'Test'
+			),
+			React.createElement(
+				'div',
 				{ className: 'row icon-row' },
 				React.createElement(
 					'div',
@@ -33997,7 +34004,7 @@ module.exports = React.createClass({
 				),
 				React.createElement(
 					'div',
-					{ onClick: this.add, className: 'col-sm-2 mob-btn ' },
+					{ onClick: this.showFav, className: 'col-sm-2 mob-btn ' },
 					React.createElement(
 						'span',
 						{ className: 'fa-stack fa-2x' },
@@ -34007,7 +34014,7 @@ module.exports = React.createClass({
 				),
 				React.createElement(
 					'div',
-					{ onClick: this.map, className: 'col-sm-2 mob-btn ' },
+					{ onClick: this.map, className: 'col-sm-2 mob-btn street' },
 					React.createElement(
 						'span',
 						{ className: 'fa-stack fa-2x' },
