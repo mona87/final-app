@@ -20,15 +20,15 @@ module.exports = React.createClass({
 	},
 	render: function(){
 		this.update();
-		var style={
+		var style = {
 			display: 'none'
 		}
 		return(
 			<div>
 			<div className="row">
 				<div className="col-sm-12 header">
-					<h1 >Happy Hour</h1>	
-					<span className="user" onClick={this.slide} style={style} className="user" >Welcome {this.state.username}!</span>		
+					<h1 >Happy Hour!</h1>	
+					<span style={style} className="user" onClick={this.slide}  className="user" >Welcome {this.state.username}!</span>		
 				</div>
 				<div className="row">
 				<div className="col-sm-12">

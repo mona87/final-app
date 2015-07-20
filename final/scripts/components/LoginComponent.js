@@ -12,9 +12,23 @@ module.exports = React.createClass({
 		var red ={
 			color: 'red'
 		}
+		var holder = {
+		
+
+			}
+		var button ={
+		
+
+
+		}
+		var pStyle ={
+			color: 'white',
+			fontSize: '20px',
+			textAlign: 'center',
+			margin: '30px 0 20px 0'
+		}
 		return(
-			<div className="row">
-				<div className="col-sm-12">
+			<div className="locateHolder">{/*<div className="col-sm-12">
 					<form style={style} onSubmit={this.login}>
 							<h1>Login</h1>
 							<div style={red} ref="error"></div>
@@ -25,9 +39,19 @@ module.exports = React.createClass({
 							<br/>
 							<button>Login</button>
 						</form>
+				</div>*/}
+				<div >
+					<div className="locateWrapper" >
+						<p style={pStyle}>Click below to begin!</p>
+						<button onClick={this.navigate} className="locateBtn" style={button}>Find My Location</button>
+					</div>
 				</div>
 			</div>
 		);
+	},
+	navigate: function(e){
+		e.preventDefault();
+		this.props.router.navigate('/user/mona',  {trigger: true});
 	},
 	login: function(e){
 		e.preventDefault();

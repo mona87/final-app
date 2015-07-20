@@ -2,7 +2,6 @@ var Backbone = require ('backbone');
 var React = require('react');
 var RestaurantCollection = require('../collections/RestaurantCollection');
 var restaurants = new RestaurantCollection();
-var MapComponent = require('./MapComponent');
 var CarouselComponent = require('../components/CarouselComponent');
 var Carousel = require('react-bootstrap/lib/Carousel');
 var CarouselItem = require('react-bootstrap/lib/CarouselItem');
@@ -17,7 +16,10 @@ module.exports = React.createClass ({
 			places: [],
 			lat: this.props.lat,
 			lng: this.props.lng,
-			nearby:[]
+			nearby:[],
+			num: null,
+			currentPlace: null,
+			dist: []
 		}
 	},
 	componentWillMount: function(){
@@ -29,6 +31,70 @@ module.exports = React.createClass ({
 	rad: function(x) 
 	{ 
 		return x * Math.PI / 180 
+	},
+	distance: function(p1Lat, p1Long, p2Lat, p2Long, place){
+		 var origin1 = new google.maps.LatLng(p1Lat, p1Long);
+		 var destinationA = new google.maps.LatLng(p2Lat, p2Long);
+		 var service = new google.maps.DistanceMatrixService();
+		 
+		 var self = this;
+		  // service.getDistanceMatrix(
+		  //   {
+		  //     origins: [origin1],
+		  //     destinations: [destinationA],
+		  //     travelMode: google.maps.TravelMode.DRIVING,
+		  //     unitSystem: google.maps.UnitSystem.IMPERIAL,
+		  //     avoidHighways: false,
+		  //     avoidTolls: false
+		  //   }, 
+		  //   this.callback);
+		 	
+
+			var num = google.maps.geometry.spherical.computeDistanceBetween(origin1, destinationA);
+		 	// console.log(Math.round( num * 10) / 10);
+		 	num *= 0.000621371192;
+		 	num = Math.round( num * 10) / 10;
+		 	console.log(num)
+			 place.distance = num;
+			// console.log(place.address +' ' +place.distance)
+
+			return num
+		},
+		callback: function (response, status) {
+			
+			if (status != google.maps.DistanceMatrixStatus.OK) {
+		    	alert('Error was: ' + status);
+		  	}	 
+		  	else 
+		  	{
+			    var origins = response.originAddresses;
+			    var destinations = response.destinationAddresses;
+
+			    // console.log('origin ', origins);
+			    // console.log(origins+ ' to ' + destinations + ' is ' + response.rows[0].elements[0].distance.text + ' and will take ' + response.rows[0].elements[0].duration.text)
+			    // console.log(response.rows[0].elements[0].distance.text);
+			    if(response.rows[0].elements[0].distance !== undefined){
+			    	var newNum = parseInt(response.rows[0].elements[0].distance.text) 
+			    
+			    		console.log(destinations +' '+ response.rows[0].elements[0].distance.text)
+			    		if(newNum <=5 && newNum !== undefined){
+			    				// console.log(response)
+			    			
+			    			// place.distance = response.rows[0].elements[0].distance.text
+			    			// place.duration = response.rows[0].elements[0].duration.text
+			    			//   	self.state.nearby.push(self.state.currentPlace);
+			    			  	// console.log(newNum)
+			    			  	
+			    		}	
+			    	    			
+			     }
+		    
+  			}
+  
+  			// return num
+  		
+		
+  		
 	},
 	haversine: function(p1Lat, p1Long, p2Lat, p2Long) {
 
@@ -55,19 +121,30 @@ module.exports = React.createClass ({
 			this.state.nearby = []
 		}
 		this.state.places.map(function(place){
-  			if(self.haversine(place.latitude,place.longitude, self.props.lat, self.props.lng) <= 3 ){
-  				self.state.nearby.push(place);
-  			}		
+			self.state.currentPlace = place;
+
+		if( self.distance( self.props.lat, self.props.lng, place.latitude, place.longitude, place) <=4){
+			self.state.nearby.push(place);
+		}
+					// 
+					// console.log('true')
+				
+		
+			
+  			// if(self.haversine(place.latitude,place.longitude, self.props.lat, self.props.lng) <= 3 ){
+  			// 	self.state.nearby.push(place);
+  			// }		
   		});
 
 	},
 	render: function(){
 		self = this;
+			this.nearbyPlaces();
 		var style ={
 			color: 'blue'
 		}
 			// console.log('dis ' +this.haversine(30.26654,-97.738194, this.state.lat, this.state.lng));
-		this.nearbyPlaces();
+		// this.nearbyPlaces();
 		// console.log(Boolean(this.state.nearby))
 		// console.log('places ', this.state.places)
 		// console.log('nearby ', this.state.nearby)
@@ -78,14 +155,16 @@ module.exports = React.createClass ({
 			</div>
 		)
 	},
-	componentDidiMount: function(){
-
+	componentDidUpdate: function(){
+	
 	},
 	fetchData: function(){
 		self = this
 		restaurants.fetch({
 			success: function(mod, i){
 				// console.log(i)
+		
+				// console.log(i.happyhours)
 				self.setState({
 					places: i.happyhours
 				})

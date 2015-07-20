@@ -2,7 +2,7 @@ var React = require('react');
 var $ = require('jquery')
 var Carousel = require('react-bootstrap/lib/Carousel');
 var CarouselItem = require('react-bootstrap/lib/CarouselItem');
-var MapComponent = require('./MapComponent');
+
 
 
 module.exports = React.createClass({
@@ -24,10 +24,15 @@ module.exports = React.createClass({
 			  mapStyle: 'mapStyle',
 			  visible: null,
 			  map: null,
-			  markers: null
+			  markers: null,
+			  imgArray: ['mini-image','mini-image2','mini-image3', 'mini-image4', 'mini-image5', 'mini-image6', 'mini-image7', 'mini-image8', 'mini-image9', 'mini-image10'],
+			  bigImgArray: [ 'bigImg1','bigImg2', 'bigImg3', 'bigImg4', 'bigImg5', 'bigImg6', 'bigImg7', 'bigImg8', 'bigImg9', 'bigImg10'],
+			  imgCounter: 0
 			};
 		  },
 		  handleSelect: function(selectedIndex, selectedDirection) {
+		  	var self = this;
+
 
 		  	if(this.state.counter === 0 && selectedDirection === 'prev'){      
 				this.state.counter = this.props.nearby.length-1;
@@ -35,10 +40,15 @@ module.exports = React.createClass({
 			else if(this.state.counter === this.props.nearby.length-1 &&  selectedDirection === 'next'){	  		
 			  	this.state.counter = 0;
 			}
-			else if(selectedDirection === 'next' )
+			else if(selectedDirection === 'next')
 			{	
-				this.slideEnd(selectedIndex, selectedDirection)
-			  	 this.state.counter++;		
+				
+				self.state.counter++;
+					
+				// }
+				// console.log(this.onSlideEnd);
+				// this.slideEnd(selectedIndex, selectedDirection)
+			  	  		
 			}
 			else if(selectedDirection === 'prev'){		
 			  	this.state.counter--;
@@ -54,26 +64,46 @@ module.exports = React.createClass({
 				// this.slideEnd(selectedIndex, selectedDirection)
 		  },
 		  prev: function(){
+		  				
 
+
+		  		console.log('count ',this.state.bigImgArray[this.state.imgCounter]);
 		  	if (this.state.index === 0 ){
 		  		this.state.index = 1;
+		  			 this.state.imgCounter++
 		  		this.handleSelect(this.state.index, 'prev');
 		  	}else if(this.state.index === 1 ){
 		  		this.state.index = 0;
 		  		this.handleSelect(this.state.index, 'prev');
 		  	}
+
+		  	  	if(this.state.imgCounter === 0){
+		  			
+		  			this.state.imgCounter = this.state.bigImgArray.length-1;
+
+		  			console.log('update ', this.state.imgCounter)
+		  		}else{
+		  			this.state.imgCounter--;
+		  		}
 		  	
 		  },
 		  next: function(){
 
 		  	if (this.state.index === 0 ){
-		  		this.slideEnd();
+		  		
+		  	
 		  		this.state.index = 1
 		  		this.handleSelect(this.state.index, 'next');
 		  	}else if(this.state.index === 1 ){
 		  		this.state.index = 0;
 		  		this.handleSelect(this.state.index, 'next');
 		  	}
+		  	
+		  	if(this.state.imgCounter >= this.state.bigImgArray.length-1){
+		  			this.state.imgCounter = 0
+		  		}else{
+		  			this.state.imgCounter++;
+		  		}
 		  		
 		  	
 		  },
@@ -83,47 +113,18 @@ module.exports = React.createClass({
 		  	this.state.username = localStorage.getItem('username');
 			this.state.userId = localStorage.getItem('id');
 			this.state.mapId = this.state.mapId; 
-			// console.log(this.state.favArray)
-			// var heart = this.state.currentIcon;
-			// var heart2 = this.state.currentIcon2;
-			// 	// console.log('heart ', heart)
-			// $.ajax({
-			// 		url: 'http://localhost:3000/users/' + this.state.userId,
-			// 		type: 'GET',
-			// 		success: function(result){
-			// 			console.log(result.favorite)
-
-			// 			for(var i = 0; i < result.favorite.length; i++){		  	
-			// 	  			if((result.favorite[i]+ 'heart') === heart){
-			// 	  			 // document.getElementById(heart).style.display='block';
-			//   				}
-			//   				if((result.favorite[i]+ 'heart2') === heart2){
-			//   						 // document.getElementById(heart2).style.display='block';
-			//   				}
-		 //  				}	
-			// 		},
-			// 		error: function(err){
-			// 			console.log(err);
-			// 		}
-			// })
 		  },
 		  slideEnd: function(selectedIndex, selectedDirection){
 		  		console.log('animation done');
 		  		// this.initialize();
-
 		  		 this.marker();	
-		  },
-		  updateInfo: function(){
-
-		  },
-		  componentDidMount: function(){
-			
-					
+		  		 return true
+						
 		  },
 		  initialize: function() {
 
-		  		console.log('lat ', this.state.lat);
-		  		console.log('lng ', this.state.lng);
+		  		// console.log('lat ', this.state.lat);
+		  		// console.log('lng ', this.state.lng);
 				var styles = [
 					  {
 					    featureType: "all",
@@ -193,7 +194,34 @@ module.exports = React.createClass({
 
 		  },
 		  showFav: function(){
-		  		$(this.refs.slide.getDOMNode()).slideToggle('slow');
+		  		// if($(this.refs.list.getDOMNode()).css('display') ==='block'){
+		  		// 	$(this.refs.list.getDOMNode()).css('display','none');
+		  		var self = this;
+		  		// }else{
+		  		// 		$(this.refs.list.getDOMNode()).css('display','block');
+		  		// }
+		  		if($(this.refs.carousel.getDOMNode()).css('display') === 'none'){
+						
+						// $(this.refs.list.getDOMNode()).css('display','none');
+						$(self.refs.list.getDOMNode()).fadeOut('fast', function(){
+								$(self.refs.carousel.getDOMNode()).fadeToggle('fast');
+						})
+					
+						console.log('true');
+				}
+				else{
+
+
+		  		$(this.refs.carousel.getDOMNode()).fadeToggle('fast', function(){
+		  				$(self.refs.list.getDOMNode()).slideToggle('slow', function(){
+		  				$('.img1').show();
+		  				$('.mapStyle').hide();
+		  				});
+		  		});
+		  	}
+		  		
+		  		
+
 		  },
 		  marker: function(){
 
@@ -202,8 +230,8 @@ module.exports = React.createClass({
 		  			}
 		  		
 		  		  var myLatlng = new google.maps.LatLng(this.state.lat,this.state.lng);
-		  		  console.log(myLatlng);
-		  		  console.log(this.state.lat, this.state.lng);
+		  		  // console.log(myLatlng);
+		  		  // console.log(this.state.lat, this.state.lng);
 
 		  		  var marker = new google.maps.Marker({
 				      position: myLatlng,
@@ -213,44 +241,40 @@ module.exports = React.createClass({
 				  
 				  this.state.map.setCenter(myLatlng);
 				  this.state.markers = marker;
-				  console.log('lat ',this.state.lat, 'lng ', this.state.lng)
+				  // console.log('lat ',this.state.lat, 'lng ', this.state.lng)
 
 		  },
 		  map: function(e){
-		  		e.preventDefault();	  		 
-		  		  $('.img1').hide();
-		  		  $('.mapStyle').show();
-		  		   console.log('lat ', this.state.lat);
-		  		    console.log('lng ', this.state.lng);
+		  		e.preventDefault();	
+		  		var self = this; 
+		  		if($('.mapStyle').css('display') === 'none'){ 	
+		  			
+		  			$('.img1').fadeToggle('fast', function(){
+		  				 $('.mapStyle').fadeIn('fast');
+		  				 self.initialize();
+		  			});
+		  			
+		  		}
+		  		else{
 
-		  		    this.initialize();
+		  			 $('.mapStyle').fadeToggle('fast', function(){
+		  		  	 $('.img1').fadeIn('fast');
+		  		  });
+		  			 
+		  		  
+		  		}	 
+		  		 
+		  		  // $('.mapStyle').show();
+		  		  //  console.log('lat ', this.state.lat);
+		  		  //   console.log('lng ', this.state.lng);
+
+		  		    
 		  		    
 		  },
 		  list: function(){
 		  		$('.img1').show();
 		  		$('.mapStyle').hide();
 		  },
-		  // add: function(e){
-		  // 		e.preventDefault();
-		  // 		// e.currentTarget.style.display = 'none';
-		  // 		 console.log('user ', this.state.username);
-		  // 		  console.log('fav ', this.state.restaurantId);
-		  // 		    console.log('currentIcon ', this.state.currentIcon);
-		  // 		    var heart = this.state.currentIcon;
-		  // 		     document.getElementById(heart).style.display='block';
-		  // 		 $.ajax({
-				// 	url: 'http://localhost:3000/users',
-				// 	data: {username: this.state.username, id:this.state.userId , favorite: this.state.restaurantId},
-				// 	type: 'PUT',
-				// 	success: function(result){
-				// 		console.log(result)
-				// 		// self.fetchData();
-				// 	},
-				// 	error: function(err){
-				// 		console.log(err);
-				// 	}
-				// })
-		  // },
 		  render: function() {
 		  	
 		   var self = this;
@@ -266,15 +290,16 @@ module.exports = React.createClass({
 				margin: '0',
 				padding: '0'
 			}
-			console.log(this.props)
+			var counter = 0;
+			console.log('props ',this.props.nearby)
 			return (
 				<div>
-			<div className="row row-color">
+			<div ref='carousel' className="row row-color">
 				<div className="col-sm-12 ">
 				
-				  <Carousel onSlideEnd={this.slideEnd}  activeIndex={this.state.index} direction={this.state.direction} >
+				  <Carousel  className='carouselMain' onSlideEnd={this.slideEnd}  activeIndex={this.state.index} direction={this.state.direction} >
 				   <CarouselItem className="carouselItem ">				  
-				    <div className="imgHolder img1"></div>
+				   <div className={this.state.bigImgArray[this.state.imgCounter] + ' img1'} ></div>
 					 <div id="mapHolder" className={this.state.mapStyle}><div style = {style}  className="map-canvas"></div></div>
 						<div className="textWrapper" >
 							<div className="textHolder" >
@@ -312,7 +337,7 @@ module.exports = React.createClass({
 
 				 <CarouselItem className="carouselItem ">
 				
-				   <div className="imgHolder2 img1" alt='900x500'></div>
+				   <div className={this.state.bigImgArray[this.state.imgCounter] + ' img1'} alt='900x500'></div>
 					  <div id="mapHolder2" className={this.state.mapStyle}><div style = {style}  className="map-canvas2"></div></div>
 				
 					  <div className="textWrapper">
@@ -342,7 +367,27 @@ module.exports = React.createClass({
 				  </Carousel>
 				  </div>
 			  </div>
-			  <div ref="slide" className="slide">Test</div>
+			<div style={hide}  ref='list' className="row list-holder">
+			  	  {this.props.nearby.map(function(place, i){
+			  	  	 counter++;
+			  	  		if(counter >= self.state.imgArray.length-1){
+			  	  			counter = 0;
+			  	  		}
+			  	  	return(
+			  	  		  <div key={place._id} ref="slide" className="mini-slide row">
+						  	<div  className="mini-holder">
+						  		<div className={self.state.imgArray[counter]}></div>
+						  		<div className="mini-text">
+						  			<div className="mini-rest">{place.restaurant}</div>
+						  			<div className="mini-details">{place.details}</div>
+						  			<div className="mini-address">{place.address}</div>
+						  		</div>
+						  	</div>
+						  </div>
+					  )
+					}
+				)}
+			  	  </div>
 			  <div className="row icon-row">
 			  	<div onClick={this.prev} className="col-sm-2 mob-btn ">	
 			  	  	<span className="fa-stack fa-2x">	
@@ -350,19 +395,19 @@ module.exports = React.createClass({
 			  			<i className="fa fa-hand-o-left fa-stack-1x"></i>			
 			  		</span>  				  		
 			  	</div>
-			  	<div onClick={this.showFav} className="col-sm-2 mob-btn ">
+			  	{/*<div onClick={this.showFav} className="col-sm-2 mob-btn ">
 			  		 <span className="fa-stack fa-2x">	
 			  	 		<i className="fa fa-circle-thin fa-stack-2x"></i>					  				  		
 			  			<i className="fa fa-glass fa-stack-1x"></i>
 			  		</span>
-			  	</div>
+			  	</div>*/}
 			  	<div onClick={this.map}className="col-sm-2 mob-btn street">		
 			  	  	 <span className="fa-stack fa-2x">	
 			  	 		<i className="fa fa-circle-thin fa-stack-2x"></i>		  		
 			  			<i className="fa fa-street-view fa-stack-1x"></i>
 			  		</span>
 			  	</div>
-			  	<div onClick={this.list}className="col-sm-2 mob-btn ">	
+			  	<div onClick={this.showFav} className="col-sm-2 mob-btn ">	
 			  	  	<span className="fa-stack fa-2x">	
 			  	 		<i className="fa fa-circle-thin fa-stack-2x"></i>			  		
 			  			<i className="fa fa-list-alt fa-stack-1x"></i>
