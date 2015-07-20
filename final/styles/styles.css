@@ -10,9 +10,8 @@ body{
 	height:100%;
 	width:100%;
 	position: relative;
-	/*background: url('https://raw.githubusercontent.com/TIY-Austin-Front-End-Engineering/jquery-login/master/bg-login-top.png') repeat ;*/
-	background: url('http://lapolenteria.com/wp-content/uploads/2015/03/wine.jpg');
-	background-size: cover;
+	background: url('https://raw.githubusercontent.com/TIY-Austin-Front-End-Engineering/jquery-login/master/bg-login-top.png') repeat ;
+
 
 }
 
@@ -28,6 +27,7 @@ body{
 		font-size: 25px;
 		display: block;
 		margin: 0 auto;
+		outline: none;
 }
 
 .locateBtn:hover{
@@ -211,6 +211,10 @@ background-color:#21161F;*/
 	min-height: 1px;
 	/*max-width: 1100px;*/
 	box-sizing: border-box;
+	/*  -webkit-transition: opacity .4s; /*adjust timing here */
+     /*    -moz-transition: opacity .4s;
+           -o-transition: opacity .4s;
+              transition: opacity .4s;*/
 	/*width: 100%;*/
 }
 
@@ -521,6 +525,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 }
 
 @media (min-width: 700px) {
+	body{
+		background: url('http://lapolenteria.com/wp-content/uploads/2015/03/wine.jpg');
+		background-size: cover;
+	}
 	.imgHolder, .imgHolder2, #mapHolder, #mapHolder2, .bigImg2, .bigImg1, .bigImg3, .bigImg4, .bigImg5, .bigImg6, .bigImg7, .bigImg8, .bigImg9, .bigImg10 {
 		max-width: 35%;
 		margin-right: 3%;
