@@ -33628,7 +33628,9 @@ module.exports = React.createClass({
 			bigImgArray: ['bigImg1', 'bigImg2', 'bigImg3', 'bigImg4', 'bigImg5', 'bigImg6', 'bigImg7', 'bigImg8', 'bigImg9', 'bigImg10'],
 			imgCounter: 0,
 			length: null,
-			hide: 'none'
+			hide: 'none',
+			random: 3,
+			random2: 4
 		};
 	},
 	handleSelect: function handleSelect(selectedIndex, selectedDirection) {
@@ -33662,21 +33664,21 @@ module.exports = React.createClass({
 		console.log('count ', this.state.bigImgArray[this.state.imgCounter]);
 		if (this.state.index === 0) {
 			this.state.index = 1;
-			this.state.imgCounter++;
+			// this.state.imgCounter++
 			this.handleSelect(this.state.index, 'prev');
 		} else if (this.state.index === 1) {
 			this.state.index = 0;
 			this.handleSelect(this.state.index, 'prev');
 		}
 
-		if (this.state.imgCounter === 0) {
+		//  	if(this.state.imgCounter === 0){
 
-			this.state.imgCounter = this.state.bigImgArray.length - 1;
+		// 	this.state.imgCounter = this.state.bigImgArray.length-1;
 
-			console.log('update ', this.state.imgCounter);
-		} else {
-			this.state.imgCounter--;
-		}
+		// 	console.log('update ', this.state.imgCounter)
+		// }else{
+		// 	this.state.imgCounter--;
+		// }
 	},
 	next: function next() {
 		var self = this;
@@ -33699,19 +33701,24 @@ module.exports = React.createClass({
 			// });
 		}
 
-		if (this.state.imgCounter >= this.state.bigImgArray.length - 1) {
-			// $(this.refs.bigImg.getDOMNode()).fadeIn('fast', function(){
-			// 	// self.state.imgCounter = 0;
-			// });
-			// $(this.refs.bigImg2.getDOMNode()).fadeIn('fast');
-			self.state.imgCounter = 0;
-		} else {
-			// $(this.refs.bigImg.getDOMNode()).fadeIn('fast', function(){
-			// 	self.state.imgCounter++;
-			// });
-			// $(this.refs.bigImg2.getDOMNode()).fadeIn('fast');
-			self.state.imgCounter++;
-		}
+		// if(this.state.imgCounter >= this.state.bigImgArray.length-1){
+		// 		 // $(this.refs.bigImg.getDOMNode()).fadeIn('fast', function(){
+		// 		 // 	// self.state.imgCounter = 0;
+		// 		 // });
+		// 		 // $(this.refs.bigImg2.getDOMNode()).fadeIn('fast');
+		// 		 	self.state.imgCounter = 0;
+
+		// 	}else{
+		// 		 // $(this.refs.bigImg.getDOMNode()).fadeIn('fast', function(){
+		// 		 // 	self.state.imgCounter++;
+		// 		 // });
+		// 		 // $(this.refs.bigImg2.getDOMNode()).fadeIn('fast');
+		// 		self.state.imgCounter++;
+
+		// 	}		  	
+	},
+	componentWillMount: function componentWillMount() {
+		this.random();
 	},
 	shouldComponentUpdate: function shouldComponentUpdate(props) {
 
@@ -33782,6 +33789,7 @@ module.exports = React.createClass({
 		// if($(this.refs.list.getDOMNode()).css('display') ==='block'){
 		// 	$(this.refs.list.getDOMNode()).css('display','none');
 		var self = this;
+
 		// }else{
 		// 		$(this.refs.list.getDOMNode()).css('display','block');
 		// }
@@ -33799,6 +33807,7 @@ module.exports = React.createClass({
 				$(self.refs.list.getDOMNode()).slideToggle('slow', function () {
 					$('.img1').show();
 					$('.mapStyle').hide();
+					self.random();
 				});
 			});
 		}
@@ -33820,13 +33829,25 @@ module.exports = React.createClass({
 		this.state.markers = marker;
 		// console.log('lat ',this.state.lat, 'lng ', this.state.lng)
 	},
+	random: function random() {
+		var randomnumber = Math.floor(Math.random() * (4 - 0 + 1)) + 0;
+		var randomnumber2 = Math.floor(Math.random() * (9 - 5 + 1)) + 5;
+		this.setState({
+			random: randomnumber,
+			random2: randomnumber2
+		});
+		console.log('random ', this.state.random);
+		console.log('random2 ', this.state.random2);
+	},
 	map: function map(e) {
 		e.preventDefault();
 		var self = this;
+
 		if ($('.mapStyle').css('display') === 'none') {
 
 			$('.img1').fadeToggle('fast', function () {
 				$('.mapStyle').fadeIn('fast');
+				self.random();
 				self.initialize();
 			});
 		} else {
@@ -33893,7 +33914,7 @@ module.exports = React.createClass({
 						React.createElement(
 							CarouselItem,
 							{ className: 'carouselItem item1' },
-							React.createElement('div', { ref: 'bigImg', className: this.state.bigImgArray[this.state.imgCounter] + ' img1' }),
+							React.createElement('div', { ref: 'bigImg', className: this.state.bigImgArray[this.state.random] + ' img1' }),
 							React.createElement(
 								'div',
 								{ id: 'mapHolder', className: this.state.mapStyle },
@@ -33954,7 +33975,7 @@ module.exports = React.createClass({
 						React.createElement(
 							CarouselItem,
 							{ className: 'carouselItem item2 ' },
-							React.createElement('div', { ref: 'bigImg2', className: this.state.bigImgArray[this.state.imgCounter] + ' img1', alt: '900x500' }),
+							React.createElement('div', { ref: 'bigImg2', className: this.state.bigImgArray[this.state.random2] + ' img1', alt: '900x500' }),
 							React.createElement(
 								'div',
 								{ id: 'mapHolder2', className: this.state.mapStyle },
@@ -34278,18 +34299,6 @@ module.exports = React.createClass({
 		});
 	}
 });
-/*<div className="col-sm-12">
-<form style={style} onSubmit={this.login}>
-<h1>Login</h1>
-<div style={red} ref="error"></div>
-<label>Username</label><br/>
-<input ref="username" type="text"/><br/>
-<label>Password</label><br/>
-<input ref="pass" type="password"/><br/>
-<br/>
-<button>Login</button>
-</form>
-</div>*/
 
 },{"backbone":1,"jquery":4,"react":168}],174:[function(require,module,exports){
 'use strict';

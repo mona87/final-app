@@ -28,18 +28,7 @@ module.exports = React.createClass({
 			margin: '30px 0 20px 0'
 		}
 		return(
-			<div className="locateHolder">{/*<div className="col-sm-12">
-					<form style={style} onSubmit={this.login}>
-							<h1>Login</h1>
-							<div style={red} ref="error"></div>
-							<label>Username</label><br/>
-							<input ref="username" type="text"/><br/>
-							<label>Password</label><br/>
-							<input ref="pass" type="password"/><br/>
-							<br/>
-							<button>Login</button>
-						</form>
-				</div>*/}
+			<div className="locateHolder">
 				<div >
 					<div className="locateWrapper" >
 						 <p style={pStyle}>Find the nearest Happy Hours Specials!</p>
