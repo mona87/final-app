@@ -33626,7 +33626,9 @@ module.exports = React.createClass({
 			markers: null,
 			imgArray: ['mini-image', 'mini-image2', 'mini-image3', 'mini-image4', 'mini-image5', 'mini-image6', 'mini-image7', 'mini-image8', 'mini-image9', 'mini-image10'],
 			bigImgArray: ['bigImg1', 'bigImg2', 'bigImg3', 'bigImg4', 'bigImg5', 'bigImg6', 'bigImg7', 'bigImg8', 'bigImg9', 'bigImg10'],
-			imgCounter: 0
+			imgCounter: 0,
+			length: null,
+			hide: 'none'
 		};
 	},
 	handleSelect: function handleSelect(selectedIndex, selectedDirection) {
@@ -33657,7 +33659,6 @@ module.exports = React.createClass({
 		// this.slideEnd(selectedIndex, selectedDirection)
 	},
 	prev: function prev() {
-
 		console.log('count ', this.state.bigImgArray[this.state.imgCounter]);
 		if (this.state.index === 0) {
 			this.state.index = 1;
@@ -33678,34 +33679,56 @@ module.exports = React.createClass({
 		}
 	},
 	next: function next() {
-
+		var self = this;
 		if (this.state.index === 0) {
-
+			// $(this.refs.bigImg.getDOMNode()).fadeOut('slow');
+			// 	  $(this.refs.bigImg.getDOMNode()).fadeToggle('slow');	
+			// $(this.refs.bigImg2.getDOMNode()).fadeToggle('slow');
 			this.state.index = 1;
 			this.handleSelect(this.state.index, 'next');
 		} else if (this.state.index === 1) {
+
+			// $(this.refs.bigImg.getDOMNode()).fadeToggle('fast', function(){
+
+			// });	
+			// $(this.refs.bigImg2.getDOMNode()).fadeToggle('fast');
 			this.state.index = 0;
 			this.handleSelect(this.state.index, 'next');
+			//  $('.item1').fadeOut('fast', function(){
+			// 	 	self.state.imgCounter++;
+			// });
 		}
 
 		if (this.state.imgCounter >= this.state.bigImgArray.length - 1) {
-			this.state.imgCounter = 0;
+			// $(this.refs.bigImg.getDOMNode()).fadeIn('fast', function(){
+			// 	// self.state.imgCounter = 0;
+			// });
+			// $(this.refs.bigImg2.getDOMNode()).fadeIn('fast');
+			self.state.imgCounter = 0;
 		} else {
-			this.state.imgCounter++;
+			// $(this.refs.bigImg.getDOMNode()).fadeIn('fast', function(){
+			// 	self.state.imgCounter++;
+			// });
+			// $(this.refs.bigImg2.getDOMNode()).fadeIn('fast');
+			self.state.imgCounter++;
 		}
+	},
+	shouldComponentUpdate: function shouldComponentUpdate(props) {
+
+		return this.props.nearby;
 	},
 	componentDidUpdate: function componentDidUpdate() {
 		// this.initialize(); 
+
+		console.log('props ', this.props.nearby);
 		google.maps.event.addDomListener(window, 'load', this.initialize());
-		this.state.username = localStorage.getItem('username');
-		this.state.userId = localStorage.getItem('id');
+
 		this.state.mapId = this.state.mapId;
 	},
 	slideEnd: function slideEnd(selectedIndex, selectedDirection) {
 		console.log('animation done');
 		// this.initialize();
 		this.marker();
-		return true;
 	},
 	initialize: function initialize() {
 
@@ -33748,17 +33771,7 @@ module.exports = React.createClass({
 		}
 
 		var image = 'http://tbs-va.com/wp-content/uploads/2013/05/Manhattan-Perfect-cocktail.png';
-		// var marker = new google.maps.Marker({
-		//     position: myLatlng,
-		//     map: map
-
-		// });
 		this.marker();
-		// var marker2 = new google.maps.Marker({
-		//     position: myLatlng,
-		//     map: map2
-
-		// });
 
 		map.mapTypes.set('map_style', styledMap);
 		map.setMapTypeId('map_style');
@@ -33775,8 +33788,8 @@ module.exports = React.createClass({
 		if ($(this.refs.carousel.getDOMNode()).css('display') === 'none') {
 
 			// $(this.refs.list.getDOMNode()).css('display','none');
-			$(self.refs.list.getDOMNode()).fadeOut('fast', function () {
-				$(self.refs.carousel.getDOMNode()).fadeToggle('fast');
+			$(self.refs.list.getDOMNode()).slideUp('slow', function () {
+				$(self.refs.carousel.getDOMNode()).fadeToggle('slow');
 			});
 
 			console.log('true');
@@ -33797,9 +33810,6 @@ module.exports = React.createClass({
 		}
 
 		var myLatlng = new google.maps.LatLng(this.state.lat, this.state.lng);
-		// console.log(myLatlng);
-		// console.log(this.state.lat, this.state.lng);
-
 		var marker = new google.maps.Marker({
 			position: myLatlng,
 			map: this.state.map
@@ -33834,8 +33844,16 @@ module.exports = React.createClass({
 		$('.img1').show();
 		$('.mapStyle').hide();
 	},
+	hideMe: function hideMe() {
+		$(this.refs.begin.getDOMNode()).fadeOut('fast');
+		this.setState({
+			hide: 'block'
+		});
+		$('.carouselMain').fadeIn('slow');
+	},
 	render: function render() {
 
+		// $('.carouselMain').css('display', this.state.hide)
 		var self = this;
 		var style = {
 			color: 'blue'
@@ -33850,7 +33868,16 @@ module.exports = React.createClass({
 			padding: '0'
 		};
 		var counter = 0;
-		console.log('props ', this.props.nearby);
+		var pStyle = {
+			color: 'white',
+			fontSize: '20px',
+			textAlign: 'center',
+			margin: '30px 0 20px 0'
+		};
+		var hideCarousel = {
+			display: this.state.hide
+
+		};
 		return React.createElement(
 			'div',
 			null,
@@ -33862,11 +33889,11 @@ module.exports = React.createClass({
 					{ className: 'col-sm-12 ' },
 					React.createElement(
 						Carousel,
-						{ className: 'carouselMain', onSlideEnd: this.slideEnd, activeIndex: this.state.index, direction: this.state.direction },
+						{ style: hideCarousel, className: 'carouselMain', onSlideEnd: this.slideEnd, activeIndex: this.state.index, direction: this.state.direction },
 						React.createElement(
 							CarouselItem,
-							{ className: 'carouselItem ' },
-							React.createElement('div', { className: this.state.bigImgArray[this.state.imgCounter] + ' img1' }),
+							{ className: 'carouselItem item1' },
+							React.createElement('div', { ref: 'bigImg', className: this.state.bigImgArray[this.state.imgCounter] + ' img1' }),
 							React.createElement(
 								'div',
 								{ id: 'mapHolder', className: this.state.mapStyle },
@@ -33904,23 +33931,19 @@ module.exports = React.createClass({
 													{ className: 'address' },
 													React.createElement(
 														'a',
-														{ href: '"http://maps.google.com/?q=' + place.address + '"', target: '_blank' },
-														place.address
+														{ href: 'http://maps.google.com/?q=' + place.destination, target: '_blank' },
+														React.createElement('i', { className: 'fa fa-map-marker fa-2x' })
 													)
 												),
 												React.createElement(
 													'div',
-													{ className: 'phone' },
-													place.phone
+													{ className: 'distance' },
+													place.distance
 												),
 												React.createElement(
 													'div',
-													{ className: 'url' },
-													React.createElement(
-														'a',
-														{ href: '"' + place.website + '"' },
-														place.website
-													)
+													{ className: 'duration' },
+													place.duration
 												)
 											);
 										}
@@ -33930,8 +33953,8 @@ module.exports = React.createClass({
 						),
 						React.createElement(
 							CarouselItem,
-							{ className: 'carouselItem ' },
-							React.createElement('div', { className: this.state.bigImgArray[this.state.imgCounter] + ' img1', alt: '900x500' }),
+							{ className: 'carouselItem item2 ' },
+							React.createElement('div', { ref: 'bigImg2', className: this.state.bigImgArray[this.state.imgCounter] + ' img1', alt: '900x500' }),
 							React.createElement(
 								'div',
 								{ id: 'mapHolder2', className: this.state.mapStyle },
@@ -33968,23 +33991,19 @@ module.exports = React.createClass({
 														{ className: 'address' },
 														React.createElement(
 															'a',
-															{ href: '"http://maps.google.com/?q=' + place.address + '"', target: '_blank' },
-															place.address
+															{ href: 'http://maps.google.com/?q=' + place.destination, target: '_blank' },
+															React.createElement('i', { className: 'fa fa-map-marker  fa-2x' })
 														)
 													),
 													React.createElement(
 														'div',
-														{ className: 'phone' },
-														place.phone
+														{ className: 'distance' },
+														place.distance
 													),
 													React.createElement(
 														'div',
-														{ className: 'url' },
-														React.createElement(
-															'a',
-															{ href: '"' + place.website + '"' },
-															place.website
-														)
+														{ className: 'duration' },
+														place.duration
 													)
 												)
 											);
@@ -34027,12 +34046,48 @@ module.exports = React.createClass({
 								React.createElement(
 									'div',
 									{ className: 'mini-address' },
-									place.address
+									React.createElement(
+										'a',
+										{ href: 'http://maps.google.com/?q=' + place.destination, target: '_blank' },
+										React.createElement('i', { className: 'fa fa-map-marker  fa-3x' })
+									)
+								),
+								React.createElement(
+									'div',
+									{ className: 'mini-distance' },
+									place.distance
+								),
+								React.createElement(
+									'div',
+									{ className: 'mini-duration' },
+									place.duration
 								)
 							)
 						)
 					);
 				})
+			),
+			React.createElement(
+				'div',
+				{ ref: 'begin', className: 'locateHolder' },
+				React.createElement(
+					'div',
+					null,
+					React.createElement(
+						'div',
+						{ className: 'locateWrapper' },
+						React.createElement(
+							'p',
+							{ style: pStyle },
+							'Find the nearest Happy Hours Specials!'
+						),
+						React.createElement(
+							'button',
+							{ onClick: this.hideMe, className: 'locateBtn' },
+							'Locate Me'
+						)
+					)
+				)
 			),
 			React.createElement(
 				'div',
@@ -34084,29 +34139,15 @@ module.exports = React.createClass({
 
 // self.state.currentIcon = place._id + 'heart';
 // self.state.restaurantId = place._id;
-
+/*<div className="phone">{place.phone}</div>*/
 // self.state.currentIcon2 = place._id + 'heart2';
 // self.state.restaurantId = place._id;
-/*<div onClick={this.showFav} className="col-sm-2 mob-btn ">
- <span className="fa-stack fa-2x">	
-		<i className="fa fa-circle-thin fa-stack-2x"></i>					  				  		
-	<i className="fa fa-glass fa-stack-1x"></i>
-</span>
-</div>*/
 
 },{"jquery":4,"react":168,"react-bootstrap/lib/Carousel":6,"react-bootstrap/lib/CarouselItem":7}],172:[function(require,module,exports){
 'use strict';
 
 var React = require('react');
 var Restaurant = require('./RestaurantComponent');
-
-// var store = localStorage.getItem('username')
-// console.log('store ', localStorage.getItem('username'))
-// if(store !== 'mona'){
-
-// 	window.location.href = '/#login';
-// }
-// else{
 
 module.exports = React.createClass({
 	displayName: 'exports',
@@ -34125,11 +34166,20 @@ module.exports = React.createClass({
 	},
 	componentWillMount: function componentWillMount() {
 
-		// if(store !== 'mona'){
-
-		// 	this.props.router.navigate('/login', {trigger:true});
-		// }
-		var wpid = navigator.geolocation.watchPosition(this.geoSuccess, this.geoError, this.props);
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(this.geoSuccess);
+			// var wpid = navigator.geolocation.watchPosition(this.geoSuccess, this.geoError, this.props);
+		} else {
+			// Browser doesn't support Geolocation
+			handleNoGeolocation(false);
+		}
+	},
+	handleNoGeolocation: function handleNoGeolocation(errorFlag) {
+		if (errorFlag) {
+			var content = 'Error: The Geolocation service failed.';
+		} else {
+			var content = 'Error: Your browser doesn\'t support geolocation.';
+		}
 	},
 	geoSuccess: function geoSuccess(position) {
 		// console.log('my position ', position.coords.latitude, position.coords.longitude);
@@ -34187,12 +34237,12 @@ module.exports = React.createClass({
 					React.createElement(
 						'p',
 						{ style: pStyle },
-						'Click below to begin!'
+						'Find the nearest Happy Hours Specials!'
 					),
 					React.createElement(
 						'button',
 						{ onClick: this.navigate, className: 'locateBtn', style: button },
-						'Find My Location'
+						'Locate Me'
 					)
 				)
 			)
@@ -34200,7 +34250,7 @@ module.exports = React.createClass({
 	},
 	navigate: function navigate(e) {
 		e.preventDefault();
-		this.props.router.navigate('/user/mona', { trigger: true });
+		this.props.router.navigate('main', { trigger: true });
 	},
 	login: function login(e) {
 		e.preventDefault();
@@ -34255,7 +34305,7 @@ var CarouselItem = require('react-bootstrap/lib/CarouselItem');
 module.exports = React.createClass({
 	displayName: 'exports',
 
-	getInitialState: function getInitialState() {
+	getInitialState: function getInitialState(places) {
 
 		return {
 			places: [],
@@ -34264,7 +34314,8 @@ module.exports = React.createClass({
 			nearby: [],
 			num: null,
 			currentPlace: null,
-			dist: []
+			dist: [],
+			array: []
 		};
 	},
 	componentWillMount: function componentWillMount() {
@@ -34276,53 +34327,67 @@ module.exports = React.createClass({
 	rad: function rad(x) {
 		return x * Math.PI / 180;
 	},
-	distance: function distance(p1Lat, p1Long, p2Lat, p2Long, place) {
+	distance: function distance(p1Lat, p1Long, p2Lat, p2Long, place, counter) {
 		var origin1 = new google.maps.LatLng(p1Lat, p1Long);
 		var destinationA = new google.maps.LatLng(p2Lat, p2Long);
 		var service = new google.maps.DistanceMatrixService();
-
+		var result = [];
 		var self = this;
-		// service.getDistanceMatrix(
-		//   {
-		//     origins: [origin1],
-		//     destinations: [destinationA],
-		//     travelMode: google.maps.TravelMode.DRIVING,
-		//     unitSystem: google.maps.UnitSystem.IMPERIAL,
-		//     avoidHighways: false,
-		//     avoidTolls: false
-		//   },
-		//   this.callback);
+		var counter2 = counter;
 
-		var num = google.maps.geometry.spherical.computeDistanceBetween(origin1, destinationA);
-		// console.log(Math.round( num * 10) / 10);
-		num *= 0.000621371192;
-		num = Math.round(num * 10) / 10;
-		console.log(num);
-		place.distance = num;
-		// console.log(place.address +' ' +place.distance)
+		service.getDistanceMatrix({
+			origins: [origin1],
+			destinations: [destinationA],
+			travelMode: google.maps.TravelMode.DRIVING,
+			unitSystem: google.maps.UnitSystem.IMPERIAL,
+			avoidHighways: false,
+			avoidTolls: false
+		}, function (response, status, self) {
 
-		return num;
-	},
-	callback: function callback(response, status) {
-
-		if (status != google.maps.DistanceMatrixStatus.OK) {
-			alert('Error was: ' + status);
-		} else {
-			var origins = response.originAddresses;
-			var destinations = response.destinationAddresses;
-
-			// console.log('origin ', origins);
-			// console.log(origins+ ' to ' + destinations + ' is ' + response.rows[0].elements[0].distance.text + ' and will take ' + response.rows[0].elements[0].duration.text)
-			// console.log(response.rows[0].elements[0].distance.text);
-			if (response.rows[0].elements[0].distance !== undefined) {
-				var newNum = parseInt(response.rows[0].elements[0].distance.text);
-
-				console.log(destinations + ' ' + response.rows[0].elements[0].distance.text);
-				if (newNum <= 5 && newNum !== undefined) {}
+			if (status != google.maps.DistanceMatrixStatus.OK) {
+				alert('Error was: ' + status);
+			} else {
+				if (response !== null && response.rows[0].elements[0].distance !== undefined) {
+					place.origin = response.originAddresses[0];
+					place.destination = response.destinationAddresses[0];
+					place.distance = response.rows[0].elements[0].distance.text + 'les';
+					place.duration = response.rows[0].elements[0].duration.text + ' away';
+					var num = parseFloat(place.distance);
+					if (num < 5) {
+						addRender(place);
+					}
+				}
 			}
+			if (counter === place.arrayLength - 1) {}
+
+			// console.log(response.rows[0].elements[0].distance.text)
+		});
+
+		function addRender(place) {
+
+			self.state.nearby.push(place);
+			// console.log(self.state.nearby);
+			// self.render(self.state.nearby)
+
+			self.check(self.state.nearby);
 		}
 
+		// var num = google.maps.geometry.spherical.computeDistanceBetween(origin1, destinationA);
+		// 	// console.log(Math.round( num * 10) / 10);
+		// 	num *= 0.000621371192;
+		// 	num = Math.round( num * 10) / 10;
+		// 	 console.log(num)
+		//  place.distance = num;
+		// // console.log(place.address +' ' +place.distance)
+
 		// return num
+	},
+
+	check: function check(places) {
+		if (places !== undefined) {
+			this.state.nearby = places;
+		}
+		console.log(this.state.nearby);
 	},
 	haversine: function haversine(p1Lat, p1Long, p2Lat, p2Long) {
 
@@ -34347,10 +34412,12 @@ module.exports = React.createClass({
 		if (this.state.nearby) {
 			this.state.nearby = [];
 		}
-		this.state.places.map(function (place) {
+		this.state.places.map(function (place, i) {
 			self.state.currentPlace = place;
+			place.index = i;
+			place.arrayLength = self.state.places.length;
 
-			if (self.distance(self.props.lat, self.props.lng, place.latitude, place.longitude, place) <= 4) {
+			if (self.distance(self.props.lat, self.props.lng, place.latitude, place.longitude, place, i) <= 4) {
 				self.state.nearby.push(place);
 			}
 			//
@@ -34361,22 +34428,24 @@ module.exports = React.createClass({
 			// }		
 		});
 	},
-	render: function render() {
+	render: function render(places) {
+		// console.log(places)
 		self = this;
-		this.nearbyPlaces();
 		var style = {
 			color: 'blue'
 		};
+		this.nearbyPlaces();
+
 		// console.log('dis ' +this.haversine(30.26654,-97.738194, this.state.lat, this.state.lng));
 		// this.nearbyPlaces();
 		// console.log(Boolean(this.state.nearby))
 		// console.log('places ', this.state.places)
 		// console.log('nearby ', this.state.nearby)
-		console.log(this.props);
+		// console.log(this.props)
 		return React.createElement(
 			'div',
 			null,
-			React.createElement(CarouselComponent, { lat: this.props.lat, lng: this.props.lng, router: this.props.router, places: this.state.places, nearby: this.state.nearby, counter: 0, haversine: this.haversine })
+			React.createElement(CarouselComponent, { callback: this.nearbyPlaces, lat: this.props.lat, lng: this.props.lng, router: this.props.router, places: this.state.places, nearby: this.state.nearby, counter: 0, haversine: this.haversine })
 		);
 	},
 	componentDidUpdate: function componentDidUpdate() {},
@@ -34395,13 +34464,6 @@ module.exports = React.createClass({
 	}
 
 });
-
-// console.log(response)
-
-// place.distance = response.rows[0].elements[0].distance.text
-// place.duration = response.rows[0].elements[0].duration.text
-//   	self.state.nearby.push(self.state.currentPlace);
-// console.log(newNum)
 
 },{"../collections/RestaurantCollection":169,"../components/CarouselComponent":171,"backbone":1,"react":168,"react-bootstrap/lib/Carousel":6,"react-bootstrap/lib/CarouselItem":7}],175:[function(require,module,exports){
 'use strict';
@@ -34445,7 +34507,7 @@ module.exports = React.createClass({
 					React.createElement(
 						'h1',
 						null,
-						'Happy Hour!'
+						'Happy Hour'
 					),
 					React.createElement(
 						'span',
@@ -34946,12 +35008,12 @@ var el = document.getElementById('container');
 var App = Backbone.Router.extend({
 	routes: {
 		'': 'home',
-		'user/:user': 'user',
+		'main': 'main',
 		'login': 'login'
 
 	},
 
-	home: function home() {
+	main: function main() {
 		console.log('home');
 		React.render(React.createElement(
 			'div',
@@ -34960,7 +35022,7 @@ var App = Backbone.Router.extend({
 			React.createElement(LoginComponent, { router: myRouter })
 		), el);
 	},
-	user: function user(_user) {
+	home: function home() {
 		React.render(React.createElement(
 			'div',
 			null,

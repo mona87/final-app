@@ -15,12 +15,12 @@ var el = document.getElementById('container');
 var App = Backbone.Router.extend({
 	routes:{
 		'':  	'home',
-		'user/:user': 'user',
+		'main': 'main',
 		'login': 'login'
 		
 	},
 
-	home: function(){
+	main: function(){
 		console.log('home');
 		React.render(
 				<div>
@@ -31,7 +31,7 @@ var App = Backbone.Router.extend({
 		)
 	
 	},
-	user: function(user){
+	home: function(){
 	 	React.render(
 	 		<div>
 	 		<User/>

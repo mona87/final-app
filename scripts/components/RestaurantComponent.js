@@ -10,16 +10,17 @@ var CarouselItem = require('react-bootstrap/lib/CarouselItem');
 
 
 module.exports = React.createClass ({
-	getInitialState: function(){
-		
+	getInitialState: function(places){
+
 		return{
 			places: [],
 			lat: this.props.lat,
 			lng: this.props.lng,
-			nearby:[],
+			nearby: [],
 			num: null,
 			currentPlace: null,
-			dist: []
+			dist: [],
+			array: []
 		}
 	},
 	componentWillMount: function(){
@@ -32,69 +33,75 @@ module.exports = React.createClass ({
 	{ 
 		return x * Math.PI / 180 
 	},
-	distance: function(p1Lat, p1Long, p2Lat, p2Long, place){
+	distance: function(p1Lat, p1Long, p2Lat, p2Long, place, counter){
 		 var origin1 = new google.maps.LatLng(p1Lat, p1Long);
 		 var destinationA = new google.maps.LatLng(p2Lat, p2Long);
 		 var service = new google.maps.DistanceMatrixService();
-		 
+		 var result = [];
 		 var self = this;
-		  // service.getDistanceMatrix(
-		  //   {
-		  //     origins: [origin1],
-		  //     destinations: [destinationA],
-		  //     travelMode: google.maps.TravelMode.DRIVING,
-		  //     unitSystem: google.maps.UnitSystem.IMPERIAL,
-		  //     avoidHighways: false,
-		  //     avoidTolls: false
-		  //   }, 
-		  //   this.callback);
-		 	
-
-			var num = google.maps.geometry.spherical.computeDistanceBetween(origin1, destinationA);
-		 	// console.log(Math.round( num * 10) / 10);
-		 	num *= 0.000621371192;
-		 	num = Math.round( num * 10) / 10;
-		 	console.log(num)
-			 place.distance = num;
-			// console.log(place.address +' ' +place.distance)
-
-			return num
-		},
-		callback: function (response, status) {
-			
-			if (status != google.maps.DistanceMatrixStatus.OK) {
-		    	alert('Error was: ' + status);
-		  	}	 
-		  	else 
-		  	{
-			    var origins = response.originAddresses;
-			    var destinations = response.destinationAddresses;
-
-			    // console.log('origin ', origins);
-			    // console.log(origins+ ' to ' + destinations + ' is ' + response.rows[0].elements[0].distance.text + ' and will take ' + response.rows[0].elements[0].duration.text)
-			    // console.log(response.rows[0].elements[0].distance.text);
-			    if(response.rows[0].elements[0].distance !== undefined){
-			    	var newNum = parseInt(response.rows[0].elements[0].distance.text) 
-			    
-			    		console.log(destinations +' '+ response.rows[0].elements[0].distance.text)
-			    		if(newNum <=5 && newNum !== undefined){
-			    				// console.log(response)
-			    			
-			    			// place.distance = response.rows[0].elements[0].distance.text
-			    			// place.duration = response.rows[0].elements[0].duration.text
-			    			//   	self.state.nearby.push(self.state.currentPlace);
-			    			  	// console.log(newNum)
-			    			  	
-			    		}	
-			    	    			
-			     }
+		 var counter2 = counter;
+	
+		  service.getDistanceMatrix(
+		    {
+		      origins: [origin1],
+		      destinations: [destinationA],
+		      travelMode: google.maps.TravelMode.DRIVING,
+		      unitSystem: google.maps.UnitSystem.IMPERIAL,
+		      avoidHighways: false,
+		      avoidTolls: false
+		    }, 
+		    function(response, status, self){
+		   
+		    	if (status != google.maps.DistanceMatrixStatus.OK) {
+		    			alert('Error was: ' + status);
+				  	}	
+				else{
+			  		if(response !== null && response.rows[0].elements[0].distance !== undefined){
+			  			place.origin = response.originAddresses[0];
+			  			place.destination = response.destinationAddresses[0];
+				    	place.distance = response.rows[0].elements[0].distance.text + 'les';
+				    	place.duration = response.rows[0].elements[0].duration.text + ' away';
+				    	var num = parseFloat(place.distance);
+					    	if(num < 5){
+					    		addRender(place);
+					    	}  
+	    				}
+				 	}
+				 	if(counter === place.arrayLength-1){
+				 		
+				 	}
+				 	
 		    
-  			}
-  
-  			// return num
-  		
+		    		// console.log(response.rows[0].elements[0].distance.text)
+		    } );
+
+		  	function addRender(place){
+		  		
+		  		self.state.nearby.push(place)
+		  		// console.log(self.state.nearby);
+		  		// self.render(self.state.nearby)
+
+		  		self.check(self.state.nearby)
+		  	}
+		 		
+		 			
+		 	
+			// var num = google.maps.geometry.spherical.computeDistanceBetween(origin1, destinationA);
+		 // 	// console.log(Math.round( num * 10) / 10);
+		 // 	num *= 0.000621371192;
+		 // 	num = Math.round( num * 10) / 10;
+		 // 	 console.log(num)
+			//  place.distance = num;
+			// // console.log(place.address +' ' +place.distance)
+
+			// return num
+		},
 		
-  		
+	check: function(places){
+			if(places !== undefined){
+				this.state.nearby = places;	
+		}
+			console.log(this.state.nearby)
 	},
 	haversine: function(p1Lat, p1Long, p2Lat, p2Long) {
 
@@ -120,10 +127,12 @@ module.exports = React.createClass ({
 		if(this.state.nearby){
 			this.state.nearby = []
 		}
-		this.state.places.map(function(place){
+		this.state.places.map(function(place, i){
 			self.state.currentPlace = place;
+			place.index = i;
+			place.arrayLength = self.state.places.length;
 
-		if( self.distance( self.props.lat, self.props.lng, place.latitude, place.longitude, place) <=4){
+		if( self.distance( self.props.lat, self.props.lng, place.latitude, place.longitude, place, i) <=4){
 			self.state.nearby.push(place);
 		}
 					// 
@@ -137,26 +146,32 @@ module.exports = React.createClass ({
   		});
 
 	},
-	render: function(){
+	render: function(places){
+		// console.log(places)
 		self = this;
-			this.nearbyPlaces();
 		var style ={
 			color: 'blue'
 		}
+			this.nearbyPlaces();	
+
 			// console.log('dis ' +this.haversine(30.26654,-97.738194, this.state.lat, this.state.lng));
 		// this.nearbyPlaces();
 		// console.log(Boolean(this.state.nearby))
 		// console.log('places ', this.state.places)
 		// console.log('nearby ', this.state.nearby)
-		console.log(this.props)
+		// console.log(this.props)
 		return(
 			<div>
-				<CarouselComponent lat={this.props.lat} lng={this.props.lng}  router={this.props.router} places={this.state.places} nearby={this.state.nearby} counter={0} haversine={this.haversine}/>
+
+				<CarouselComponent callback={this.nearbyPlaces} lat={this.props.lat} lng={this.props.lng}  router={this.props.router} places={this.state.places} nearby={this.state.nearby} counter={0} haversine={this.haversine}/>
+				
 			</div>
 		)
 	},
 	componentDidUpdate: function(){
+
 	
+		
 	},
 	fetchData: function(){
 		self = this

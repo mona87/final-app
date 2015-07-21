@@ -28,6 +28,7 @@ body{
 		display: block;
 		margin: 0 auto;
 		outline: none;
+		box-shadow: 0px 0px 2px black;
 }
 
 .locateBtn:hover{
@@ -38,12 +39,14 @@ body{
 .locateWrapper{
 		min-height: 225px;
 		width: 100%;
-		max-width: 400px;
-		border: 1px solid #630000;
-		margin: 20% auto auto auto;
+		max-width: 600px;
+		/*border: 1px solid black;*/
+		margin: 15% auto auto auto;
 		border-radius: 10px;
-		background-color: #281412;
-		opacity: .9;
+		/*background-color: #21161F;*/
+		/*background-color: rgba(33, 22, 31, 0.4);*/
+		/*background-image: url('https://dl.dropboxusercontent.com/u/53297391/wood.png');*/
+		box-sizing: border-box;
 		padding: 0 20px 0 20px;
 }
 .locateHolder{
@@ -62,6 +65,11 @@ body{
 	
 }
 
+.carousel{
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
 
 .right.carousel-control, .left.carousel-control{
 	display: none
@@ -74,16 +82,13 @@ body{
 }
 .icon-row{
 	/*border: 1px solid white;*/
-	background-color: #21161F;
-	/*background:
-radial-gradient(black 15%, transparent 16%) 0 0,
-radial-gradient(black 15%, transparent 16%) 8px 8px,
-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
-radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
-background-color:#21161F;*/
+	/*background-color: #21161F;*/
+	
+
 	background-image: url('https://dl.dropboxusercontent.com/u/53297391/wood.png');
 /*background-size:16px 16px;*/
 	position: fixed;
+	opacity: .9;
 	bottom:0;
 	/*height: 50px;*/
 	box-shadow: 0px 0px 5px gray;
@@ -166,8 +171,10 @@ background-color:#21161F;*/
 	color: #CB2A18;
 	/*float: left;*/
 	margin-top: 20px;
+	margin-bottom: 20px;
 	font-size: 23px;
-	font-family: 'Leckerli One', cursive;
+	font-family: 'Courgette', cursive;
+	/*font-family: 'Leckerli One', cursive;*/
 	/*display: block;*/
 
 }
@@ -175,6 +182,9 @@ background-color:#21161F;*/
 	overflow: hidden;
 }
 
+.carouselMain{
+	/*display: none;*/
+}
 
 .place{
 	clear: both;
@@ -188,10 +198,10 @@ background-color:#21161F;*/
 	font-size: 1.6rem;
 	padding: 0px 20px 0px 20px;
 	float: left;
-	min-height: 300px;
+	min-height: 230px;
 	background-color: #F0EDCA;
 	color: #21161F;
-
+	position: relative;
 	border-radius: 5px;
 	box-sizing: border-box;
 	/*border: 1px solid red;*/
@@ -211,21 +221,11 @@ background-color:#21161F;*/
 	min-height: 1px;
 	/*max-width: 1100px;*/
 	box-sizing: border-box;
-	/*  -webkit-transition: opacity .4s; /*adjust timing here */
-     /*    -moz-transition: opacity .4s;
-           -o-transition: opacity .4s;
-              transition: opacity .4s;*/
-	/*width: 100%;*/
+
 }
 
 .row-color{
-	/*background-color: #F7F7F7;*/
-	/*background: url('https://raw.githubusercontent.com/TIY-Austin-Front-End-Engineering/jquery-login/master/bg-login-top.png') repeat ;*/
-/*	position: absolute:
-	top:0;
-	bottom: 0;
-	left: 0;
-	right: 0;*/
+
 }
 
 
@@ -255,53 +255,30 @@ background-color:#21161F;*/
 .header{
 	background-color: #940A0A;
 	color: white;
+	opacity: .9;
 	/*background-image: url('http://wallpaperswa.com/thumbnails/detail/20120914/beers%20alcohol%20drinks%201620x1080%20wallpaper_wallpaperswa.com_20.jpg');
 	background-size: cover;*/
 	height: 50px;
-	background:
+	background: rgba(169,3,41,1);
+background: -moz-linear-gradient(top, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(169,3,41,1)), color-stop(44%, rgba(143,2,34,1)), color-stop(100%, rgba(109,0,25,1)));
+background: -webkit-linear-gradient(top, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+background: -o-linear-gradient(top, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+background: -ms-linear-gradient(top, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+background: linear-gradient(to bottom, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019', GradientType=0 );
 
-	radial-gradient(hsl(0, 100%, 27%) 4%, hsl(0, 100%, 18%) 9%, hsla(0, 100%, 20%, 0) 9%) 0 0,
-	radial-gradient(hsl(0, 100%, 27%) 4%, hsl(0, 100%, 18%) 8%, hsla(0, 100%, 20%, 0) 10%) 50px 50px,
-	radial-gradient(hsla(0, 100%, 30%, 0.8) 20%, hsla(0, 100%, 20%, 0)) 50px 0,
-	radial-gradient(hsla(0, 100%, 30%, 0.8) 20%, hsla(0, 100%, 20%, 0)) 0 50px,
-	radial-gradient(hsla(0, 100%, 20%, 1) 35%, hsla(0, 100%, 20%, 0) 60%) 50px 0,
-	radial-gradient(hsla(0, 100%, 20%, 1) 35%, hsla(0, 100%, 20%, 0) 60%) 100px 50px,
-	radial-gradient(hsla(0, 100%, 15%, 0.7), hsla(0, 100%, 20%, 0)) 0 0,
-	radial-gradient(hsla(0, 100%, 15%, 0.7), hsla(0, 100%, 20%, 0)) 50px 50px,
-	linear-gradient(45deg, hsla(0, 100%, 20%, 0) 49%, hsla(0, 100%, 0%, 1) 50%, hsla(0, 100%, 20%, 0) 70%) 0 0,
-	linear-gradient(-45deg, hsla(0, 100%, 20%, 0) 49%, hsla(0, 100%, 0%, 1) 50%, hsla(0, 100%, 20%, 0) 70%) 0 0;
-	background-color: #940A0A; 
 	background-size: 100px 100px;
 	box-shadow: 0px 0px 5px gray;
 	position: fixed;
 	top: 0;
 	width:100%;
 	z-index: 1;
-
-
-/*background-color: rgba(128,0,0,1);
-  background-image:
-    linear-gradient(45deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 49%, rgba(255,0,0,0.5) 49%, rgba(255,0,0,0.5) 51%, rgba(0,0,0,0) 51%, rgba(0,0,0,0) 100%),
-    linear-gradient(-45deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 49%, rgba(255,0,0,0.5) 49%, rgba(255,0,0,0.5) 51%, rgba(0,0,0,0) 51%, rgba(0,0,0,0) 100%),
-    linear-gradient(45deg, rgba(64,0,0,1) 0%, rgba(64,0,0,1) 25%, rgba(128,0,0,0) 25%, rgba(128,0,0,0) 75%, rgba(64,0,0,1) 75%, rgba(64,0,0,1) 100%),
-    linear-gradient(-45deg, rgba(64,0,0,1) 0%, rgba(64,0,0,1) 25%, rgba(128,0,0,0) 25%, rgba(128,0,0,0) 75%, rgba(64,0,0,1) 75%, rgba(64,0,0,1) 100%);
-  background-size: 100px 100px;*/
-
-
-/*background: -moz-linear-gradient(top,  #a90329 0%, #8f0222 44%, #6d0019 100%);
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a90329), color-stop(44%,#8f0222), color-stop(100%,#6d0019));
-background: -webkit-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%);
-background: -o-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%);
-background: -ms-linear-gradient(top,  #a90329 0%,#8f0222 44%,#6d0019 100%);
-background: linear-gradient(to bottom,  #a90329 0%,#8f0222 44%,#6d0019 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019',GradientType=0 );*/
-
-
 	/*height: 100px;*/
 }
 
 .header >h1{
-	font-family: 'Leckerli One', cursive;
+
 	font-size: 30px;
 	/*margin-left: 50px;*/
 	margin: 7px auto auto auto;
@@ -340,8 +317,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 	display: block;
 	
 	/*margin: 10px auto 10px auto;*/
-
-	
 }
 
 .fa-stack {
@@ -352,6 +327,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 
 }
 
+
+
 .street{
 	display: none;
 }
@@ -359,7 +336,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 .fa-hand-o-right, .fa-list-alt, .fa-street-view, .fa-glass, .fa-hand-o-left{
 	margin-left: 4px;
 
+}
 
+.fa-map-marker{
+	color: #CB2A18;
 }
 
 .fa-heart{
@@ -383,7 +363,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 } 
 
 .mob-btn:hover{
-	background-color: #67C8C8;
+	background-color: rgba(255,255,255,.7);
+
 }
 
 .slider{
@@ -397,7 +378,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 
 .list-holder{
 	margin-top: 75px;
-	margin-bottom: 75px;
+	margin-bottom: 40px;
 }
 
 .info-wrapper{
@@ -476,7 +457,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 
 .mini-text{
 	width: 100%;
-	/*min-height: 150px;*/
+	min-height: 150px;
 	/*margin: 20px auto 20px auto;*/
 	font-size: 1.2rem;
 	padding: 0px 20px 0px 20px;
@@ -487,6 +468,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 	/*border-radius: 5px;*/
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
+	position: relative;
 	box-sizing: border-box;
 }
 
@@ -498,21 +480,72 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 .mini-rest{
 	margin-top: 10px;
 	font-size: 2rem;
-	font-family: 'Leckerli One', cursive;
+	margin-bottom: 10px;
+	font-family: 'Courgette', cursive;
+	/*font-family: 'Leckerli One', cursive;*/
 	color: #CB2A18;
 }
 
 .mini-details{
-		font-size: 1.5rem;
+		font-size: 1.3rem;
 		margin-bottom: 10px;
 }
-
+.mini-address{
+	/*float: right;*/
+	color: #E89633;
+	position: absolute;
+ 	 bottom: 5px;
+  	right: 10px;
+}
+.mini-distance{
+	font-size: 1.5rem;
+	padding-left:20px;
+	padding-right:20px;
+	margin-top: 10px;
+	float:right;
+	font-style: italic;
+	color: #75A267;
+	 position: absolute;
+  	bottom: 5px;
+  	right: 30px;
+}
+.mini-duration{
+	font-size: 1.5rem;
+	margin-top: 10px;
+	font-style: italic;
+	color: #75A267;
+	float: right;
+	position: absolute;
+  	bottom: 5px;
+	
+}
 .details{
 	margin-bottom: 10px;
 }
-.address, .phone {
+.distance{
+		float: left;
+		padding-right: 20px;
+		font-style: italic;
+		color: #75A267;
+		position: absolute;
+		bottom: 10px;
+		left: 20px;
+}
+.duration{
+		font-style: italic;
+		color: #75A267;
+		position: absolute;
+		bottom: 10px;
+		right: 75px;
+	
+}
+.address {
 	margin-top: 3px;
-	font-size: 1.4rem;
+	font-size: 2.5rem;
+	margin-bottom: 10px;
+	position: absolute;
+	bottom: 0;
+	right: 20px;
 }
 
 .url{
@@ -524,9 +557,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 	padding-right: 0;*/
 }
 
-@media (min-width: 700px) {
+@media (min-width: 768px) {
 	body{
-		background: url('http://lapolenteria.com/wp-content/uploads/2015/03/wine.jpg');
+		/*background: url('http://lapolenteria.com/wp-content/uploads/2015/03/wine.jpg');*/
+		background: url('https://dl.dropboxusercontent.com/u/53297391/wine.jpg');
 		background-size: cover;
 	}
 	.imgHolder, .imgHolder2, #mapHolder, #mapHolder2, .bigImg2, .bigImg1, .bigImg3, .bigImg4, .bigImg5, .bigImg6, .bigImg7, .bigImg8, .bigImg9, .bigImg10 {
@@ -539,7 +573,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 	.textHolder{
 		max-width: 62%;
 		font-size: 1.9rem;
-		padding: 0px 40px 0px 40px;
+		padding: 0px 40px 0px 40px;	
+		min-height: 300px;
+
 	}
 
 	.mob-btn{
@@ -551,12 +587,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 		/*float:right;*/
 	}
 	.header{
-		height: 100px;
+		height: 50px;
+		position: static;
+		box-shadow: none;
 	}
 	.header>h1{
-		font-size: 50px;
-		margin-top: 20px;
-		margin-left: 20px;
+		font-size:35px;
+		margin: 5px 0 0 20px;
+		text-align: left;
+		/*margin-left: 20px;*/
 	}
 	.rest-name{
 		font-size: 35px;
@@ -564,6 +603,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 		/*float:left;*/
 	}
 	.icon-row{
+		background: rgba(33, 22, 31, 0.7);
+		opacity: 1;
 		/*height: 60px;	*/
 	}
 	.street{
@@ -571,14 +612,15 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 	}
 	.carousel-inner{
 		width: 100%;
-		margin-top: 100px;
+		/*margin-top: 100px;*/
 	}
 	.details{
 		margin-bottom: 10px;
 	}
-	.address, .phone {
-		margin-top: 3px;
-		font-size: 1.8rem;
+
+	.distance, .duration {
+	
+		font-size: 2rem;
 	}
 
 	.url{
@@ -586,7 +628,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 		font-size: 1.8rem;
 	}
 	.list-holder{
-		margin-top: 125px;
+		margin-top: 50px;
 		margin-bottom: 100px;
 	}
 	.mini-image, .mini-image2, .mini-image3, .mini-image4, .mini-image5, .mini-image6, .mini-image7, .mini-image8, .mini-image9, .mini-image10{
@@ -596,10 +638,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 		border-radius: 5px;
 
 	}
+	.carouselItem{
+		background-color: none;
+		background-image: url('https://dl.dropboxusercontent.com/u/53297391/wood.png');
+		box-shadow: none;
+
+		border: 0;
+	}
+	.mini-holder {
+		background-image: url('https://dl.dropboxusercontent.com/u/53297391/wood.png');
+		border: 0;
+		box-shadow: none;
+	}
+	.fa-hand-o-left, .fa-circle-thin, .fa-street-view, .fa-hand-o-right,  .fa-list-alt{
+		color: white;
+	}
 	.mini-text{
 		width: 63%;
 		min-height: 150px;
 		border-radius: 5px;
+	}
+	.mob-btn:hover{
+		background-color: rgba(117,162,103,.7);
+
 	}
 
 }

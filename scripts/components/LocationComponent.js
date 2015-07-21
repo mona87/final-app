@@ -1,16 +1,6 @@
 var React = require('react');
 var Restaurant = require('./RestaurantComponent');
 
-
-// var store = localStorage.getItem('username')
-// console.log('store ', localStorage.getItem('username'))
-// if(store !== 'mona'){
-	
-// 	window.location.href = '/#login';
-// }
-// else{
-
-
 module.exports = React.createClass({
 	getDefaultProps: function(){
 		return {
@@ -27,11 +17,21 @@ module.exports = React.createClass({
 	},
 	componentWillMount: function(){
 
-		// if(store !== 'mona'){
-	
-		// 	this.props.router.navigate('/login', {trigger:true});
-		// }
-		var wpid = navigator.geolocation.watchPosition(this.geoSuccess, this.geoError, this.props);
+  		if(navigator.geolocation) {
+  			navigator.geolocation.getCurrentPosition(this.geoSuccess);
+			// var wpid = navigator.geolocation.watchPosition(this.geoSuccess, this.geoError, this.props);
+		}
+		else{
+			 // Browser doesn't support Geolocation
+   				 handleNoGeolocation(false);
+  			}
+	},
+	handleNoGeolocation: function(errorFlag){
+		  if (errorFlag) {
+   				 var content = 'Error: The Geolocation service failed.';
+  			} else {
+    			var content = 'Error: Your browser doesn\'t support geolocation.';
+  			}
 	},
 	geoSuccess: function(position){
 		  // console.log('my position ', position.coords.latitude, position.coords.longitude);

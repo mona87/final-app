@@ -42,8 +42,8 @@ module.exports = React.createClass({
 				</div>*/}
 				<div >
 					<div className="locateWrapper" >
-						<p style={pStyle}>Click below to begin!</p>
-						<button onClick={this.navigate} className="locateBtn" style={button}>Find My Location</button>
+						 <p style={pStyle}>Find the nearest Happy Hours Specials!</p>
+						<button onClick={this.navigate} className="locateBtn" style={button}>Locate Me</button>
 					</div>
 				</div>
 			</div>
@@ -51,7 +51,7 @@ module.exports = React.createClass({
 	},
 	navigate: function(e){
 		e.preventDefault();
-		this.props.router.navigate('/user/mona',  {trigger: true});
+		this.props.router.navigate('main',  {trigger: true});
 	},
 	login: function(e){
 		e.preventDefault();

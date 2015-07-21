@@ -27,7 +27,9 @@ module.exports = React.createClass({
 			  markers: null,
 			  imgArray: ['mini-image','mini-image2','mini-image3', 'mini-image4', 'mini-image5', 'mini-image6', 'mini-image7', 'mini-image8', 'mini-image9', 'mini-image10'],
 			  bigImgArray: [ 'bigImg1','bigImg2', 'bigImg3', 'bigImg4', 'bigImg5', 'bigImg6', 'bigImg7', 'bigImg8', 'bigImg9', 'bigImg10'],
-			  imgCounter: 0
+			  imgCounter: 0,
+			  length: null,
+			  hide: 'none'
 			};
 		  },
 		  handleSelect: function(selectedIndex, selectedDirection) {
@@ -64,10 +66,7 @@ module.exports = React.createClass({
 				// this.slideEnd(selectedIndex, selectedDirection)
 		  },
 		  prev: function(){
-		  				
-
-
-		  		console.log('count ',this.state.bigImgArray[this.state.imgCounter]);
+		  	console.log('count ',this.state.bigImgArray[this.state.imgCounter]);
 		  	if (this.state.index === 0 ){
 		  		this.state.index = 1;
 		  			 this.state.imgCounter++
@@ -88,38 +87,58 @@ module.exports = React.createClass({
 		  	
 		  },
 		  next: function(){
-
-		  	if (this.state.index === 0 ){
-		  		
-		  	
+		  	var self = this;
+		  	if (this.state.index === 0 ){	  	
+		  			 // $(this.refs.bigImg.getDOMNode()).fadeOut('slow');
+		  		// 	  $(this.refs.bigImg.getDOMNode()).fadeToggle('slow');	
+		  		// $(this.refs.bigImg2.getDOMNode()).fadeToggle('slow');
 		  		this.state.index = 1
 		  		this.handleSelect(this.state.index, 'next');
 		  	}else if(this.state.index === 1 ){
-		  		this.state.index = 0;
+		  			
+		  		 // $(this.refs.bigImg.getDOMNode()).fadeToggle('fast', function(){
+
+		  		 // });	
+		  		// $(this.refs.bigImg2.getDOMNode()).fadeToggle('fast');
+		  				this.state.index = 0;
 		  		this.handleSelect(this.state.index, 'next');
+		  		//  $('.item1').fadeOut('fast', function(){
+		  		// 	 	self.state.imgCounter++;
+		  		// });
 		  	}
-		  	
+
 		  	if(this.state.imgCounter >= this.state.bigImgArray.length-1){
-		  			this.state.imgCounter = 0
+		  			 // $(this.refs.bigImg.getDOMNode()).fadeIn('fast', function(){
+		  			 // 	// self.state.imgCounter = 0;
+		  			 // });
+		  			 // $(this.refs.bigImg2.getDOMNode()).fadeIn('fast');
+		  			 	self.state.imgCounter = 0;
+		  			
 		  		}else{
-		  			this.state.imgCounter++;
-		  		}
-		  		
-		  	
+		  			 // $(this.refs.bigImg.getDOMNode()).fadeIn('fast', function(){
+		  			 // 	self.state.imgCounter++;
+		  			 // });
+		  			 // $(this.refs.bigImg2.getDOMNode()).fadeIn('fast');
+		  			self.state.imgCounter++;
+		  				
+		  		}		  	
+		  },
+		  shouldComponentUpdate: function(props){
+
+		  		return this.props.nearby
 		  },
 		  componentDidUpdate: function(){
 		 	 // this.initialize();  
+	
+		 	 console.log('props ', this.props.nearby)
 		  	google.maps.event.addDomListener(window, 'load', this.initialize());	
-		  	this.state.username = localStorage.getItem('username');
-			this.state.userId = localStorage.getItem('id');
+			
 			this.state.mapId = this.state.mapId; 
 		  },
 		  slideEnd: function(selectedIndex, selectedDirection){
 		  		console.log('animation done');
 		  		// this.initialize();
-		  		 this.marker();	
-		  		 return true
-						
+		  		 this.marker();							
 		  },
 		  initialize: function() {
 
@@ -173,20 +192,8 @@ module.exports = React.createClass({
 				  	}
 
 				  var image = 'http://tbs-va.com/wp-content/uploads/2013/05/Manhattan-Perfect-cocktail.png'
-				  // var marker = new google.maps.Marker({
-				  //     position: myLatlng,
-				  //     map: map
-				     
-				     
-				  // });
 					this.marker();
-				  // var marker2 = new google.maps.Marker({
-				  //     position: myLatlng,
-				  //     map: map2
-				    
-				     
-				  // });
-					
+
 					map.mapTypes.set('map_style', styledMap);
 		  			map.setMapTypeId('map_style');
 		  			map2.mapTypes.set('map_style', styledMap);
@@ -203,8 +210,8 @@ module.exports = React.createClass({
 		  		if($(this.refs.carousel.getDOMNode()).css('display') === 'none'){
 						
 						// $(this.refs.list.getDOMNode()).css('display','none');
-						$(self.refs.list.getDOMNode()).fadeOut('fast', function(){
-								$(self.refs.carousel.getDOMNode()).fadeToggle('fast');
+						$(self.refs.list.getDOMNode()).slideUp('slow', function(){
+								$(self.refs.carousel.getDOMNode()).fadeToggle('slow');
 						})
 					
 						console.log('true');
@@ -229,10 +236,7 @@ module.exports = React.createClass({
 		  				this.state.markers.setMap(null);
 		  			}
 		  		
-		  		  var myLatlng = new google.maps.LatLng(this.state.lat,this.state.lng);
-		  		  // console.log(myLatlng);
-		  		  // console.log(this.state.lat, this.state.lng);
-
+		  		  var myLatlng = new google.maps.LatLng(this.state.lat,this.state.lng);		
 		  		  var marker = new google.maps.Marker({
 				      position: myLatlng,
 				      map: this.state.map
@@ -275,8 +279,16 @@ module.exports = React.createClass({
 		  		$('.img1').show();
 		  		$('.mapStyle').hide();
 		  },
+		  hideMe: function(){
+		  	$(this.refs.begin.getDOMNode()).fadeOut('fast');
+		  		this.setState({
+		  			hide: 'block'
+		  		})
+		  			$('.carouselMain').fadeIn('slow');
+		  },
 		  render: function() {
 		  	
+		  		// $('.carouselMain').css('display', this.state.hide)
 		   var self = this;
 		   var style ={
 			color: 'blue'
@@ -291,15 +303,26 @@ module.exports = React.createClass({
 				padding: '0'
 			}
 			var counter = 0;
-			console.log('props ',this.props.nearby)
+			var pStyle ={
+				color: 'white',
+				fontSize: '20px',
+				textAlign: 'center',
+				margin: '30px 0 20px 0'
+			}
+			var hideCarousel ={
+				display: this.state.hide
+
+			}
 			return (
 				<div>
+				
+			
 			<div ref='carousel' className="row row-color">
 				<div className="col-sm-12 ">
 				
-				  <Carousel  className='carouselMain' onSlideEnd={this.slideEnd}  activeIndex={this.state.index} direction={this.state.direction} >
-				   <CarouselItem className="carouselItem ">				  
-				   <div className={this.state.bigImgArray[this.state.imgCounter] + ' img1'} ></div>
+				  <Carousel style={hideCarousel} className='carouselMain' onSlideEnd={this.slideEnd}  activeIndex={this.state.index} direction={this.state.direction} >
+				   <CarouselItem className="carouselItem item1">				  
+				   <div  ref="bigImg"  className={this.state.bigImgArray[this.state.imgCounter] + ' img1'} ></div>
 					 <div id="mapHolder" className={this.state.mapStyle}><div style = {style}  className="map-canvas"></div></div>
 						<div className="textWrapper" >
 							<div className="textHolder" >
@@ -320,9 +343,10 @@ module.exports = React.createClass({
 									  		<i id={place._id+ 'heart'} className="fa fa-heart fa-2x "></i>					  		
 										  	<h1 className="rest-name">{place.restaurant}</h1>				  
 											<div className="details">{place.details}</div>
-											<div className="address"><a href={'"http://maps.google.com/?q='+ place.address+'"'} target="_blank">{place.address}</a></div>
-											<div className="phone">{place.phone}</div>
-											<div className="url"><a href={'"'+place.website+'"'}>{place.website}</a></div>
+											<div className="address"><a href={'http://maps.google.com/?q='+ place.destination} target="_blank"><i className="fa fa-map-marker fa-2x"></i></a></div>
+											{/*<div className="phone">{place.phone}</div>*/}
+											<div className="distance">{place.distance}</div>
+											<div className="duration">{place.duration}</div>
 										</div>
 										
 								  );								
@@ -335,9 +359,9 @@ module.exports = React.createClass({
 					  </div>
 				  </CarouselItem>
 
-				 <CarouselItem className="carouselItem ">
+				 <CarouselItem className="carouselItem item2 ">
 				
-				   <div className={this.state.bigImgArray[this.state.imgCounter] + ' img1'} alt='900x500'></div>
+				   <div  ref="bigImg2" className={this.state.bigImgArray[this.state.imgCounter] + ' img1'} alt='900x500'></div>
 					  <div id="mapHolder2" className={this.state.mapStyle}><div style = {style}  className="map-canvas2"></div></div>
 				
 					  <div className="textWrapper">
@@ -352,9 +376,10 @@ module.exports = React.createClass({
 									  	<i id={place._id+ 'heart2'} className="fa fa-heart fa-2x "></i>	
 									  	<div ><h1 className="rest-name">{place.restaurant}</h1>
 										<div className="details">{place.details}</div>
-										<div className="address"><a href={'"http://maps.google.com/?q='+ place.address+'"'} target="_blank">{place.address}</a></div>
-										<div className="phone">{place.phone}</div>
-										<div className="url"><a href={'"'+place.website+'"'}>{place.website}</a></div>
+										<div className="address"><a href={'http://maps.google.com/?q='+ place.destination} target="_blank"><i className="fa fa-map-marker  fa-2x"></i></a></div>
+											<div className="distance">{place.distance}</div>
+											<div className="duration">{place.duration}</div>
+										
 										</div>
 									</div>
 									
@@ -367,6 +392,7 @@ module.exports = React.createClass({
 				  </Carousel>
 				  </div>
 			  </div>
+			  
 			<div style={hide}  ref='list' className="row list-holder">
 			  	  {this.props.nearby.map(function(place, i){
 			  	  	 counter++;
@@ -380,7 +406,9 @@ module.exports = React.createClass({
 						  		<div className="mini-text">
 						  			<div className="mini-rest">{place.restaurant}</div>
 						  			<div className="mini-details">{place.details}</div>
-						  			<div className="mini-address">{place.address}</div>
+						  			<div className="mini-address"><a href={'http://maps.google.com/?q='+ place.destination} target="_blank"><i className="fa fa-map-marker  fa-3x"></i></a></div>
+									<div className="mini-distance">{place.distance}</div>
+									<div className="mini-duration">{place.duration}</div>
 						  		</div>
 						  	</div>
 						  </div>
@@ -388,6 +416,14 @@ module.exports = React.createClass({
 					}
 				)}
 			  	  </div>
+			  	  	<div ref="begin" className="locateHolder">
+						<div >
+							<div className="locateWrapper" >
+								 <p style={pStyle}>Find the nearest Happy Hours Specials!</p>
+								<button onClick={this.hideMe} className="locateBtn">Locate Me</button>
+							</div>
+						</div>
+					</div>
 			  <div className="row icon-row">
 			  	<div onClick={this.prev} className="col-sm-2 mob-btn ">	
 			  	  	<span className="fa-stack fa-2x">	
@@ -395,12 +431,6 @@ module.exports = React.createClass({
 			  			<i className="fa fa-hand-o-left fa-stack-1x"></i>			
 			  		</span>  				  		
 			  	</div>
-			  	{/*<div onClick={this.showFav} className="col-sm-2 mob-btn ">
-			  		 <span className="fa-stack fa-2x">	
-			  	 		<i className="fa fa-circle-thin fa-stack-2x"></i>					  				  		
-			  			<i className="fa fa-glass fa-stack-1x"></i>
-			  		</span>
-			  	</div>*/}
 			  	<div onClick={this.map}className="col-sm-2 mob-btn street">		
 			  	  	 <span className="fa-stack fa-2x">	
 			  	 		<i className="fa fa-circle-thin fa-stack-2x"></i>		  		
