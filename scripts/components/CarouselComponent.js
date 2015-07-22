@@ -271,16 +271,19 @@ module.exports = React.createClass({
 		  			$('.carouselMain').fadeIn('slow');
 		  },
 		  componentDidMount: function(){
+				var self=this;
+				window.addEventListener('load', function(){
+					self.state.interval = window.setInterval(self.timer, 1000);
+				})
 				
-				this.state.interval = setInterval(this.timer, 1000);	
 				// console.log('true');
 				
 		  },
 		  timer: function(){
 					this.state.timer+=3;
 					if(this.state.timer >= 30){
-						clearInterval(this.state.interval)
-						// console.log('interval cleared');
+						window.clearInterval(this.state.interval)
+						console.log('interval cleared');
 					}
 						this.setState({
 							timer: this.state.timer

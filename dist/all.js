@@ -33838,14 +33838,16 @@ module.exports = React.createClass({
 		$('.carouselMain').fadeIn('slow');
 	},
 	componentDidMount: function componentDidMount() {
-
-		this.state.interval = setInterval(this.timer, 1000);
-		// console.log('true');
+		var self = this;
+		window.addEventListener('load', function () {
+			self.state.interval = window.setInterval(self.timer, 1000);
+		});
 	},
 	timer: function timer() {
 		this.state.timer += 3;
 		if (this.state.timer >= 30) {
-			clearInterval(this.state.interval);
+			window.clearInterval(this.state.interval);
+			console.log('interval cleared');
 		}
 		this.setState({
 			timer: this.state.timer
@@ -34133,7 +34135,7 @@ module.exports = React.createClass({
 });
 // console.log('random ', this.state.random);
 // 	console.log('random2 ', this.state.random2);
-// console.log('interval cleared');
+// console.log('true');
 
 // self.state.currentIcon = place._id + 'heart';
 // self.state.restaurantId = place._id;
