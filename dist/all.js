@@ -33840,13 +33840,13 @@ module.exports = React.createClass({
 	componentDidMount: function componentDidMount() {
 		var self = this;
 		window.addEventListener('load', function () {
-			self.state.interval = window.setInterval(self.timer, 1000);
+			self.state.interval = setInterval(self.timer, 1000);
 		});
 	},
 	timer: function timer() {
 		this.state.timer += 3;
 		if (this.state.timer >= 30) {
-			window.clearInterval(this.state.interval);
+			clearInterval(this.state.interval);
 			console.log('interval cleared');
 		}
 		this.setState({
