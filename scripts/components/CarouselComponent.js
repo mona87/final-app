@@ -280,10 +280,10 @@ module.exports = React.createClass({
 				
 		  },
 		  timer: function(){
-					this.state.timer+=3;
-					if(this.state.timer >= 30){
+					this.state.timer+=1;
+					if(this.state.timer >= 5){
 						clearInterval(this.state.interval)
-						console.log('interval cleared');
+					
 					}
 						this.setState({
 							timer: this.state.timer
