@@ -272,14 +272,14 @@ module.exports = React.createClass({
 		  },
 		  componentDidMount: function(){
 				
-				this.state.interval = window.setInterval(this.timer, 3000);	
+				this.state.interval = setInterval(this.timer, 1000);	
 				// console.log('true');
 				
 		  },
 		  timer: function(){
 					this.state.timer+=3;
 					if(this.state.timer >= 30){
-						window.clearInterval(this.state.interval)
+						clearInterval(this.state.interval)
 						// console.log('interval cleared');
 					}
 						this.setState({
