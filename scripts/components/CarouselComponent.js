@@ -272,7 +272,7 @@ module.exports = React.createClass({
 		  },
 		  componentDidMount: function(){
 				
-				this.state.interval = window.setInterval(this.timer, 1000);	
+				this.state.interval = window.setInterval(this.timer, 3000);	
 				// console.log('true');
 				
 		  },
