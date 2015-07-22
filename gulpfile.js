@@ -25,7 +25,7 @@ gulp.task('js', bundle); // so you can run `gulp js` to build the file
 b.on('update', bundle); // on any dep update, runs the bundler
 b.on('log', gutil.log); // output build logs to terminal
 
-gulp.task('build', ['css-min', 'js-min', 'html-min']);
+gulp.task('build', ['css-min', 'js-min', 'html-min', 'image-min']);
 
 gulp.task('css-min', function(){
 	return gulp.src('styles/*.css')

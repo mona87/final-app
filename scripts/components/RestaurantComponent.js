@@ -20,7 +20,7 @@ module.exports = React.createClass ({
 			num: null,
 			currentPlace: null,
 			dist: [],
-			array: []
+			array: [],
 		}
 	},
 	componentWillMount: function(){
@@ -33,7 +33,7 @@ module.exports = React.createClass ({
 	{ 
 		return x * Math.PI / 180 
 	},
-	distance: function(p1Lat, p1Long, p2Lat, p2Long, place, counter){
+	distance: function(p1Lat, p1Long, p2Lat, p2Long, place, counter, that){
 		 var origin1 = new google.maps.LatLng(p1Lat, p1Long);
 		 var destinationA = new google.maps.LatLng(p2Lat, p2Long);
 		 var service = new google.maps.DistanceMatrixService();
@@ -62,26 +62,25 @@ module.exports = React.createClass ({
 				    	place.distance = response.rows[0].elements[0].distance.text + 'les';
 				    	place.duration = response.rows[0].elements[0].duration.text + ' away';
 				    	var num = parseFloat(place.distance);
+				    	// addRender(place);
 					    	if(num < 5){
-					    		addRender(place);
+					    		addRender(place, that);
+
 					    	}  
 	    				}
-				 	}
-				 	if(counter === place.arrayLength-1){
-				 		
-				 	}
-				 	
+				 	}				 	
 		    
 		    		// console.log(response.rows[0].elements[0].distance.text)
 		    } );
 
-		  	function addRender(place){
+		  	function addRender(place ,that){
 		  		
 		  		self.state.nearby.push(place)
+		  			
 		  		// console.log(self.state.nearby);
 		  		// self.render(self.state.nearby)
 
-		  		self.check(self.state.nearby)
+		  		self.check(self.state.nearby, that)
 		  	}
 		 		
 		 			
@@ -97,11 +96,11 @@ module.exports = React.createClass ({
 			// return num
 		},
 		
-	check: function(places){
+	check: function(places, that){
 			if(places !== undefined){
 				this.state.nearby = places;	
 		}
-			console.log(this.state.nearby)
+			// console.log(this.state.nearby)
 	},
 	haversine: function(p1Lat, p1Long, p2Lat, p2Long) {
 
@@ -132,7 +131,7 @@ module.exports = React.createClass ({
 			place.index = i;
 			place.arrayLength = self.state.places.length;
 
-		if( self.distance( self.props.lat, self.props.lng, place.latitude, place.longitude, place, i) <=4){
+		if( self.distance( self.props.lat, self.props.lng, place.latitude, place.longitude, place, i, self) <=4){
 			self.state.nearby.push(place);
 		}
 					// 
@@ -148,11 +147,12 @@ module.exports = React.createClass ({
 	},
 	render: function(places){
 		// console.log(places)
+		this.nearbyPlaces()
 		self = this;
 		var style ={
 			color: 'blue'
 		}
-			this.nearbyPlaces();	
+			
 
 			// console.log('dis ' +this.haversine(30.26654,-97.738194, this.state.lat, this.state.lng));
 		// this.nearbyPlaces();
@@ -167,11 +167,6 @@ module.exports = React.createClass ({
 				
 			</div>
 		)
-	},
-	componentDidUpdate: function(){
-
-	
-		
 	},
 	fetchData: function(){
 		self = this

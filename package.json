@@ -27,6 +27,7 @@
   "dependencies": {
     "backbone": "^1.2.1",
     "bootstrap": "^3.3.5",
+    "font-awesome": "^4.3.0",
     "jquery": "^2.1.4",
     "react": "^0.13.3",
     "react-responsive-carousel": "^0.1.4"

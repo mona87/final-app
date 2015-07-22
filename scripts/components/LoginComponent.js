@@ -31,7 +31,7 @@ module.exports = React.createClass({
 			<div className="locateHolder">
 				<div >
 					<div className="locateWrapper" >
-						 <p style={pStyle}>Find the nearest Happy Hours Specials!</p>
+						 <p style={pStyle}>Find the nearest Happy Hours Specials in Austin Tx!</p>
 						<button onClick={this.navigate} className="locateBtn" style={button}>Locate Me</button>
 					</div>
 				</div>

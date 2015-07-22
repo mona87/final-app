@@ -1,0 +1,666 @@
+html{
+	height:100%;
+	width:100%;
+
+}
+
+body{
+	font-family: 'Quicksand', sans-serif;
+	background-color: #F7F7F7;
+	height:100%;
+	width:100%;
+	position: relative;
+	background: url('https://raw.githubusercontent.com/TIY-Austin-Front-End-Engineering/jquery-login/master/bg-login-top.png') repeat ;
+
+
+}
+
+.locateBtn{
+		color: white;
+		width: 100%;
+		max-width: 300px;	
+		display: block;
+		border-radius: 5px;
+		background-color: #8F0006;
+		min-height: 60px;
+		border: 0;
+		font-size: 25px;
+		display: block;
+		margin: 0 auto;
+		outline: none;
+		box-shadow: 0px 0px 2px black;
+}
+
+.locateBtn:hover{
+	background-color: #D2524F;
+}
+
+
+.locateWrapper{
+		min-height: 225px;
+		width: 100%;
+		max-width: 600px;
+		/*border: 1px solid black;*/
+		margin: 15% auto auto auto;
+		border-radius: 10px;
+		/*background-color: #21161F;*/
+		/*background-color: rgba(33, 22, 31, 0.4);*/
+		/*background-image: url('https://dl.dropboxusercontent.com/u/53297391/wood.png');*/
+		box-sizing: border-box;
+		padding: 0 20px 0 20px;
+}
+.locateHolder{
+	  width: 50%;
+	  height: 50%;
+	  overflow: auto;
+	  margin: auto;
+	  position: absolute;
+	  top: 0; left: 0; bottom: 0; right: 0;
+}
+.carousel-control.left, .carousel-control.right{
+	background-image: none;
+	height: 100px;
+	top:400px;
+	width: 10%;
+	
+}
+
+.carousel{
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+
+.right.carousel-control, .left.carousel-control{
+	display: none
+}
+
+.row{
+
+	margin-right: 0;
+	margin-left: 0;
+}
+.icon-row{
+	/*border: 1px solid white;*/
+	/*background-color: #21161F;*/
+	
+
+	background-image: url('https://dl.dropboxusercontent.com/u/53297391/wood.png');
+/*background-size:16px 16px;*/
+	position: fixed;
+	opacity: .9;
+	bottom:0;
+	/*height: 50px;*/
+	box-shadow: 0px 0px 5px gray;
+	width: 100%;
+	/*padding-bottom: 25px;*/
+	/*padding-top: 3px;*/
+	box-sizing: border-box;
+
+
+
+
+	/*height: 75px;*/
+}
+
+.
+.imgHolder, #imgHolder{
+	width: 100%;
+	background-image: url('https://img.grouponcdn.com/deal/hHwi69ShuzVgx2F9aEzs/Zd-2048x1229/v1/c700x420.jpg');
+	background-size: cover;
+	height: 100px;
+	/*max-width: 33%;*/
+	border-radius: 5px;
+	margin-bottom: 20px;
+	float: left;
+	/*border: 1px solid green;*/
+
+}
+
+.bigImg2, .bigImg1, .bigImg3, .bigImg4, .bigImg5, .bigImg6, .bigImg7, .bigImg8, .bigImg9, .bigImg10 {
+	width: 100%;
+	/*background-image: url('http://www.betcheslovethis.com/files/uploads/images/seductivewhiskey1.jpg');*/
+	background-size: cover;
+	height: 100px;
+	/*max-width: 33%;*/
+	border-radius: 5px;
+	margin-bottom: 20px;
+	float: left;
+}
+
+.bigImg1{
+	background-image: url('https://img.grouponcdn.com/deal/hHwi69ShuzVgx2F9aEzs/Zd-2048x1229/v1/c700x420.jpg');
+
+}
+
+
+#mapHolder, #mapHolder2{
+	height: 100px;
+	/*max-width: 33%;*/
+	border-radius: 5px;
+	margin-bottom: 20px;
+	background-size: cover;
+	float: left;
+	width: 100%;
+}
+
+
+.imgHolder2, #imgHolder2{
+	width: 100%;
+	background-image: url('http://wallpaperswa.com/thumbnails/detail/20120914/beers%20alcohol%20drinks%201620x1080%20wallpaper_wallpaperswa.com_20.jpg');
+	background-size: cover;
+	height: 100px;
+	/*max-width: 33%;*/
+	border-radius: 5px;
+	margin-bottom: 20px;
+	float: left;
+	/*border: 1px solid green;*/
+
+}
+
+.imgHolder img {
+	height: 200px;
+	width: 100%;
+}
+
+.mapStyle{
+	display: none;
+}
+
+.rest-name{
+	color: #CB2A18;
+	/*float: left;*/
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 23px;
+	font-family: 'Courgette', cursive;
+	/*font-family: 'Leckerli One', cursive;*/
+	/*display: block;*/
+
+}
+.name-holder{
+	overflow: hidden;
+}
+
+.carouselMain{
+	/*display: none;*/
+}
+
+.place{
+	clear: both;
+
+}
+
+.textHolder{
+	width: 100%;
+	
+	/*margin: 20px auto 20px auto;*/
+	font-size: 1.6rem;
+	padding: 0px 20px 0px 20px;
+	float: left;
+	min-height: 230px;
+	background-color: #F0EDCA;
+	color: #21161F;
+	position: relative;
+	border-radius: 5px;
+	box-sizing: border-box;
+	/*border: 1px solid red;*/
+
+}
+
+
+.carouselItem {
+	overflow: hidden;
+	margin: 0 auto;
+	border: 1px solid #eeeeee;
+	margin:50px 0px 50px 0px;
+	padding: 20px;
+	border-radius: 5px;
+	background-color: #ffffff;
+	box-shadow: 0px 0px 20px #C0C0C0;
+	min-height: 1px;
+	/*max-width: 1100px;*/
+	box-sizing: border-box;
+
+}
+
+.row-color{
+
+}
+
+
+
+.carousel-indicators{
+	display: none;
+}
+.carousel-indicators, .carousel-caption  {
+ display: none;
+}
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img{
+	height: 250px;
+
+}
+
+.carousel-inner{
+	/*margin-bottom: 75px;*/
+	margin: 45px auto auto auto;
+	/*width: 95%;*/
+
+}
+
+#container{
+	/*padding-left: 20px;*/
+}
+
+.header{
+	background-color: #940A0A;
+	color: white;
+	opacity: .9;
+	/*background-image: url('http://wallpaperswa.com/thumbnails/detail/20120914/beers%20alcohol%20drinks%201620x1080%20wallpaper_wallpaperswa.com_20.jpg');
+	background-size: cover;*/
+	height: 50px;
+	background: rgba(169,3,41,1);
+background: -moz-linear-gradient(top, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(169,3,41,1)), color-stop(44%, rgba(143,2,34,1)), color-stop(100%, rgba(109,0,25,1)));
+background: -webkit-linear-gradient(top, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+background: -o-linear-gradient(top, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+background: -ms-linear-gradient(top, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+background: linear-gradient(to bottom, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(109,0,25,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019', GradientType=0 );
+
+	background-size: 100px 100px;
+	box-shadow: 0px 0px 5px gray;
+	position: fixed;
+	top: 0;
+	width:100%;
+	z-index: 1;
+	/*height: 100px;*/
+}
+
+.header >h1{
+
+	font-size: 30px;
+	/*margin-left: 50px;*/
+	margin: 7px auto auto auto;
+	padding-top: 0px;
+	text-align: center;
+	/*float:left;*/
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+
+}
+
+.user{
+	font-size: 20px;
+	display: block;
+	float: right;
+	padding-top: 40px;
+	padding-right: 20px;
+}
+
+.logo{
+	height:60px;
+}
+
+.favorite{
+	cursor: pointer;
+	color: white;
+}
+
+.circle{
+
+}
+
+.fa-hand-o-left, .fa-circle-thin, .fa-street-view, .fa-glass, .fa-hand-o-right, .fa-heart-o, .fa-trash-o, .fa-list-alt, .fa-thumbs-o-up  {
+	color: #6e4b10;
+	/*margin-left: 35%;*/
+	width: 42px;
+	display: block;
+	
+	/*margin: 10px auto 10px auto;*/
+}
+
+.fa-stack {
+	display: block;
+	margin: 0 auto;
+	opacity: .6;
+	/*width: 20px;*/
+
+}
+
+
+
+.street{
+	display: none;
+}
+
+.fa-hand-o-right, .fa-list-alt, .fa-street-view, .fa-glass, .fa-hand-o-left{
+	margin-left: 4px;
+
+}
+
+.fa-map-marker{
+	color: #CB2A18;
+}
+
+.fa-heart{
+	color: #CB2A18;
+	/*margin-top: 15px;*/
+	float: right;
+	display: none;
+	/*display: none;*/
+/*	position: relative;
+	z-index: 1;
+	top:50px;*/
+	/*width: 20px;*/
+}
+.mob-btn{
+	/*border-right: 1px solid white; 
+	border-left: 1px solid white; */
+	width: 33%;
+	/*margin: 0 auto;*/
+	cursor: pointer;
+	float: left;
+} 
+
+.mob-btn:hover{
+	background-color: rgba(255,255,255,.7);
+
+}
+
+.slider{
+	height: 100px;
+	width: 100%;
+	background-color: #F5C983;
+	display: none;
+
+
+}
+
+.list-holder{
+	margin-top: 75px;
+	margin-bottom: 40px;
+}
+
+.info-wrapper{
+	width: 100%;
+	max-width: 900px;
+	margin: 20px auto 20px auto;
+	border-radius: 5px;
+	height: 150px;
+}
+
+.col-sm-2{
+	min-height: 0;
+}
+
+.mini-holder{
+	
+	width: 100%;
+	max-width: 880px;
+	background-color: white;
+	padding: 10px;
+	margin: 0 auto;
+	border-radius: 5px;
+	overflow: hidden;
+	box-sizing:border-box;
+	margin-bottom: 20px;
+	box-shadow: 0px 0px 10px #C0C0C0;
+}
+
+.mini-image,.mini-image2, .mini-image3, .mini-image4, .mini-image5, .mini-image6, .mini-image7, .mini-image8, .mini-image9, .mini-image10{
+	width:100%;
+	/*max-width: 309px;*/
+	background-image: url('https://img.grouponcdn.com/deal/hHwi69ShuzVgx2F9aEzs/Zd-2048x1229/v1/c700x420.jpg');
+	background-size: cover;
+	min-height: 100px;
+
+	/*border-radius: 5px;*/
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	float: left;
+	margin-right: 2%;
+}
+
+.mini-image2, .bigImg2{
+	background-image: url('http://www.betcheslovethis.com/files/uploads/images/seductivewhiskey1.jpg');
+
+}
+
+.mini-image3, .bigImg3{
+	background-image: url('http://winewitandwisdomswe.com/wp-content/uploads/2014/04/Red-Wine-Bottles.jpg');
+
+}
+.mini-image4, .bigImg4{
+		background-image: url('http://wallpaperswa.com/thumbnails/detail/20120914/beers%20alcohol%20drinks%201620x1080%20wallpaper_wallpaperswa.com_20.jpg');
+}
+
+.mini-image5, .bigImg5{
+	background-image: url('http://www.slate.com/content/dam/slate/articles/life/drink/2013/07/130802_DRINK_HealthyCocktail.jpg.CROP.original-original.jpg');
+}
+
+.mini-image6, .bigImg6{
+		background-image: url('http://www-tc.pbs.org/food/wp-content/blogs.dir/2/files/2012/11/rosemary-orange-cocktail-600x400.jpg');
+
+}
+.mini-image7, .bigImg7{
+		background-image: url('http://nycityeats.com/wordpress/wp-content/uploads/2011/05/cocktailsProv.jpg');
+}
+.mini-image8, .bigImg8{
+	background-image: url('http://www.croatiaweek.com/wp-content/uploads/2014/12/Wine.jpg');
+}
+.mini-image9, .bigImg9{
+	background-image: url('http://www.bearsplacebar.com/wp-content/uploads/2014/04/Pint.jpg');
+}
+.mini-image10, .bigImg10{
+	background-image: url('http://www.bygburgersnbrew.com/wp-content/uploads/2014/12/GTY_craft_beers_nt_130830_16x9_992.jpg');
+}
+
+.mini-text{
+	width: 100%;
+	min-height: 150px;
+	/*margin: 20px auto 20px auto;*/
+	font-size: 1.2rem;
+	padding: 0px 20px 0px 20px;
+	float: left;
+	/*min-height: 300px;*/
+	background-color: #F0EDCA;
+	color: #21161F;
+	/*border-radius: 5px;*/
+	border-bottom-left-radius: 5px;
+	border-bottom-right-radius: 5px;
+	position: relative;
+	box-sizing: border-box;
+}
+
+.mini-slide{
+	padding: 0 20px 0 20px;
+
+}
+
+.mini-rest{
+	margin-top: 10px;
+	font-size: 2rem;
+	margin-bottom: 10px;
+	font-family: 'Courgette', cursive;
+	/*font-family: 'Leckerli One', cursive;*/
+	color: #CB2A18;
+}
+
+.mini-details{
+		font-size: 1.3rem;
+		margin-bottom: 10px;
+}
+.mini-address{
+	/*float: right;*/
+	color: #E89633;
+	position: absolute;
+ 	 bottom: 5px;
+  	right: 10px;
+}
+.mini-distance{
+	font-size: 1.5rem;
+	padding-left:20px;
+	padding-right:20px;
+	margin-top: 10px;
+	float:right;
+	font-style: italic;
+	color: #75A267;
+	 position: absolute;
+  	bottom: 5px;
+  	right: 30px;
+}
+.mini-duration{
+	font-size: 1.5rem;
+	margin-top: 10px;
+	font-style: italic;
+	color: #75A267;
+	float: right;
+	position: absolute;
+  	bottom: 5px;
+	
+}
+.details{
+	margin-bottom: 10px;
+}
+.distance{
+		float: left;
+		padding-right: 20px;
+		font-style: italic;
+		color: #75A267;
+		position: absolute;
+		bottom: 10px;
+		left: 20px;
+}
+.duration{
+		font-style: italic;
+		color: #75A267;
+		position: absolute;
+		bottom: 10px;
+		right: 75px;
+	
+}
+.address {
+	margin-top: 3px;
+	font-size: 2.5rem;
+	margin-bottom: 10px;
+	position: absolute;
+	bottom: 0;
+	right: 20px;
+}
+
+.url{
+	margin-top: 10px;
+	font-size: 1.3rem;
+}
+.col-sm-12{
+/*	padding-left: 0;
+	padding-right: 0;*/
+}
+
+@media (min-width: 768px) {
+	body{
+		/*background: url('http://lapolenteria.com/wp-content/uploads/2015/03/wine.jpg');*/
+		background: url('https://dl.dropboxusercontent.com/u/53297391/wine.jpg');
+		background-size: cover;
+	}
+	.imgHolder, .imgHolder2, #mapHolder, #mapHolder2, .bigImg2, .bigImg1, .bigImg3, .bigImg4, .bigImg5, .bigImg6, .bigImg7, .bigImg8, .bigImg9, .bigImg10 {
+		max-width: 35%;
+		margin-right: 3%;
+		margin-bottom: 0;
+		height: 300px;
+	}
+
+	.textHolder{
+		max-width: 62%;
+		font-size: 1.9rem;
+		padding: 0px 40px 0px 40px;	
+		min-height: 300px;
+
+	}
+
+	.mob-btn{
+		/*float:left;*/
+		width: 25%;
+	}
+	.fa-stack{
+
+		/*float:right;*/
+	}
+	.header{
+		height: 50px;
+		position: static;
+		box-shadow: none;
+	}
+	.header>h1{
+		font-size:35px;
+		margin: 5px 0 0 20px;
+		text-align: left;
+		/*margin-left: 20px;*/
+	}
+	.rest-name{
+		font-size: 35px;
+
+		/*float:left;*/
+	}
+	.icon-row{
+		background: rgba(33, 22, 31, 0.7);
+		opacity: 1;
+		/*height: 60px;	*/
+	}
+	.street{
+		display: block;
+	}
+	.carousel-inner{
+		width: 100%;
+		/*margin-top: 100px;*/
+	}
+	.details{
+		margin-bottom: 10px;
+	}
+
+	.distance, .duration {
+	
+		font-size: 2rem;
+	}
+
+	.url{
+		margin-top: 10px;
+		font-size: 1.8rem;
+	}
+	.list-holder{
+		margin-top: 50px;
+		margin-bottom: 100px;
+	}
+	.mini-image, .mini-image2, .mini-image3, .mini-image4, .mini-image5, .mini-image6, .mini-image7, .mini-image8, .mini-image9, .mini-image10{
+		width:35%;
+		max-width: 309px;
+		min-height: 150px;
+		border-radius: 5px;
+
+	}
+	.carouselItem{
+		background-color: none;
+		background-image: url('https://dl.dropboxusercontent.com/u/53297391/wood.png');
+		box-shadow: none;
+
+		border: 0;
+	}
+	.mini-holder {
+		background-image: url('https://dl.dropboxusercontent.com/u/53297391/wood.png');
+		border: 0;
+		box-shadow: none;
+	}
+	.fa-hand-o-left, .fa-circle-thin, .fa-street-view, .fa-hand-o-right,  .fa-list-alt{
+		color: white;
+	}
+	.mini-text{
+		width: 63%;
+		min-height: 150px;
+		border-radius: 5px;
+	}
+	.mob-btn:hover{
+		background-color: rgba(117,162,103,.7);
+
+	}
+
+}

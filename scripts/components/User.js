@@ -25,18 +25,15 @@ module.exports = React.createClass({
 		}
 		return(
 			<div>
-			<div className="row">
-				<div className="col-sm-12 header">
-					<h1 >Happy Hour</h1>	
-					<span style={style} className="user" onClick={this.slide}  className="user" >Welcome {this.state.username}!</span>		
-				</div>
 				<div className="row">
-				<div className="col-sm-12">
-					<div ref="slider" className="slider"></div>
-				</div>
-			</div>
-			</div>
-			
+					<div className="col-sm-12 header">
+						<h1 >Happy Hour</h1>	
+						<a className="mylinks" href="https://www.linkedin.com/pub/ramona-bellamy/bb/160/289" target="_blank"><i className="fa fa-linkedin fa-2x"></i></a>
+						<a className="mylinks" href="https://twitter.com/mona_dev87" target="_blank"><i className="fa fa-twitter fa-2x"></i></a>
+						<a className="mylinks" href="https://github.com/mona87/my-final-project" target="_blank"><i className="fa fa-github-alt fa-2x"></i></a>
+					</div>
+					
+				</div>		
 			</div>
 		);
 	},

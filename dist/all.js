@@ -33630,7 +33630,9 @@ module.exports = React.createClass({
 			length: null,
 			hide: 'none',
 			random: 3,
-			random2: 4
+			random2: 4,
+			timer: 0,
+			interval: null
 		};
 	},
 	handleSelect: function handleSelect(selectedIndex, selectedDirection) {
@@ -33643,16 +33645,9 @@ module.exports = React.createClass({
 		} else if (selectedDirection === 'next') {
 
 			self.state.counter++;
-
-			// }
-			// console.log(this.onSlideEnd);
-			// this.slideEnd(selectedIndex, selectedDirection)
 		} else if (selectedDirection === 'prev') {
 			this.state.counter--;
 		}
-		//
-		// console.log('counter ',this.state.counter )
-		// console.log('index',this.state.index )	  
 		this.setState({
 			index: selectedIndex,
 			direction: selectedDirection
@@ -33670,15 +33665,6 @@ module.exports = React.createClass({
 			this.state.index = 0;
 			this.handleSelect(this.state.index, 'prev');
 		}
-
-		//  	if(this.state.imgCounter === 0){
-
-		// 	this.state.imgCounter = this.state.bigImgArray.length-1;
-
-		// 	console.log('update ', this.state.imgCounter)
-		// }else{
-		// 	this.state.imgCounter--;
-		// }
 	},
 	next: function next() {
 		var self = this;
@@ -33700,22 +33686,6 @@ module.exports = React.createClass({
 			// 	 	self.state.imgCounter++;
 			// });
 		}
-
-		// if(this.state.imgCounter >= this.state.bigImgArray.length-1){
-		// 		 // $(this.refs.bigImg.getDOMNode()).fadeIn('fast', function(){
-		// 		 // 	// self.state.imgCounter = 0;
-		// 		 // });
-		// 		 // $(this.refs.bigImg2.getDOMNode()).fadeIn('fast');
-		// 		 	self.state.imgCounter = 0;
-
-		// 	}else{
-		// 		 // $(this.refs.bigImg.getDOMNode()).fadeIn('fast', function(){
-		// 		 // 	self.state.imgCounter++;
-		// 		 // });
-		// 		 // $(this.refs.bigImg2.getDOMNode()).fadeIn('fast');
-		// 		self.state.imgCounter++;
-
-		// 	}		  	
 	},
 	componentWillMount: function componentWillMount() {
 		this.random();
@@ -33727,13 +33697,13 @@ module.exports = React.createClass({
 	componentDidUpdate: function componentDidUpdate() {
 		// this.initialize(); 
 
-		console.log('props ', this.props.nearby);
+		// console.log('props ', this.props.nearby)
 		google.maps.event.addDomListener(window, 'load', this.initialize());
 
 		this.state.mapId = this.state.mapId;
 	},
 	slideEnd: function slideEnd(selectedIndex, selectedDirection) {
-		console.log('animation done');
+		// console.log('animation done');
 		// this.initialize();
 		this.marker();
 	},
@@ -33807,7 +33777,7 @@ module.exports = React.createClass({
 				$(self.refs.list.getDOMNode()).slideToggle('slow', function () {
 					$('.img1').show();
 					$('.mapStyle').hide();
-					self.random();
+					// self.random();
 				});
 			});
 		}
@@ -33836,8 +33806,6 @@ module.exports = React.createClass({
 			random: randomnumber,
 			random2: randomnumber2
 		});
-		console.log('random ', this.state.random);
-		console.log('random2 ', this.state.random2);
 	},
 	map: function map(e) {
 		e.preventDefault();
@@ -33847,7 +33815,7 @@ module.exports = React.createClass({
 
 			$('.img1').fadeToggle('fast', function () {
 				$('.mapStyle').fadeIn('fast');
-				self.random();
+				// self.random();
 				self.initialize();
 			});
 		} else {
@@ -33856,21 +33824,32 @@ module.exports = React.createClass({
 				$('.img1').fadeIn('fast');
 			});
 		}
-
-		// $('.mapStyle').show();
-		//  console.log('lat ', this.state.lat);
-		//   console.log('lng ', this.state.lng);
 	},
 	list: function list() {
 		$('.img1').show();
 		$('.mapStyle').hide();
 	},
 	hideMe: function hideMe() {
+		$(this.refs.icons.getDOMNode()).show();
 		$(this.refs.begin.getDOMNode()).fadeOut('fast');
 		this.setState({
 			hide: 'block'
 		});
 		$('.carouselMain').fadeIn('slow');
+	},
+	componentDidMount: function componentDidMount() {
+
+		this.state.interval = window.setInterval(this.timer, 1000);
+		// console.log('true');
+	},
+	timer: function timer() {
+		this.state.timer += 3;
+		if (this.state.timer >= 30) {
+			window.clearInterval(this.state.interval);
+		}
+		this.setState({
+			timer: this.state.timer
+		});
 	},
 	render: function render() {
 
@@ -33889,12 +33868,7 @@ module.exports = React.createClass({
 			padding: '0'
 		};
 		var counter = 0;
-		var pStyle = {
-			color: 'white',
-			fontSize: '20px',
-			textAlign: 'center',
-			margin: '30px 0 20px 0'
-		};
+
 		var hideCarousel = {
 			display: this.state.hide
 
@@ -34099,20 +34073,20 @@ module.exports = React.createClass({
 						{ className: 'locateWrapper' },
 						React.createElement(
 							'p',
-							{ style: pStyle },
-							'Find the nearest Happy Hours Specials!'
+							{ className: 'hometxt' },
+							'Find the nearest Happy Hour Specials in Austin, TX.'
 						),
 						React.createElement(
 							'button',
 							{ onClick: this.hideMe, className: 'locateBtn' },
-							'Locate Me'
+							'Search Now!'
 						)
 					)
 				)
 			),
 			React.createElement(
 				'div',
-				{ className: 'row icon-row' },
+				{ ref: 'icons', className: 'row icon-row' },
 				React.createElement(
 					'div',
 					{ onClick: this.prev, className: 'col-sm-2 mob-btn ' },
@@ -34157,6 +34131,9 @@ module.exports = React.createClass({
 		);
 	}
 });
+// console.log('random ', this.state.random);
+// 	console.log('random2 ', this.state.random2);
+// console.log('interval cleared');
 
 // self.state.currentIcon = place._id + 'heart';
 // self.state.restaurantId = place._id;
@@ -34258,7 +34235,7 @@ module.exports = React.createClass({
 					React.createElement(
 						'p',
 						{ style: pStyle },
-						'Find the nearest Happy Hours Specials!'
+						'Find the nearest Happy Hours Specials in Austin Tx!'
 					),
 					React.createElement(
 						'button',
@@ -34336,7 +34313,7 @@ module.exports = React.createClass({
 	rad: function rad(x) {
 		return x * Math.PI / 180;
 	},
-	distance: function distance(p1Lat, p1Long, p2Lat, p2Long, place, counter) {
+	distance: function distance(p1Lat, p1Long, p2Lat, p2Long, place, counter, that) {
 		var origin1 = new google.maps.LatLng(p1Lat, p1Long);
 		var destinationA = new google.maps.LatLng(p2Lat, p2Long);
 		var service = new google.maps.DistanceMatrixService();
@@ -34362,23 +34339,24 @@ module.exports = React.createClass({
 					place.distance = response.rows[0].elements[0].distance.text + 'les';
 					place.duration = response.rows[0].elements[0].duration.text + ' away';
 					var num = parseFloat(place.distance);
+					// addRender(place);
 					if (num < 5) {
-						addRender(place);
+						addRender(place, that);
 					}
 				}
 			}
-			if (counter === place.arrayLength - 1) {}
 
 			// console.log(response.rows[0].elements[0].distance.text)
 		});
 
-		function addRender(place) {
+		function addRender(place, that) {
 
 			self.state.nearby.push(place);
+
 			// console.log(self.state.nearby);
 			// self.render(self.state.nearby)
 
-			self.check(self.state.nearby);
+			self.check(self.state.nearby, that);
 		}
 
 		// var num = google.maps.geometry.spherical.computeDistanceBetween(origin1, destinationA);
@@ -34392,11 +34370,11 @@ module.exports = React.createClass({
 		// return num
 	},
 
-	check: function check(places) {
+	check: function check(places, that) {
 		if (places !== undefined) {
 			this.state.nearby = places;
 		}
-		console.log(this.state.nearby);
+		// console.log(this.state.nearby)
 	},
 	haversine: function haversine(p1Lat, p1Long, p2Lat, p2Long) {
 
@@ -34426,7 +34404,7 @@ module.exports = React.createClass({
 			place.index = i;
 			place.arrayLength = self.state.places.length;
 
-			if (self.distance(self.props.lat, self.props.lng, place.latitude, place.longitude, place, i) <= 4) {
+			if (self.distance(self.props.lat, self.props.lng, place.latitude, place.longitude, place, i, self) <= 4) {
 				self.state.nearby.push(place);
 			}
 			//
@@ -34439,11 +34417,11 @@ module.exports = React.createClass({
 	},
 	render: function render(places) {
 		// console.log(places)
+		this.nearbyPlaces();
 		self = this;
 		var style = {
 			color: 'blue'
 		};
-		this.nearbyPlaces();
 
 		// console.log('dis ' +this.haversine(30.26654,-97.738194, this.state.lat, this.state.lng));
 		// this.nearbyPlaces();
@@ -34457,7 +34435,6 @@ module.exports = React.createClass({
 			React.createElement(CarouselComponent, { callback: this.nearbyPlaces, lat: this.props.lat, lng: this.props.lng, router: this.props.router, places: this.state.places, nearby: this.state.nearby, counter: 0, haversine: this.haversine })
 		);
 	},
-	componentDidUpdate: function componentDidUpdate() {},
 	fetchData: function fetchData() {
 		self = this;
 		restaurants.fetch({
@@ -34519,20 +34496,19 @@ module.exports = React.createClass({
 						'Happy Hour'
 					),
 					React.createElement(
-						'span',
-						{ style: style, className: 'user', onClick: this.slide, className: 'user' },
-						'Welcome ',
-						this.state.username,
-						'!'
-					)
-				),
-				React.createElement(
-					'div',
-					{ className: 'row' },
+						'a',
+						{ className: 'mylinks', href: 'https://www.linkedin.com/pub/ramona-bellamy/bb/160/289', target: '_blank' },
+						React.createElement('i', { className: 'fa fa-linkedin fa-2x' })
+					),
 					React.createElement(
-						'div',
-						{ className: 'col-sm-12' },
-						React.createElement('div', { ref: 'slider', className: 'slider' })
+						'a',
+						{ className: 'mylinks', href: 'https://twitter.com/mona_dev87', target: '_blank' },
+						React.createElement('i', { className: 'fa fa-twitter fa-2x' })
+					),
+					React.createElement(
+						'a',
+						{ className: 'mylinks', href: 'https://github.com/mona87/my-final-project', target: '_blank' },
+						React.createElement('i', { className: 'fa fa-github-alt fa-2x' })
 					)
 				)
 			)

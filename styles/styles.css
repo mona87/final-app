@@ -10,7 +10,7 @@ body{
 	height:100%;
 	width:100%;
 	position: relative;
-	background: url('https://raw.githubusercontent.com/TIY-Austin-Front-End-Engineering/jquery-login/master/bg-login-top.png') repeat ;
+	background: url('https://dl.dropboxusercontent.com/u/53297391/bg-login-top.png') repeat ;
 
 
 }
@@ -50,7 +50,7 @@ body{
 		padding: 0 20px 0 20px;
 }
 .locateHolder{
-	  width: 50%;
+	  width: 100%;
 	  height: 50%;
 	  overflow: auto;
 	  margin: auto;
@@ -83,7 +83,7 @@ body{
 .icon-row{
 	/*border: 1px solid white;*/
 	/*background-color: #21161F;*/
-	
+		display: none;
 
 	background-image: url('https://dl.dropboxusercontent.com/u/53297391/wood.png');
 /*background-size:16px 16px;*/
@@ -103,10 +103,21 @@ body{
 	/*height: 75px;*/
 }
 
-.
+.loading{
+	font-style: italic;
+	color: #75A267;
+}
+
+.hometxt{
+	color: #21161F;
+	font-size: 20px;
+	text-align: center;
+	margin: 30px 0 20px 0;
+}
+
 .imgHolder, #imgHolder{
 	width: 100%;
-	background-image: url('https://img.grouponcdn.com/deal/hHwi69ShuzVgx2F9aEzs/Zd-2048x1229/v1/c700x420.jpg');
+	background-image: url('../images/c700x420.jpg');
 	background-size: cover;
 	height: 100px;
 	/*max-width: 33%;*/
@@ -129,8 +140,25 @@ body{
 }
 
 .bigImg1{
-	background-image: url('https://img.grouponcdn.com/deal/hHwi69ShuzVgx2F9aEzs/Zd-2048x1229/v1/c700x420.jpg');
+	background-image: url('../images/c700x420.jpg');
 
+}
+
+
+.fa-github-alt, .fa-twitter, .fa-linkedin{
+	display: block;
+	float: right;
+	margin-right: 15px;
+	margin-top: 12px;
+	font-size: 25px;
+}
+
+.mylinks{
+	color: white;
+}
+
+.mylinks:hover, .mylinks:visited, .mylinks:link{
+	color: white;
 }
 
 
@@ -147,7 +175,7 @@ body{
 
 .imgHolder2, #imgHolder2{
 	width: 100%;
-	background-image: url('http://wallpaperswa.com/thumbnails/detail/20120914/beers%20alcohol%20drinks%201620x1080%20wallpaper_wallpaperswa.com_20.jpg');
+	background-image: url('../images/beers%20alcohol%20drinks%201620x1080%20wallpaper_wallpaperswa.com_20.jpg');
 	background-size: cover;
 	height: 100px;
 	/*max-width: 33%;*/
@@ -213,7 +241,7 @@ body{
 	overflow: hidden;
 	margin: 0 auto;
 	border: 1px solid #eeeeee;
-	margin:50px 0px 50px 0px;
+	margin: 0px 2px 80px 2px;
 	padding: 20px;
 	border-radius: 5px;
 	background-color: #ffffff;
@@ -270,20 +298,22 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 
 	background-size: 100px 100px;
 	box-shadow: 0px 0px 5px gray;
-	position: fixed;
-	top: 0;
+/*	position: fixed;
+	top: 0;*/
 	width:100%;
+	padding-right: 5px;
 	z-index: 1;
 	/*height: 100px;*/
 }
 
 .header >h1{
 
-	font-size: 30px;
+	font-size: 25px;
 	/*margin-left: 50px;*/
-	margin: 7px auto auto auto;
-	padding-top: 0px;
-	text-align: center;
+	margin: 0px auto auto auto;
+	padding-top: 10px;
+	text-align: left;
+	float: left;
 	/*float:left;*/
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
 
@@ -354,9 +384,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 	/*width: 20px;*/
 }
 .mob-btn{
+
 	/*border-right: 1px solid white; 
 	border-left: 1px solid white; */
-	width: 33%;
+	width: 33.33%;
 	/*margin: 0 auto;*/
 	cursor: pointer;
 	float: left;
@@ -377,8 +408,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 }
 
 .list-holder{
-	margin-top: 75px;
-	margin-bottom: 40px;
+	margin-top: 50px;
+	margin-bottom: 70px;
 }
 
 .info-wrapper{
@@ -410,7 +441,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 .mini-image,.mini-image2, .mini-image3, .mini-image4, .mini-image5, .mini-image6, .mini-image7, .mini-image8, .mini-image9, .mini-image10{
 	width:100%;
 	/*max-width: 309px;*/
-	background-image: url('https://img.grouponcdn.com/deal/hHwi69ShuzVgx2F9aEzs/Zd-2048x1229/v1/c700x420.jpg');
+	background-image: url('https://dl.dropboxusercontent.com/u/53297391/c700x420.jpg');
 	background-size: cover;
 	min-height: 100px;
 
@@ -422,37 +453,37 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 }
 
 .mini-image2, .bigImg2{
-	background-image: url('http://www.betcheslovethis.com/files/uploads/images/seductivewhiskey1.jpg');
+	background-image: url('https://dl.dropboxusercontent.com/u/53297391/seductivewhiskey1.jpg');
 
 }
 
 .mini-image3, .bigImg3{
-	background-image: url('http://winewitandwisdomswe.com/wp-content/uploads/2014/04/Red-Wine-Bottles.jpg');
+	background-image: url('https://dl.dropboxusercontent.com/u/53297391/Red-Wine-Bottles.jpg');
 
 }
 .mini-image4, .bigImg4{
-		background-image: url('http://wallpaperswa.com/thumbnails/detail/20120914/beers%20alcohol%20drinks%201620x1080%20wallpaper_wallpaperswa.com_20.jpg');
+		background-image: url('https://dl.dropboxusercontent.com/u/53297391/beers%20alcohol%20drinks%201620x1080%20wallpaper_wallpaperswa.com_20.jpg');
 }
 
 .mini-image5, .bigImg5{
-	background-image: url('http://www.slate.com/content/dam/slate/articles/life/drink/2013/07/130802_DRINK_HealthyCocktail.jpg.CROP.original-original.jpg');
+	background-image: url('https://dl.dropboxusercontent.com/u/53297391/130802_DRINK_HealthyCocktail.jpg.CROP.original-original.jpg');
 }
 
 .mini-image6, .bigImg6{
-		background-image: url('http://www-tc.pbs.org/food/wp-content/blogs.dir/2/files/2012/11/rosemary-orange-cocktail-600x400.jpg');
+		background-image: url('https://dl.dropboxusercontent.com/u/53297391/rosemary-orange-cocktail-600x400.jpg');
 
 }
 .mini-image7, .bigImg7{
-		background-image: url('http://nycityeats.com/wordpress/wp-content/uploads/2011/05/cocktailsProv.jpg');
+		background-image: url('https://dl.dropboxusercontent.com/u/53297391/cocktailsProv.jpg');
 }
 .mini-image8, .bigImg8{
-	background-image: url('http://www.croatiaweek.com/wp-content/uploads/2014/12/Wine.jpg');
+	background-image: url('https://dl.dropboxusercontent.com/u/53297391/Wine.jpg');
 }
 .mini-image9, .bigImg9{
-	background-image: url('http://www.bearsplacebar.com/wp-content/uploads/2014/04/Pint.jpg');
+	background-image: url('https://dl.dropboxusercontent.com/u/53297391/Pint.jpg');
 }
 .mini-image10, .bigImg10{
-	background-image: url('http://www.bygburgersnbrew.com/wp-content/uploads/2014/12/GTY_craft_beers_nt_130830_16x9_992.jpg');
+	background-image: url('https://dl.dropboxusercontent.com/u/53297391/Pint.jpg');
 }
 
 .mini-text{
@@ -499,44 +530,35 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 }
 .mini-distance{
 	font-size: 1.5rem;
-	padding-left:20px;
 	padding-right:20px;
-	margin-top: 10px;
-	float:right;
+	margin-top: 5px;
 	font-style: italic;
 	color: #75A267;
-	 position: absolute;
-  	bottom: 5px;
-  	right: 30px;
+
 }
 .mini-duration{
 	font-size: 1.5rem;
-	margin-top: 10px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	font-style: italic;
 	color: #75A267;
-	float: right;
-	position: absolute;
-  	bottom: 5px;
 	
 }
 .details{
 	margin-bottom: 10px;
 }
 .distance{
-		float: left;
-		padding-right: 20px;
-		font-style: italic;
-		color: #75A267;
-		position: absolute;
-		bottom: 10px;
-		left: 20px;
+	margin-top: 10px;
+	font-style: italic;
+	color: #75A267;
+		
 }
 .duration{
-		font-style: italic;
-		color: #75A267;
-		position: absolute;
-		bottom: 10px;
-		right: 75px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-style: italic;
+	color: #75A267;
+	
 	
 }
 .address {
@@ -557,10 +579,16 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 	padding-right: 0;*/
 }
 
+.margarita{
+	margin: 0 auto;
+	color: white;
+
+}
+
 @media (min-width: 768px) {
 	body{
 		/*background: url('http://lapolenteria.com/wp-content/uploads/2015/03/wine.jpg');*/
-		background: url('https://dl.dropboxusercontent.com/u/53297391/wine.jpg');
+		background: url('https://dl.dropboxusercontent.com/u/53297391/wine2.jpg');
 		background-size: cover;
 	}
 	.imgHolder, .imgHolder2, #mapHolder, #mapHolder2, .bigImg2, .bigImg1, .bigImg3, .bigImg4, .bigImg5, .bigImg6, .bigImg7, .bigImg8, .bigImg9, .bigImg10 {
@@ -592,9 +620,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 		box-shadow: none;
 	}
 	.header>h1{
+		float:left;
 		font-size:35px;
-		margin: 5px 0 0 20px;
+		margin: 0px 0 0 20px;
 		text-align: left;
+		padding-top: 5px;
 		/*margin-left: 20px;*/
 	}
 	.rest-name{
@@ -603,6 +633,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 		/*float:left;*/
 	}
 	.icon-row{
+
 		background: rgba(33, 22, 31, 0.7);
 		opacity: 1;
 		/*height: 60px;	*/
@@ -612,6 +643,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 	}
 	.carousel-inner{
 		width: 100%;
+		margin-top: 80px;
 		/*margin-top: 100px;*/
 	}
 	.details{
@@ -661,6 +693,63 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', end
 	.mob-btn:hover{
 		background-color: rgba(117,162,103,.7);
 
+	}
+	.mini-distance{
+	font-size: 1.5rem;
+	padding-left:20px;
+	padding-right:20px;
+	margin-top: 10px;
+	float:right;
+	font-style: italic;
+	color: #75A267;
+	 position: absolute;
+  	bottom: 5px;
+  	right: 30px;
+	}
+	.mini-duration{
+		font-size: 1.5rem;
+		margin-top: 10px;
+		font-style: italic;
+		color: #75A267;
+		float: right;
+		position: absolute;
+	  	bottom: 5px;
+		
+	}
+	.distance{
+		float: left;
+		padding-right: 20px;
+		font-style: italic;
+		color: #75A267;
+		position: absolute;
+		bottom: 10px;
+		left: 20px;
+	}
+	.duration{
+		font-style: italic;
+		color: #75A267;
+		position: absolute;
+		bottom: 10px;
+		right: 75px;
+		margin-bottom: 0;
+		
+	}
+	.locateHolder{
+		width: 50%;
+	}
+	.hometxt{
+		color: white;
+		
+	}
+	.margarita{
+		display: none;
+	}
+	.fa-github-alt, .fa-twitter, .fa-linkedin{
+		display: block;
+		float: right;
+		margin-right: 20px;
+		margin-top: 10px;
+		font-size: 30px;
 	}
 
 }
