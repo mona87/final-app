@@ -277,19 +277,19 @@ module.exports = React.createClass({
 				// 	self.state.interval = setInterval(self.timer, 1000);
 				// })
 
-			// this.setTimeout(this.timer, 5000);
+			this.setTimeout(this.timer, 5000);
 			
 		
 		  },
 		  timer: function(){
 	
-					// this.state.timer++;
-					// console.log(this.state.timer);
+					this.state.timer++;
+					console.log(this.state.timer);
 
 
-					// this.setState({
-					// 		timer: this.state.timer
-					// 	})
+					this.setState({
+							timer: this.state.timer
+						})
 					// if(this.state.timer >= 5){
 					// 	clearInterval(this.state.interval)
 					

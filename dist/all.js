@@ -33923,8 +33923,23 @@ module.exports = React.createClass({
 		});
 		$('.carouselMain').fadeIn('slow');
 	},
-	componentDidMount: function componentDidMount() {},
-	timer: function timer() {},
+	componentDidMount: function componentDidMount() {
+		// var self=this;
+		// window.addEventListener('load', function(){
+		// 	self.state.interval = setInterval(self.timer, 1000);
+		// })
+
+		this.setTimeout(this.timer, 5000);
+	},
+	timer: function timer() {
+
+		this.state.timer++;
+		console.log(this.state.timer);
+
+		this.setState({
+			timer: this.state.timer
+		});
+	},
 	render: function render() {
 
 		// $('.carouselMain').css('display', this.state.hide)
@@ -34207,20 +34222,6 @@ module.exports = React.createClass({
 });
 // console.log('random ', this.state.random);
 // 	console.log('random2 ', this.state.random2);
-
-// var self=this;
-// window.addEventListener('load', function(){
-// 	self.state.interval = setInterval(self.timer, 1000);
-// })
-
-// this.setTimeout(this.timer, 5000);
-
-// this.state.timer++;
-// console.log(this.state.timer);
-
-// this.setState({
-// 		timer: this.state.timer
-// 	})
 // if(this.state.timer >= 5){
 // 	clearInterval(this.state.interval)
 
