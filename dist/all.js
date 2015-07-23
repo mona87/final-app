@@ -33958,7 +33958,10 @@ module.exports = React.createClass({
 		};
 		var counter = 0;
 
-		var hideCarousel = {};
+		var hideCarousel = {
+			display: this.state.hide
+
+		};
 		return React.createElement(
 			'div',
 			null,
@@ -34234,8 +34237,6 @@ module.exports = React.createClass({
 // 	this.setState({
 // 		timer: this.state.timer
 // 	})
-
-// display: this.state.hide
 
 // self.state.currentIcon = place._id + 'heart';
 // self.state.restaurantId = place._id;

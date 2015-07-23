@@ -319,7 +319,7 @@ module.exports = React.createClass({
 			var counter = 0;
 	
 			var hideCarousel ={
-				// display: this.state.hide
+				display: this.state.hide
 
 			}
 			return (
