@@ -2,10 +2,11 @@ var React = require('react');
 var $ = require('jquery')
 var Carousel = require('react-bootstrap/lib/Carousel');
 var CarouselItem = require('react-bootstrap/lib/CarouselItem');
-
+var TimerMixin = require('react-timer-mixin');
 
 
 module.exports = React.createClass({
+		  mixins: [TimerMixin],
 		  getInitialState: function() {
 			return {
 			  index: 0,
@@ -33,7 +34,8 @@ module.exports = React.createClass({
 			  random: 3,
 			  random2: 4,
 			  timer: 0, 
-			  interval: null
+			  interval: null,
+			  bool: false
 			};
 		  },
 		  handleSelect: function(selectedIndex, selectedDirection) {
@@ -102,9 +104,8 @@ module.exports = React.createClass({
 		  		return this.props.nearby
 		  },
 		  componentDidUpdate: function(){
-		 	 // this.initialize();  
-			
-		 	 // console.log('props ', this.props.nearby)
+		 	 // this.initialize(); 
+
 		  	google.maps.event.addDomListener(window, 'load', this.initialize());	
 			
 			this.state.mapId = this.state.mapId; 
@@ -271,23 +272,31 @@ module.exports = React.createClass({
 		  			$('.carouselMain').fadeIn('slow');
 		  },
 		  componentDidMount: function(){
-				var self=this;
-				window.addEventListener('load', function(){
-					self.state.interval = setInterval(self.timer, 1000);
-				})
-				
-				// console.log('true');
-				
+				// var self=this;
+				// window.addEventListener('load', function(){
+				// 	self.state.interval = setInterval(self.timer, 1000);
+				// })
+
+			this.setTimeout(this.timer, 5000);
+			
+		
 		  },
 		  timer: function(){
-					this.state.timer+=1;
-					if(this.state.timer >= 5){
-						clearInterval(this.state.interval)
-					
-					}
-						this.setState({
+	
+					this.state.timer++;
+					console.log(this.state.timer);
+
+
+					this.setState({
 							timer: this.state.timer
 						})
+					// if(this.state.timer >= 5){
+					// 	clearInterval(this.state.interval)
+					
+					// }
+					// 	this.setState({
+					// 		timer: this.state.timer
+					// 	})
 				
 					
 		  },
