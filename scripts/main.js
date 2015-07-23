@@ -25,7 +25,7 @@ var App = Backbone.Router.extend({
 		React.render(
 				<div>
 				<User/>
-				<LoginComponent router={myRouter} />
+				<LocationComponent router={myRouter} />
 				</div>,
 				el
 		)

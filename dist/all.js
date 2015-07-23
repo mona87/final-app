@@ -35099,7 +35099,7 @@ var App = Backbone.Router.extend({
 			'div',
 			null,
 			React.createElement(User, null),
-			React.createElement(LoginComponent, { router: myRouter })
+			React.createElement(LocationComponent, { router: myRouter })
 		), el);
 	},
 	home: function home() {
