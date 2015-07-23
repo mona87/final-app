@@ -33958,10 +33958,7 @@ module.exports = React.createClass({
 		};
 		var counter = 0;
 
-		var hideCarousel = {
-			display: this.state.hide
-
-		};
+		var hideCarousel = {};
 		return React.createElement(
 			'div',
 			null,
@@ -34151,27 +34148,35 @@ module.exports = React.createClass({
 					);
 				})
 			),
+			'//     ',
 			React.createElement(
 				'div',
 				{ ref: 'begin', className: 'locateHolder' },
+				'//  ',
 				React.createElement(
 					'div',
 					null,
+					'//   ',
 					React.createElement(
 						'div',
 						{ className: 'locateWrapper' },
+						'//     ',
 						React.createElement(
 							'p',
 							{ className: 'hometxt' },
 							'Find the nearest Happy Hour Specials in Austin, TX.'
 						),
+						'//    ',
 						React.createElement(
 							'button',
 							{ onClick: this.hideMe, className: 'locateBtn' },
 							'Search Now!'
-						)
-					)
-				)
+						),
+						'//   '
+					),
+					'//  '
+				),
+				'// '
 			),
 			React.createElement(
 				'div',
@@ -34229,6 +34234,8 @@ module.exports = React.createClass({
 // 	this.setState({
 // 		timer: this.state.timer
 // 	})
+
+// display: this.state.hide
 
 // self.state.currentIcon = place._id + 'heart';
 // self.state.restaurantId = place._id;

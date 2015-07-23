@@ -319,7 +319,7 @@ module.exports = React.createClass({
 			var counter = 0;
 	
 			var hideCarousel ={
-				display: this.state.hide
+				// display: this.state.hide
 
 			}
 			return (
@@ -425,14 +425,14 @@ module.exports = React.createClass({
 					}
 				)}
 			  	  </div>
-			  	  	<div ref="begin" className="locateHolder">
-						<div >
-							<div className="locateWrapper" >
-								 <p className="hometxt" >Find the nearest Happy Hour Specials in Austin,&nbsp;TX.</p>
-								<button onClick={this.hideMe} className="locateBtn">Search Now!</button>
-							</div>
-						</div>
-					</div>
+			  // 	  	<div ref="begin" className="locateHolder">
+					// 	<div >
+					// 		<div className="locateWrapper" >
+					// 			 <p className="hometxt" >Find the nearest Happy Hour Specials in Austin,&nbsp;TX.</p>
+					// 			<button onClick={this.hideMe} className="locateBtn">Search Now!</button>
+					// 		</div>
+					// 	</div>
+					// </div>
 			  <div ref="icons" className="row icon-row">
 			  	<div onClick={this.prev} className="col-sm-2 mob-btn ">	
 			  	  	<span className="fa-stack fa-2x">	
