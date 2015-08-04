@@ -42,7 +42,7 @@ var App = Backbone.Router.extend({
 				var topTen = posts.slice(posts.length - 10, posts.length).reverse();
 		
 				React.render(
-					<div>
+					<div >
 						<Navigation user={user} router={app}/ >
 						<CategoryPage posts={topTen} category={category}/>
 					</div>,

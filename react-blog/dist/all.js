@@ -36799,11 +36799,6 @@ module.exports = React.createClass({
 			null,
 			React.createElement(
 				'div',
-				null,
-				React.createElement('img', { className: 'bg', src: 'http://travelshows.com/files/Home%20Page%20Backgrounds/fiji.jpg' })
-			),
-			React.createElement(
-				'div',
 				{ className: 'formHolder' },
 				React.createElement(
 					'form',
@@ -36847,10 +36842,10 @@ module.exports = React.createClass({
 		e.preventDefault();
 		this.props.router.navigate('login', { trigger: true });
 	},
-	signup: function signup(e) {
-		e.preventDefault();
-		this.props.router.navigate('register', { trigger: true });
-	},
+	// signup: function(e){
+	// 	e.preventDefault();
+	// 	this.props.router.navigate('register', {trigger: true});
+	// },
 	submit: function submit(e) {
 		e.preventDefault();
 		var self = this;
@@ -36891,12 +36886,6 @@ module.exports = React.createClass({
 		}
 	}
 });
-/*<div className="nav">
-	<div className="links">
-	<div className="logout" ref="login" onClick={this.login}><a href="#login">Log In</a></div>
-	<div ref="signup" onClick={this.signup}><a href="#register" >Sign Up</a></div>
-</div>
-</div>*/
 
 },{"../config/parseSettings":172,"backbone/node_modules/underscore":2,"backparse":3,"react":161}],167:[function(require,module,exports){
 'use strict';
