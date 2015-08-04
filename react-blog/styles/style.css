@@ -1,0 +1,220 @@
+body, html{
+	background-color: #F9F2E7;
+	margin: 0;
+	font-family: 'Molengo', sans-serif;
+
+}
+
+body{
+
+}
+
+#container{
+	width: 100%;
+	height: auto;
+
+
+}
+
+.nav{
+	min-height: 60px;
+	background-color: #00A8C6;
+	color: white;
+	font-size: 20px;
+	width: 100%;
+/*	position: fixed;*/
+	opacity: .9;
+	padding-left: 50px;
+	padding-top: 20px;
+	box-sizing: border-box;
+
+}
+
+.nav a{
+	color: white;
+	text-decoration: none;
+	font-size: 20px;
+	transition: 1000ms;
+}
+.nav a:hover{
+	color:#AEE239;
+}
+.welcome{
+	float: left;
+}
+
+.nav .links div{
+	float: right;
+	margin-right: 20px;
+}
+
+.hero{
+	background-image: url('http://travelshows.com/files/Home%20Page%20Backgrounds/fiji.jpg');
+	width: 100%;
+	height: 200px;
+	background-size: cover;
+}
+
+
+.posts{
+	text-align: center;
+	width: 100%;
+	max-width: 700px;
+	border: 1px solid #dddddd;
+	margin: 50px auto 30px auto;
+	background-color: white;
+	border-radius: 5px;
+	box-sizing: border-box;
+	padding: 20px;
+}
+
+.posts{
+	text-align: left;
+}
+
+.posts h2{
+	font-family: 'Lobster', cursive;
+	color: #40C0CB;
+}
+
+.posts a, .posts a:link, .posts a:visited{
+	text-decoration: none;
+	color:#8FBE00;
+}
+
+.postHolder{
+	max-width: 100%;
+	padding: 0 20px 0 20px;
+	/*border: 1px solid green;*/
+
+}
+
+.login, .blogpost, .register{
+	margin: 50px auto 50px auto;
+	width: 100%;
+	max-width: 500px;
+	background-color: white;
+	border-radius: 5px;
+	border: 1px solid #dddddd;
+	/*text-align: center;*/
+	box-sizing: border-box;
+	padding: 0 20px 20px 20px;
+	color: #00A8C6;
+	display: block;
+}
+
+.blogpost{
+
+	max-width: 700px;
+}	
+.blogpost input, .blogpost textarea, .register input {
+	height: 40px;
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+	border-radius: 3px;
+	border: 1px solid #dddddd;
+	font-size: 15px;
+	padding-left: 10px;
+	outline-color: #00A8C6;
+	margin-bottom: 20px;
+}
+.blogpost textarea{
+	height: 200px;
+} 
+
+.login h1, .register h1{
+	text-align: center;
+
+}
+
+.login input, .blogpost select{
+	height: 40px;
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+	border-radius: 3px;
+	border: 1px solid #dddddd;
+	font-size: 15px;
+	padding-left: 10px;
+	outline-color: #00A8C6;
+	margin-bottom: 20px;
+
+}
+
+.blogpost select{
+	max-width: 50%;
+}
+
+.login label, .blogpost label, .register label{
+	margin: 0px 0 10px 0;
+	font-size: 20px;
+	text-align: left;
+	display: inline-block;
+}
+
+.login button, .blogpost button, .register button{
+	width: 100%;
+	height: 40px;
+	border-radius: 3px;
+	margin-top: 30px;
+	font-size: 20px;
+	border: 0;
+	color: white;
+	background-color: #AEE239;
+
+}
+
+.blogpost button, .register button{
+	max-width: 500px;
+	margin: 0 auto 10px auto;
+	display: block;
+	background-color: #AEE239;
+}
+
+.formHolder{
+	max-width: 100%;
+	padding: 0 20px 0 20px;
+}
+
+
+.error{
+	font-size:20px;
+}
+
+ .logout a:link, .logout a:visited{
+	text-decoration: none;
+	font-size: 20px;
+	color: white;
+	margin-right: 20px;
+
+}
+.logout a:hover{
+ 	color:#AEE239;
+}
+
+.category{
+	margin: 20px auto auto auto;
+	width: 100%;
+	max-width: 700px;
+	font-family: 'Lobster', cursive;
+	background-color: white;
+	box-sizing:border-box;
+	color: #40C0CB;
+	padding: 20px;
+	border: 1px solid #dddddd;
+}
+
+.category h1{
+	margin: 0;
+
+}
+
+.bg{
+	/*background-image: url();*/
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100%;
+	width: 100%;
+}
+
