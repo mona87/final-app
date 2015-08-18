@@ -117,8 +117,13 @@ input {
   background-image: linear-gradient(#72AC2D, #325015);
   /*for ie9*/
   color: white;
-  font-size: 14px;
+  font-size: 14px; }
+
+.mask {
   overflow: hidden; }
+
+.border-rad {
+  border-radius: 5px; }
 
 .gradient-btn {
   filter: progid:DXImageTransform.Microsoft.Gradient(startColorStr="#72AC2D", endColorStr="#325015"); }
