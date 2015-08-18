@@ -104,7 +104,7 @@ input {
   width: 100%;
   height: 30px;
   border-radius: 5px;
-  border: 1px solid;
+  border: 1px solid #325015;
   margin-top: 10px;
   background-image: linear-gradient(#72AC2D, #325015);
   /*for ie9*/
