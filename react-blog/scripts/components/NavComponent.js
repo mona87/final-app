@@ -30,7 +30,7 @@ module.exports = React.createClass({
 				</div>
 
 				<div >
-				<img className="bg" src="http://travelshows.com/files/Home%20Page%20Backgrounds/fiji.jpg"/>
+				<img className="bg" src="http://www.charma-posters.nl/images/Panorama%201-56/34%20-%204822%20Tropical%20Beach.jpg"/>
 				</div>
 			</div>
 		);
