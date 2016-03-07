@@ -375,9 +375,7 @@ module.exports = React.createClass({
 				
 					  <div className="textWrapper">
 					  	<div className="textHolder" >
-					  		{if(!this.props.nearby.length){
-					  			return <p>Loading...</p>	
-					  		}}
+					  	
 							  {this.props.nearby.map(function(place, i){
 							  	
 								if(i === self.state.counter){
